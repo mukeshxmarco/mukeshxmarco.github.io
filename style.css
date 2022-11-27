@@ -127,7 +127,7 @@ nav button:hover {
 
 
 nav .left {
-    width: 100px;
+    width: 60px;
 }
 
 nav .mid {
@@ -137,7 +137,7 @@ nav .mid {
 nav .mid .tabs {
     margin-left: auto;
     margin-right: auto;
-    width: 38%;
+    width: 37%;
 }
 
 nav .mid .tabs .nav-link {
@@ -152,7 +152,7 @@ nav .mid .tabs .nav-link:hover {
 }
 
 nav .right {
-    width: 100px;
+    width: 60px;
 }
 
 /* end nav css */
