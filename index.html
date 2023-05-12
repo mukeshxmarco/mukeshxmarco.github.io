@@ -1,18 +1,123 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mukesh Kumar</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="index.js"></script>
+    <title>Mukesh Kumar - Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <h1>Marco</h1>
+    <header>
+        <h1>Mukesh Kumar</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certificates">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate and highly skilled Full Stack Developer with expertise in React.js and Django. With a
+                strong background in problem-solving, I have successfully solved over 75 problems on Leetcode,
+                showcasing my proficiency in algorithmic thinking and coding.
+                <br>
+                <br>
+                I have also contributed as a co-web lead at DSC Uiet, where I collaborated with a team to develop
+                innovative and robust web solutions. In addition, I served as a backend mentor at Geekhub Uiet, guiding
+                aspiring developers and helping them enhance their skills.
+                <br>
+                <br>
+                My dedication to continuous learning and growth has led me to achieve a 5-star rating on Hackerrank,
+                demonstrating my commitment to excellence. I thrive in dynamic environments, embracing challenges and
+                delivering high-quality solutions.
+                <br>
+                <br>
+                Combining my technical expertise, leadership abilities, and strong problem-solving skills, I am
+                confident in my ability to drive successful projects and contribute to the development of cutting-edge
+                web applications.</p>
+        </section>
+
+        <section id="work">
+            <h2>My Work</h2>
+            <div class="work-gallery">
+                <img src="work1.jpg" alt="Work 1">
+                <img src="work2.jpg" alt="Work 2">
+                <img src="work3.jpg" alt="Work 3">
+                <img src="work4.jpg" alt="Work 4">
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li>
+                    <h3>Back-end Mentor @Geek Hub</h3>
+                    <p>Nov 2022 - Present</p>
+                    <p>Geek Hub is an initiative to revolutionize our pedagogy and replenish young minds with seeds of
+                        innovation and creativity.</p>
+                </li>
+                <li>
+                    <h3>Co-web Lead @Google student Developer Club</h3>
+                    <p>Sep 2022 - Present</p>
+                    <p>Teaching a lot of students about Web Development. Meet and learn with other budding developers and build solutions for local businesses and
+                        communities.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="certificate">
+                <img src="certificate1.jpg" alt="Certificate 1">
+                <div class="certificate-details">
+                    <h3>Certificate Title</h3>
+                    <p>Issuing Organization</p>
+                </div>
+            </div>
+            <div class="certificate">
+                <img src="certificate2.jpg" alt="Certificate 2">
+                <div class="certificate-details">
+                    <h3>Certificate Title</h3>
+                    <p>Issuing Organization</p>
+                </div>
+            </div>
+            <div class="certificate">
+                <img src="certificate3.jpg" alt="Certificate 3">
+                <div class="certificate-details">
+                    <h3>Certificate Title</h3>
+                    <p>Issuing Organization</p>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Mukesh Kumar. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
