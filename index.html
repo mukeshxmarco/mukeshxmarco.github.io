@@ -1,125 +1,451 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Mukesh Kumar - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Devcrud">
+    <title>Mukesh Kumar</title>
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <script src="https://kit.fontawesome.com/28ead3e641.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="assets/css/marco.css">
 </head>
 
-<body>
-    <header id="header">
-        <h1>Mukesh Kumar</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <header class="header">
+        <div class="container">
+            <ul class="social-icons pt-3">
+                <li class="social-item"><a class="social-link text-light"
+                        href="https://www.linkedin.com/in/ofmukesh/"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li class="social-item"><a class="social-link text-light" href="https://twitter.com/of_mukesh"><i
+                            class="fa-brands fa-twitter"></i></a></li>
+                <li class="social-item"><a class="social-link text-light" href="https://www.instagram.com/_m_a_r_c_o_7/"><i
+                            class="fa-brands fa-instagram"></i></a></li>
+                <li class="social-item"><a class="social-link text-light" href="https://github.com/ofmukesh"><i
+                            class="fa-brands fa-github"></i></a></li>
             </ul>
-        </nav>
-
-        <button class="btn-top"><a href="#header">Top</a></button>
+            <div class="header-content">
+                <h4 class="header-subtitle">Hello, I am</h4>
+                <h1 class="header-title">Mukesh Kumar</h1>
+                <h6 class="header-mono">Full-stack Developer</h6>
+            </div>
+        </div>
     </header>
-
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a passionate and highly skilled Full Stack Developer with expertise in React.js and Django. With a
-                strong background in problem-solving, I have successfully solved over 75 problems on Leetcode,
-                showcasing my proficiency in algorithmic thinking and coding.
-                <br>
-                <br>
-                I have also contributed as a co-web lead at DSC Uiet, where I collaborated with a team to develop
-                innovative and robust web solutions. In addition, I served as a backend mentor at Geekhub Uiet, guiding
-                aspiring developers and helping them enhance their skills.
-                <br>
-                <br>
-                My dedication to continuous learning and growth has led me to achieve a 5-star rating on Hackerrank,
-                demonstrating my commitment to excellence. I thrive in dynamic environments, embracing challenges and
-                delivering high-quality solutions.
-                <br>
-                <br>
-                Combining my technical expertise, leadership abilities, and strong problem-solving skills, I am
-                confident in my ability to drive successful projects and contribute to the development of cutting-edge
-                web applications.</p>
-        </section>
-
-        <section id="work">
-            <h2>My Work</h2>
-            <div class="work-gallery">
-                <img src="work1.jpg" alt="Work 1">
-                <img src="work2.jpg" alt="Work 2">
-                <img src="work3.jpg" alt="Work 3">
-                <img src="work4.jpg" alt="Work 4">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#resume" class="nav-link">Resume</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav brand">
+                    <img src="assets/imgs/avatar.jpg" alt="" class="brand-img">
+                    <li class="brand-txt">
+                        <h5 class="brand-title">Mukesh Kumar</h5>
+                        <div class="brand-subtitle">Full-stack Developer</div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#blog" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item last-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <ul>
-                <li>
-                    <h3>Back-end Mentor @Geek Hub</h3>
-                    <p>Nov 2022 - Present</p>
-                    <p>Geek Hub is an initiative to revolutionize our pedagogy and replenish young minds with seeds of
-                        innovation and creativity.</p>
-                </li>
-                <li>
-                    <h3>Co-web Lead @Google student Developer Club</h3>
-                    <p>Sep 2022 - Present</p>
-                    <p>Teaching a lot of students about Web Development. Meet and learn with other budding developers and build solutions for local businesses and
-                        communities.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <div class="certificate">
-                <img src="certificate1.jpg" alt="Certificate 1">
-                <div class="certificate-details">
-                    <h3>Certificate Title</h3>
-                    <p>Issuing Organization</p>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div id="about" class="row about-section">
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">Who am I ?</h3>
+                <span class="line mb-5"></span>
+                <h5 class="mb-3">A Full-stack Developer Located In Our Lovely Earth</h5>
+                <p class="mt-20">Dedicated and passionate student pursuing a Bachelor of Technology degree with
+                    expertise in web development. Actively
+                    involved in mentoring and organizing coding events. Eager to apply skills and contribute to
+                    innovative projects.</p>
+                <button class="btn btn-outline-danger"><i class="icon-down-circled2 "></i>Download My CV</button>
+            </div>
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">Personal Info</h3>
+                <span class="line mb-5"></span>
+                <ul class="mt40 info list-unstyled">
+                    <li><span>Birthdate</span> : 15/08/2005</li>
+                    <li><span>Email</span> : of.mukesh@gmail.com</li>
+                    <li><span>Phone</span> : +91 73397-58494</li>
+                    <li><span>Address</span> : Hisar, Haryana, India</li>
+                </ul>
+                <ul class="social-icons pt-3">
+                    <li class="social-item"><a class="social-link" href="#"><i class="ti-facebook"
+                                aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="#"><i class="ti-twitter"
+                                aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="#"><i class="ti-google"
+                                aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="#"><i class="ti-instagram"
+                                aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="#"><i class="ti-github"
+                                aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">My Expertise</h3>
+                <span class="line mb-5"></span>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-paint-bucket icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h6>Full-stack Developer</h6>
+                        <p class="subtitle"> Eager to apply skills and contribute to innovative projects.</p>
+                        <hr>
+                    </div>
                 </div>
             </div>
-            <div class="certificate">
-                <img src="certificate2.jpg" alt="Certificate 2">
-                <div class="certificate-details">
-                    <h3>Certificate Title</h3>
-                    <p>Issuing Organization</p>
+        </div>
+    </div>
+
+    <!--Resume Section-->
+    <section class="section" id="resume">
+        <div class="container">
+            <h2 class="mb-5"><span class="text-danger">My</span> Resume</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="mt-2">
+                                <h4>Experience</h4>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="title text-danger">GEEKHUB</h6>
+                            <span>Rohtak, Haryana</span>
+                            <P>Back-end Mentor (Nov, 2022 - Present)</P>
+                            <P class="subtitle">Served as a Backend Mentor at GeekHub UIET Club, providing
+                                guidance and support to students in their backend
+                                development projects.
+                            </P>
+                            <hr>
+
+                            <h6 class="title text-danger">GDSC UIET</h6>
+                            <span>Rohtak, Haryana</span>
+                            <P>Co-web Lead (Sep 2022 - June 2023)</P>
+                            <P class="subtitle">Mentored and guided a diverse group of 80 junior students, providing
+                                expert instruction in web development and
+                                contributing to the overall success of the Google Developer Student Club activities.
+                            </P>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="mt-2">
+                                <h4>Education</h4>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="title text-danger">2021 - Present</h6>
+                            <P>B.TECH</P>
+                            <P class="subtitle">Dedicated and passionate student pursuing a Bachelor of Technology
+                                degree with expertise in web development. Actively
+                                involved in mentoring and organizing coding events.</P>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="pull-left">
+                                <h4 class="mt-2">Skills</h4>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <h6>hTL5 &amp; CSS3</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 97%"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>JavaScript</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 85%"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="pull-left">
+                                <h4 class="mt-2">Languages</h4>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <h6>English</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="certificate">
-                <img src="certificate3.jpg" alt="Certificate 3">
-                <div class="certificate-details">
-                    <h3>Certificate Title</h3>
-                    <p>Issuing Organization</p>
+        </div>
+    </section>
+
+    <section class="section bg-dark py-5">
+        <div class="container text-center">
+            <h2 class="text-light mb-5 font-weight-normal">I Am Available For FreeLance</h2>
+            <button class="btn bg-primary w-lg">Hire me</button>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section bg-custom-gray" id="portfolio">
+        <div class="container">
+            <h1 class="mb-5"><span class="text-danger">My</span> Portfolio</h1>
+            <div class="portfolio">
+                <div class="filters">
+                    <a href="#" data-filter=".new" class="active">
+                        New
+                    </a>
+                    <a href="#" data-filter=".advertising">
+                        Advertising
+                    </a>
+                    <a href="#" data-filter=".branding">
+                        Branding
+                    </a>
+                    <a href="#" data-filter=".web">
+                        Web
+                    </a>
+                </div>
+                <div class="portfolio-container">
+                    <div class="col-md-6 col-lg-4 web new">
+                        <div class="portfolio-item">
+                            <img src="assets/imgs/web-2.jpg" class="img-fluid"
+                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                            <div class="content-holder">
+                                <a class="img-popup" href="assets/imgs/web-2.jpg"></a>
+                                <div class="text-holder">
+                                    <h6 class="title">WEB</h6>
+                                    <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 advertising new">
+                        <div class="portfolio-item">
+                            <img src="assets/imgs/advertising-2.jpg" class="img-fluid"
+                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                            <div class="content-holder">
+                                <a class="img-popup" href="assets/imgs/advertising-2.jpg"></a>
+                                <div class="text-holder">
+                                    <h6 class="title">ADVERSTISING</h6>
+                                    <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 web">
+                        <div class="portfolio-item">
+                            <img src="assets/imgs/web-4.jpg" class="img-fluid"
+                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                            <div class="content-holder">
+                                <a class="img-popup" href="assets/imgs/web-4.jpg"></a>
+                                <div class="text-holder">
+                                    <h6 class="title">WEB</h6>
+                                    <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 advertising">
+                        <div class="portfolio-item">
+                            <img src="assets/imgs/advertising-1.jpg" class="img-fluid"
+                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                            <div class="content-holder">
+                                <a class="img-popup" href="assets/imgs/advertising-1.jpg"></a>
+                                <div class="text-holder">
+                                    <h6 class="title">ADVERSITING</h6>
+                                    <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 branding new">
+                        <div class="portfolio-item">
+                            <img src="assets/imgs/branding-1.jpg" class="img-fluid"
+                                alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                            <div class="content-holder">
+                                <a class="img-popup" href="assets/imgs/branding-1.jpg"></a>
+                                <div class="text-holder">
+                                    <h6 class="title">BRANDING</h6>
+                                    <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        
+        </div>
+    </section>
+    <!-- End of portfolio section -->
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message"></textarea>
-                <input type="submit" value="Send">
-            </form>
-        </section>
-    </main>
+    <section class="section" id="blog">
+        <div class="container">
+            <h2 class="mb-5">Latest <span class="text-danger">Blog</span></h2>
+            <div class="row">
+                <div class="blog-card">
+                    <div class="img-holder">
+                        <img src="assets/imgs/blog1.jpg"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <div class="content-holder">
+                        <h6 class="title">Consectetur adipisicing elit</h6>
 
-    <footer>
-        <p>&copy; 2023 Mukesh Kumar. All rights reserved.</p>
+                        <p class="post-details">
+                            <a href="#">By: Admin</a>
+                            <a href="#"><i class="ti-heart text-danger"></i> 234</a>
+                            <a href="#"><i class="ti-comment"></i> 123</a>
+                        </p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit
+                            delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium
+                            neque numquam mollitia modi quasi distinctio.</p>
+
+                        <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b>
+                        </p>
+                        <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis
+                            cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
+
+                        <a href="#" class="read-more">Read more <i class="ti-angle-double-right"></i></a>
+                    </div>
+                </div><!-- end of blog wrapper -->
+            </div>
+        </div>
+    </section>
+
+    <div class="section contact" id="contact">
+        <div id="map" class="map"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form-card">
+                        <h4 class="contact-title">Send a message</h4>
+                        <form action="">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Name *" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" placeholder="Email *" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id=" placeholder=" Message *" rows="7"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group ">
+                                <button type="submit" class="form-control btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <h4 class="contact-title">Get in touch</h4>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-mobile icon-md"></i>
+                            </div>
+                            <div class="col-10 ">
+                                <h6 class="d-inline">Phone : <br> <span class="text-muted">+91 73397-58494</span></h6>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-map-alt icon-md"></i>
+                            </div>
+                            <div class="col-10">
+                                <h6 class="d-inline">Address :<br> <span class="text-muted">Hisar, Haryana, India.</span></h6>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-envelope icon-md"></i>
+                            </div>
+                            <div class="col-10">
+                                <h6 class="d-inline">Email :<br> <span class="text-muted">of.mukesh@gmail.com</span></h6>
+                            </div>
+                        </div>
+                        <ul class="social-icons pt-3">
+                            <li class="social-item"><a class="social-link text-dark"
+                                    href="https://www.linkedin.com/in/ofmukesh/"><i class="fa-brands fa-linkedin"></i></a></li>
+                            <li class="social-item"><a class="social-link text-dark" href="https://twitter.com/of_mukesh"><i
+                                        class="fa-brands fa-twitter"></i></a></li>
+                            <li class="social-item"><a class="social-link text-dark" href="https://www.instagram.com/_m_a_r_c_o_7/"><i
+                                        class="fa-brands fa-instagram"></i></a></li>
+                            <li class="social-item"><a class="social-link text-dark" href="https://github.com/ofmukesh"><i
+                                        class="fa-brands fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer py-3">
+        <div class="container">
+            <p class="small mb-0 text-light">
+                &copy; <script>
+                    document.write(new Date().getFullYear())
+                </script> Created With <i class="ti-heart text-danger"></i> By <a href="https://github.com/ofmukesh"
+                    target="_blank"><span class="text-danger"
+                        title="Bootstrap 4 Themes and Dashboards">Marco</span></a>
+            </p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Isotope  -->
+    <script src="assets/vendors/isotope/isotope.pkgd.js"></script>
+
+    <!-- Google mpas -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap">
+    </script>
+
+    <script src="assets/js/marco.js"></script>
+
 </body>
 
 </html>
