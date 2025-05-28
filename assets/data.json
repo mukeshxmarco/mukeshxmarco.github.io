@@ -1,237 +1,4 @@
 {
-    "header": {
-        "title": {
-            "up": "HI!",
-            "down": "I am Mukesh"
-        },
-        "subtitle": "Software Engineer"
-    },
-    "about": {
-        "image": "assets/imgs/man.png",
-        "subtitle": "Who Am I ?",
-        "title": "About Me",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquid ad provident aut fuga animi soluta quae eos non cupiditate voluptates dolorem, doloremque quos dicta quibusdam impedit iure nemo a iste\nculpa! Quasi quibusdam hic recusandae delectus velit officiis explicabo voluptatibus! Nemo esse similique, voluptates labore distinctio, placeat explicabo facilis molestias, blanditiis culpa iusto voluptatem ratione eligendi a, quia temporibus velit vero ipsa sint ex voluptatum expedita aliquid! Debitis, nam!",
-        "cta": "Download CV"
-    },
-    "services": {
-        "subtitle": "What I Do ?",
-        "title": "Service",
-        "items": [
-            {
-                "icon": "assets/imgs/pencil-case.svg",
-                "title": "Adipisicing",
-                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
-            },
-            {
-                "icon": "assets/imgs/responsive.svg",
-                "title": "Sapiente",
-                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
-            },
-            {
-                "icon": "assets/imgs/toolbox.svg",
-                "title": "Placeat",
-                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
-            },
-            {
-                "icon": "assets/imgs/analytics.svg",
-                "title": "Iusto",
-                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
-            }
-        ]
-    },
-    "portfolio": {
-        "subtitle": "What I Did ?",
-        "title": "Portfolio",
-        "items": [
-            {
-                "image": "assets/imgs/folio-1.jpg",
-                "title": "Web Designing",
-                "category": "Category: Web Templates"
-            },
-            {
-                "image": "assets/imgs/folio-2.jpg",
-                "title": "Web Designing",
-                "category": "Category: Web Templates"
-            },
-            {
-                "image": "assets/imgs/folio-3.jpg",
-                "title": "Web Designing",
-                "category": "Category: Web Templates"
-            }
-        ]
-    },
-    "pricing": {
-        "subtitle": "How Much I Charge ?",
-        "title": "My Pricing",
-        "plans": [
-            {
-                "icon": "assets/imgs/scooter.svg",
-                "title": "Free",
-                "features": [
-                    {
-                        "text": "accusamus reprehenderit",
-                        "available": true
-                    },
-                    {
-                        "text": "provident dolorem",
-                        "available": true
-                    },
-                    {
-                        "text": "quos neque",
-                        "available": true
-                    },
-                    {
-                        "text": "fugiat quibusdam",
-                        "available": true
-                    },
-                    {
-                        "text": "accusamus laboriosam",
-                        "available": false
-                    },
-                    {
-                        "text": "inventore omnis",
-                        "available": false
-                    }
-                ],
-                "price": {
-                    "currency": "$",
-                    "amount": "0.00/Month"
-                },
-                "cta": "Subscribe"
-            },
-            {
-                "icon": "assets/imgs/shipped.svg",
-                "title": "Basic",
-                "features": [
-                    {
-                        "text": "accusamus reprehenderit",
-                        "available": true
-                    },
-                    {
-                        "text": "provident dolorem",
-                        "available": true
-                    },
-                    {
-                        "text": "quos neque",
-                        "available": true
-                    },
-                    {
-                        "text": "fugiat quibusdam",
-                        "available": true
-                    },
-                    {
-                        "text": "accusamus laboriosam",
-                        "available": true
-                    },
-                    {
-                        "text": "inventore omnis",
-                        "available": false
-                    }
-                ],
-                "price": {
-                    "currency": "$",
-                    "amount": "9.99/Month"
-                },
-                "cta": "Subscribe"
-            },
-            {
-                "icon": "assets/imgs/startup.svg",
-                "title": "Premium",
-                "features": [
-                    {
-                        "text": "accusamus reprehenderit",
-                        "available": true
-                    },
-                    {
-                        "text": "provident dolorem",
-                        "available": true
-                    },
-                    {
-                        "text": "quos neque",
-                        "available": true
-                    },
-                    {
-                        "text": "fugiat quibusdam",
-                        "available": true
-                    },
-                    {
-                        "text": "accusamus laboriosam",
-                        "available": true
-                    },
-                    {
-                        "text": "inventore omnis",
-                        "available": true
-                    }
-                ],
-                "price": {
-                    "currency": "$",
-                    "amount": "99.9/Month"
-                },
-                "cta": "Subscribe"
-            }
-        ]
-    },
-    "cta": {
-        "title": "Want to work with me?",
-        "subtitle": "Always feel Free to Contact & Hire me",
-        "buttonText": "Hire Me"
-    },
-    "testimonials": {
-        "subtitle": "What Think Client About Me ?",
-        "title": "Testmonial",
-        "items": [
-            {
-                "image": "assets/imgs/avatar2.jpg",
-                "comment": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.",
-                "name": "Emily Reb"
-            },
-            {
-                "image": "assets/imgs/avatar3.jpg",
-                "comment": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.",
-                "name": "Emily Reb"
-            }
-        ]
-    },
-    "blog": {
-        "subtitle": "Recent Posts?",
-        "title": "Blog",
-        "posts": [
-            {
-                "image": "assets/imgs/img-1.jpg",
-                "title": "Consectetur adipisicing elit",
-                "author": "Admin",
-                "likes": "234",
-                "comments": "123",
-                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium neque numquam mollitia modi quasi distinctio.",
-                "highlight": "Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.",
-                "additionalContent": "Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati."
-            },
-            {
-                "image": "assets/imgs/img-2.jpg",
-                "title": "Explicabo illo",
-                "author": "Admin",
-                "likes": "456",
-                "comments": "264",
-                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.",
-                "highlight": "",
-                "additionalContent": ""
-            }
-        ]
-    },
-    "contact": {
-        "subtitle": "How can you communicate?",
-        "title": "Contact Me",
-        "submitText": "Send Message"
-    },
-    "footer": {
-        "copyright": "Copyright {{YEAR}} © Mukesh",
-        "socialLinks": [
-            {
-                "icon": "ti-instagram",
-                "url": "https://instagram.com/mukesh_.marco"
-            }
-        ]
-    },
     "navigation": {
         "brand": "Mukesh",
         "links": [
@@ -244,20 +11,266 @@
                 "href": "#about"
             },
             {
+                "text": "Skills",
+                "href": "#service"
+            },
+            {
                 "text": "Portfolio",
                 "href": "#portfolio"
             },
             {
-                "text": "Testmonial",
+                "text": "Experience",
+                "href": "#pricing"
+            },
+            {
+                "text": "Achievements",
                 "href": "#testmonial"
             },
             {
-                "text": "Blog",
+                "text": "Projects",
                 "href": "#blog"
             },
             {
                 "text": "Contact",
                 "href": "#contact"
+            }
+        ]
+    },
+    "header": {
+        "title": {
+            "up": "HI!",
+            "down": "I am Mukesh"
+        },
+        "subtitle": "SOFTWARE DEVELOPER",
+        "cta": "Download Resume",
+        "resumeLink": "https://docs.google.com/document/d/1QeDWUaaqo4XwqRKvluVeZFeMAuhEGGD8GUWzivVRI8U/edit?usp=sharing"
+    },
+    "about": {
+        "image": "assets/imgs/man.png",
+        "subtitle": "Who Am I ?",
+        "title": "About Me",
+        "description": "Passionate software developer with hands-on experience in building scalable applications and solving 700+ DSA problems on LeetCode. Dedicated to continuous learning and leveraging emerging technologies to deliver innovative solutions.\n\nI specialize in full-stack development using modern frameworks and technologies like React.js, Next.js, Django, and more. With a strong foundation in both frontend and backend development, I create efficient, user-friendly applications that solve real-world problems.",
+        "cta": "Download CV"
+    },
+    "services": {
+        "subtitle": "What I Do ?",
+        "title": "Skills",
+        "items": [
+            {
+                "icon": "assets/imgs/pencil-case.svg",
+                "title": "Frontend Development",
+                "description": "React.js, Next.js, HTML/CSS, JavaScript, TypeScript, TailwindCSS, Bootstrap5"
+            },
+            {
+                "icon": "assets/imgs/responsive.svg",
+                "title": "Backend Development",
+                "description": "Django, DRF, Node.js, Flask, Python, Google Apps Script, Firebase"
+            },
+            {
+                "icon": "assets/imgs/toolbox.svg",
+                "title": "Databases",
+                "description": "MongoDB, PostgreSQL, Firestore DB, Supabase"
+            },
+            {
+                "icon": "assets/imgs/analytics.svg",
+                "title": "Tools & Others",
+                "description": "Git & GitHub, Docker, AWS, Vercel, Figma, Stripe, DSA problem-solving"
+            }
+        ]
+    },
+    "portfolio": {
+        "subtitle": "What I Did ?",
+        "title": "Projects",
+        "items": [
+            {
+                "image": "assets/imgs/folio-1.jpg",
+                "title": "Rescue Connect",
+                "category": "Awarded 1st place in MDU Rohtak's Hackathon",
+                "url": "https://devfolio.co/"
+            },
+            {
+                "image": "assets/imgs/folio-2.jpg",
+                "title": "Student Face Recognition System",
+                "category": "OpenCV, Flask, TailwindCSS",
+                "url": "https://github.com/mukeshxmarco"
+            },
+            {
+                "image": "assets/imgs/folio-3.jpg",
+                "title": "R0WS - CSV File Management",
+                "category": "Django, Celery, Stripe, Pagination",
+                "url": "#"
+            }
+        ]
+    },
+    "pricing": {
+        "subtitle": "My Experience",
+        "title": "Work History",
+        "plans": [
+            {
+                "icon": "assets/imgs/scooter.svg",
+                "title": "JustGetLeads",
+                "features": [
+                    {
+                        "text": "Python Developer Intern",
+                        "available": true
+                    },
+                    {
+                        "text": "Feb – May, 2025",
+                        "available": true
+                    },
+                    {
+                        "text": "Django, DRF, Celery, Stripe",
+                        "available": true
+                    },
+                    {
+                        "text": "React.js, Firebase, Docker",
+                        "available": true
+                    },
+                    {
+                        "text": "Full-stack Applications",
+                        "available": true
+                    }
+                ],
+                "price": {
+                    "currency": "",
+                    "amount": "Remote"
+                },
+                "cta": "Details"
+            },
+            {
+                "icon": "assets/imgs/shipped.svg",
+                "title": "Chelo",
+                "features": [
+                    {
+                        "text": "Software Developer Intern",
+                        "available": true
+                    },
+                    {
+                        "text": "Aug – Nov, 2024",
+                        "available": true
+                    },
+                    {
+                        "text": "Next.js, Supabase, React.js",
+                        "available": true
+                    },
+                    {
+                        "text": "Stripe, E-commerce",
+                        "available": true
+                    },
+                    {
+                        "text": "Admin Panel Development",
+                        "available": true
+                    }
+                ],
+                "price": {
+                    "currency": "",
+                    "amount": "Remote"
+                },
+                "cta": "Details"
+            },
+            {
+                "icon": "assets/imgs/startup.svg",
+                "title": "Figlio Web Services",
+                "features": [
+                    {
+                        "text": "Software Developer Intern",
+                        "available": true
+                    },
+                    {
+                        "text": "Mar – Aug 2024",
+                        "available": true
+                    },
+                    {
+                        "text": "Google Apps Script, React",
+                        "available": true
+                    },
+                    {
+                        "text": "Django API Development",
+                        "available": true
+                    },
+                    {
+                        "text": "QR Code & Email Notifications",
+                        "available": true
+                    }
+                ],
+                "price": {
+                    "currency": "",
+                    "amount": "Hybrid"
+                },
+                "cta": "Details"
+            }
+        ]
+    },
+    "cta": {
+        "title": "Want to work with me?",
+        "subtitle": "Always feel Free to Contact & Hire me",
+        "buttonText": "Hire Me"
+    },
+    "testimonials": {
+        "subtitle": "My Achievements",
+        "title": "Accomplishments",
+        "items": [
+            {
+                "image": "assets/imgs/avatar2.jpg",
+                "comment": "1st place – MDU Rohtak's Hackathon (HackUIET2.O) with 30+ participating teams.<br>3rd place – GJU Hackathon (HackUniv-2024) with 50+ participating teams.<br>2nd place – CodeChef Hackathon (UIET Rohtak) with 100+ participants.",
+                "name": "Hackathon Achievements"
+            },
+            {
+                "image": "assets/imgs/avatar3.jpg",
+                "comment": "AIR 106 – LeetCode Weekly Contest 368 with 29K participants.<br>Solved 700+ DSA problems on LeetCode in the past year.<br>Citizen Scientist at IASC-NASA, analyzing astronomical images from the Pan-STARRS survey.",
+                "name": "Technical Achievements"
+            }
+        ]
+    },
+    "blog": {
+        "subtitle": "Recent Projects",
+        "title": "Featured Work",
+        "posts": [
+            {
+                "image": "assets/imgs/rescue_connect.jpeg",
+                "title": "Rescue Connect: Communicate, Save Lives",
+                "author": "Mukesh",
+                "likes": "234",
+                "comments": "123",
+                "content": "Built an application for rescue agencies to track disaster sites and collaborate in real-time using map-based resources. Developed reusable components and implemented Redux for effective state management.",
+                "highlight": "Awarded 1st place in MDU Rohtak's Hackathon (HackUIET2.O) out of 30+ teams.",
+                "additionalContent": "The application features real-time mapping, resource allocation, and communication tools for emergency responders."
+            },
+            {
+                "image": "assets/imgs/face-recognition-attendance-system.jpg",
+                "title": "Student Face Recognition System",
+                "author": "Mukesh",
+                "likes": "456",
+                "comments": "264",
+                "content": "Developed a student management system using Flask, OpenCV, and face_recognition for real-time face detection. Designed a responsive frontend with TailwindCSS for enhanced usability.",
+                "highlight": "",
+                "additionalContent": "The system automates attendance tracking and improves campus security through biometric verification."
+            }
+        ]
+    },
+    "contact": {
+        "subtitle": "How can you communicate?",
+        "title": "Contact Me",
+        "submitText": "Send Message"
+    },
+    "footer": {
+        "copyright": "Copyright {{YEAR}} &copy; <a href=\"https://github.com/mukeshxmarco\">Mukesh</a>",
+        "socialLinks": [
+            {
+                "icon": "ti-github",
+                "url": "https://github.com/mukeshxmarco"
+            },
+            {
+                "icon": "ti-linkedin",
+                "url": "https://linkedin.com/in/mukeshxmarco"
+            },
+            {
+                "icon": "ti-email",
+                "url": "mailto:mukeshxmarco@gmail.com"
+            },
+            {
+                "icon": "ti-mobile",
+                "url": "tel:+917339758494"
             }
         ]
     }
