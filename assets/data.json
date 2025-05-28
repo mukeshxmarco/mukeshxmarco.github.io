@@ -1,0 +1,264 @@
+{
+    "header": {
+        "title": {
+            "up": "HI!",
+            "down": "I am Mukesh"
+        },
+        "subtitle": "Software Engineer"
+    },
+    "about": {
+        "image": "assets/imgs/man.png",
+        "subtitle": "Who Am I ?",
+        "title": "About Me",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquid ad provident aut fuga animi soluta quae eos non cupiditate voluptates dolorem, doloremque quos dicta quibusdam impedit iure nemo a iste\nculpa! Quasi quibusdam hic recusandae delectus velit officiis explicabo voluptatibus! Nemo esse similique, voluptates labore distinctio, placeat explicabo facilis molestias, blanditiis culpa iusto voluptatem ratione eligendi a, quia temporibus velit vero ipsa sint ex voluptatum expedita aliquid! Debitis, nam!",
+        "cta": "Download CV"
+    },
+    "services": {
+        "subtitle": "What I Do ?",
+        "title": "Service",
+        "items": [
+            {
+                "icon": "assets/imgs/pencil-case.svg",
+                "title": "Adipisicing",
+                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
+            },
+            {
+                "icon": "assets/imgs/responsive.svg",
+                "title": "Sapiente",
+                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
+            },
+            {
+                "icon": "assets/imgs/toolbox.svg",
+                "title": "Placeat",
+                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
+            },
+            {
+                "icon": "assets/imgs/analytics.svg",
+                "title": "Iusto",
+                "description": "Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod."
+            }
+        ]
+    },
+    "portfolio": {
+        "subtitle": "What I Did ?",
+        "title": "Portfolio",
+        "items": [
+            {
+                "image": "assets/imgs/folio-1.jpg",
+                "title": "Web Designing",
+                "category": "Category: Web Templates"
+            },
+            {
+                "image": "assets/imgs/folio-2.jpg",
+                "title": "Web Designing",
+                "category": "Category: Web Templates"
+            },
+            {
+                "image": "assets/imgs/folio-3.jpg",
+                "title": "Web Designing",
+                "category": "Category: Web Templates"
+            }
+        ]
+    },
+    "pricing": {
+        "subtitle": "How Much I Charge ?",
+        "title": "My Pricing",
+        "plans": [
+            {
+                "icon": "assets/imgs/scooter.svg",
+                "title": "Free",
+                "features": [
+                    {
+                        "text": "accusamus reprehenderit",
+                        "available": true
+                    },
+                    {
+                        "text": "provident dolorem",
+                        "available": true
+                    },
+                    {
+                        "text": "quos neque",
+                        "available": true
+                    },
+                    {
+                        "text": "fugiat quibusdam",
+                        "available": true
+                    },
+                    {
+                        "text": "accusamus laboriosam",
+                        "available": false
+                    },
+                    {
+                        "text": "inventore omnis",
+                        "available": false
+                    }
+                ],
+                "price": {
+                    "currency": "$",
+                    "amount": "0.00/Month"
+                },
+                "cta": "Subscribe"
+            },
+            {
+                "icon": "assets/imgs/shipped.svg",
+                "title": "Basic",
+                "features": [
+                    {
+                        "text": "accusamus reprehenderit",
+                        "available": true
+                    },
+                    {
+                        "text": "provident dolorem",
+                        "available": true
+                    },
+                    {
+                        "text": "quos neque",
+                        "available": true
+                    },
+                    {
+                        "text": "fugiat quibusdam",
+                        "available": true
+                    },
+                    {
+                        "text": "accusamus laboriosam",
+                        "available": true
+                    },
+                    {
+                        "text": "inventore omnis",
+                        "available": false
+                    }
+                ],
+                "price": {
+                    "currency": "$",
+                    "amount": "9.99/Month"
+                },
+                "cta": "Subscribe"
+            },
+            {
+                "icon": "assets/imgs/startup.svg",
+                "title": "Premium",
+                "features": [
+                    {
+                        "text": "accusamus reprehenderit",
+                        "available": true
+                    },
+                    {
+                        "text": "provident dolorem",
+                        "available": true
+                    },
+                    {
+                        "text": "quos neque",
+                        "available": true
+                    },
+                    {
+                        "text": "fugiat quibusdam",
+                        "available": true
+                    },
+                    {
+                        "text": "accusamus laboriosam",
+                        "available": true
+                    },
+                    {
+                        "text": "inventore omnis",
+                        "available": true
+                    }
+                ],
+                "price": {
+                    "currency": "$",
+                    "amount": "99.9/Month"
+                },
+                "cta": "Subscribe"
+            }
+        ]
+    },
+    "cta": {
+        "title": "Want to work with me?",
+        "subtitle": "Always feel Free to Contact & Hire me",
+        "buttonText": "Hire Me"
+    },
+    "testimonials": {
+        "subtitle": "What Think Client About Me ?",
+        "title": "Testmonial",
+        "items": [
+            {
+                "image": "assets/imgs/avatar2.jpg",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.",
+                "name": "Emily Reb"
+            },
+            {
+                "image": "assets/imgs/avatar3.jpg",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.",
+                "name": "Emily Reb"
+            }
+        ]
+    },
+    "blog": {
+        "subtitle": "Recent Posts?",
+        "title": "Blog",
+        "posts": [
+            {
+                "image": "assets/imgs/img-1.jpg",
+                "title": "Consectetur adipisicing elit",
+                "author": "Admin",
+                "likes": "234",
+                "comments": "123",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium neque numquam mollitia modi quasi distinctio.",
+                "highlight": "Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.",
+                "additionalContent": "Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati."
+            },
+            {
+                "image": "assets/imgs/img-2.jpg",
+                "title": "Explicabo illo",
+                "author": "Admin",
+                "likes": "456",
+                "comments": "264",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.",
+                "highlight": "",
+                "additionalContent": ""
+            }
+        ]
+    },
+    "contact": {
+        "subtitle": "How can you communicate?",
+        "title": "Contact Me",
+        "submitText": "Send Message"
+    },
+    "footer": {
+        "copyright": "Copyright {{YEAR}} © Mukesh",
+        "socialLinks": [
+            {
+                "icon": "ti-instagram",
+                "url": "https://instagram.com/mukesh_.marco"
+            }
+        ]
+    },
+    "navigation": {
+        "brand": "Mukesh",
+        "links": [
+            {
+                "text": "Home",
+                "href": "#home"
+            },
+            {
+                "text": "About",
+                "href": "#about"
+            },
+            {
+                "text": "Portfolio",
+                "href": "#portfolio"
+            },
+            {
+                "text": "Testmonial",
+                "href": "#testmonial"
+            },
+            {
+                "text": "Blog",
+                "href": "#blog"
+            },
+            {
+                "text": "Contact",
+                "href": "#contact"
+            }
+        ]
+    }
+}
