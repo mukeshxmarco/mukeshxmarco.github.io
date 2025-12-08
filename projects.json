@@ -1,0 +1,61 @@
+[
+    {
+        "title": "Tackt",
+        "link": "https://tackt.vercel.app/",
+        "description": "A creative todo list webapp designed to resemble a real wall with sticky notes, featuring a modern glassmorphism UI effect.",
+        "tags": ["Html", "CSS", "JavaScript", "TailwindCSS", "Vercel"]
+    },
+    {
+        "title": "Saundrya Earth",
+        "link": "https://www.saundryaearth.com/",
+        "description": "Developed a complete branded website using Next.js with an Express/Node.js backend. Designed reusable components and handled API integrations.",
+        "tags": ["Next.js", "Express", "Node.js"]
+    },
+    {
+        "title": "Manita Collection Dhansa",
+        "link": "https://www.manitacollectiondhansa.in/",
+        "description": "Built a complete e-commerce mobile app for a clothing business, digitized/automated their manual sales process. Handled full-stack development using Django and React Native.",
+        "tags": ["Django", "React Native"]
+    },
+    {
+        "title": "Kuldeep Poultry",
+        "link": "https://kuldeeppoultry.in/",
+        "description": "Developed a mobile app using Django and React Native to streamline operations between the company and farmers. Resulting in a 15% growth in business.",
+        "tags": ["Django", "React Native"]
+    },
+    {
+        "title": "R0ws",
+        "link": "#",
+        "description": "A robust CSV management system capable of processing and visualizing 5GB-10GB files in the browser without server timeouts.",
+        "tags": ["Django Celery", "Redis", "Parquet"],
+        "badge": "Justgetleads"
+    },
+    {
+        "title": "\"Deep\" SaaS App",
+        "link": "#",
+        "description": "A role-based fitness tracking application featuring complex data visualization for user progress and workout planning.",
+        "tags": ["React.js", "Firebase"],
+        "badge": "Justgetleads"
+    },
+    {
+        "title": "Industrial Automation",
+        "link": "#",
+        "description": "Full-lifecycle Steel Industry Process Automation application. Automated inventory tracking resulting in 21% efficiency increase.",
+        "tags": ["PostgreSQL", "Django", "React"],
+        "badge": "Figleo Web Services"
+    },
+    {
+        "title": "Rescue Connect",
+        "link": "#",
+        "description": "Developed a platform for rescue agencies with map-based tracking, covering 50+ locations and enabling 24/7 monitoring. Got 1st place in SIH Internal Hackathon at MD University.",
+        "tags": ["React.js", "Redux", "MapBox"],
+        "badge": "SIH Internal Hackathon Winner 2024"
+    },
+    {
+        "title": "Student Face Recognition",
+        "link": "#",
+        "description": "Implemented real-time face detection using Haar Cascade algorithms for accurate identification. Designed a simple UI and database integration for managing student records.",
+        "tags": ["Flask", "OpenCV", "TailwindCSS"],
+        "badge": "College Project"
+    }
+]
