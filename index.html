@@ -1,293 +1,511 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukesh | Software Engineer</title>
+    <title>Mukesh Kumar | Software Engineer</title>
+    <meta name="description"
+        content="Mukesh Kumar - Performance-driven Software Engineer specializing in scalable real-time AI agents and high-volume data processing systems.">
+    <meta name="author" content="Mukesh Kumar">
+    <link rel="icon" href="https://img.icons8.com/?size=120&id=4uSE8sMbvnDt&format=png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif']
+                },
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
                     colors: {
-                        background: "#030303", // Deepest black
-                        surface: "#0f0f10",    // Slightly lighter for cards
-                        border: "#27272a",     // Zinc 800
-                        primary: "#fafafa",
-                        muted: "#a1a1aa",      // Zinc 400
+                        bg: '#ffffff',
                     },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': {
+                                transform: 'translate(0px, 0px) scale(1)'
+                            },
+                            '33%': {
+                                transform: 'translate(30px, -50px) scale(1.1)'
+                            },
+                            '66%': {
+                                transform: 'translate(-20px, 20px) scale(0.9)'
+                            },
+                            '100%': {
+                                transform: 'translate(0px, 0px) scale(1)'
+                            },
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: #030303; color: #fafafa; }
-        
-        /* Subtle Noise Texture for "Paper" feel */
-        .bg-noise {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        body {
+            background-color: #ffffff;
+            color: #171717;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Glow Effect behind Hero */
-        .glow-spot {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0) 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Subtle Grid Pattern */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+        }
+
+        /* Animated Background Blobs */
+        .blob-cont {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
+            overflow: hidden;
             pointer-events: none;
         }
 
-        /* Animation Utilities */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: blob 10s infinite ease-in-out;
         }
 
-        /* Timeline connector line */
-        .timeline-line::before {
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: #e0f2fe;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            top: 40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: #f3e8ff;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            bottom: -10%;
+            left: 20%;
+            width: 600px;
+            height: 600px;
+            background: #f0fdf4;
+            animation-delay: 4s;
+        }
+
+        ::selection {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            color: #525252;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .section-header::after {
             content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, #27272a, #27272a 80%, transparent);
+            flex: 1;
+            height: 1px;
+            background: #e5e5e5;
+        }
+
+        ul.experience-list {
+            list-style: disc;
+            margin-left: 1rem;
+        }
+
+        ul.experience-list li::marker {
+            color: #a3a3a3;
         }
     </style>
 </head>
-<body class="antialiased bg-noise selection:bg-white selection:text-black">
 
-    <div class="glow-spot"></div>
+<body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-xl">
-        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="font-bold text-lg tracking-tight">Mukesh<span class="text-zinc-500">.dev</span></span>
-            <div class="flex items-center gap-6 text-sm font-medium text-zinc-400">
-                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-                <a href="mailto:mukeshxmarco@gmail.com" class="hidden sm:block px-4 py-2 bg-white text-black rounded-full hover:bg-zinc-200 transition-colors">Let's Talk</a>
+    <div class="bg-grid"></div>
+    <div class="blob-cont">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-neutral-200/50 bg-white/70">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-bold text-xl tracking-tighter text-black">Mukesh<span class="text-neutral-400">.</span>
+            </div>
+            <div class="flex gap-6 items-center">
+                <a href="https://linkedin.com/in/mukeshxmarco" target="_blank"
+                    class="text-neutral-500 hover:text-black transition-colors"><i data-lucide="linkedin"
+                        class="w-5 h-5"></i></a>
+                <a href="https://github.com/mukeshxmarco" target="_blank"
+                    class="text-neutral-500 hover:text-black transition-colors"><i data-lucide="github"
+                        class="w-5 h-5"></i></a>
+                <a href="mailto:mukeshxmarco@gmail.com"
+                    class="text-sm font-medium text-black border border-neutral-200 px-4 py-1.5 rounded-full hover:bg-black hover:text-white transition-all bg-white">
+                    Contact Me
+                </a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        
-        <section class="mb-24 fade-in-up">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 font-mono">
-                    📍 Gurugram, India
-                </span>
-                <span class="px-3 py-1 rounded-full bg-green-900/20 border border-green-900/50 text-xs text-green-400 font-mono flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Open to Work
-                </span>
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-32">
+
+        <section class="min-h-[50vh] flex flex-col justify-center" data-aos="fade-up">
+
+            <div class="flex flex-wrap gap-3 mb-8">
+                <div
+                    class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-neutral-200 text-xs font-medium text-neutral-600 shadow-sm">
+                    <span class="text-red-500"><i data-lucide="map-pin" class="w-3 h-3 fill-current"></i></span>
+                    Gurugram, Haryana, India
+                </div>
+
+                <div
+                    class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50/80 border border-green-200 text-xs font-medium text-green-700 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+                    </span>
+                    Available for opportunities
+                </div>
             </div>
-            
-            <h1 class="text-5xl sm:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-zinc-500">
-                Mukesh.
+
+            <h1 class="text-7xl md:text-9xl font-bold tracking-tighter text-black mb-8 leading-none">
+                Mukesh<span class="text-neutral-300">.</span>
             </h1>
-            <p class="text-xl sm:text-2xl text-zinc-400 max-w-2xl leading-relaxed">
-                Software Engineer specializing in <span class="text-white font-medium">Real-Time AI</span> and <span class="text-white font-medium">Scalable Web Systems</span>. 
-                I reduce latency, optimize builds, and turn complex data into clean interfaces.
+
+            <p class="text-xl md:text-2xl text-neutral-600 max-w-3xl leading-relaxed mb-10">
+                Software engineer who thrives on <strong>challenging problems</strong>, <strong>debugging</strong>, and <strong>continuous learning</strong>.
+                Committed to delivering <strong>robust systems</strong> with precision and quality.
             </p>
 
-            <div class="flex gap-4 mt-8">
-                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="github" class="w-5 h-5"></i></a>
-                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="code-2" class="w-5 h-5"></i></a> <a href="mailto:mukeshxmarco@gmail.com" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/mukeshxmarco" target="_blank" class="group">
+                    <i data-lucide="github"
+                        class="w-6 h-6 text-neutral-400 group-hover:text-black transition-colors"></i>
+                </a>
+                <a href="https://linkedin.com/in/mukeshxmarco" target="_blank" class="group">
+                    <i data-lucide="linkedin"
+                        class="w-6 h-6 text-neutral-400 group-hover:text-black transition-colors"></i>
+                </a>
+                <a href="#projects" class="group">
+                    <i data-lucide="code-2"
+                        class="w-6 h-6 text-neutral-400 group-hover:text-black transition-colors"></i>
+                </a>
+                <a href="mailto:mukeshxmarco@gmail.com" class="group">
+                    <i data-lucide="mail" class="w-6 h-6 text-neutral-400 group-hover:text-black transition-colors"></i>
+                </a>
             </div>
+
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-24 fade-in-up">
-            <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
-                <div class="flex justify-between items-start mb-2">
-                    <i data-lucide="trophy" class="w-5 h-5 text-yellow-500"></i>
-                    <span class="text-xs text-zinc-500 font-mono">RANK</span>
-                </div>
-                <div class="text-2xl font-bold">AIR 106</div>
-                <div class="text-sm text-zinc-400">LeetCode Contest (Top 0.3%)</div>
-            </div>
-             <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
-                <div class="flex justify-between items-start mb-2">
-                    <i data-lucide="rocket" class="w-5 h-5 text-blue-500"></i>
-                    <span class="text-xs text-zinc-500 font-mono">NASA</span>
-                </div>
-                <div class="text-2xl font-bold">Citizen Scientist</div>
-                <div class="text-sm text-zinc-400">Asteroid Identification (IASC)</div>
-            </div>
-             <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
-                <div class="flex justify-between items-start mb-2">
-                    <i data-lucide="zap" class="w-5 h-5 text-purple-500"></i>
-                    <span class="text-xs text-zinc-500 font-mono">IMPACT</span>
-                </div>
-                <div class="text-2xl font-bold">66% Faster</div>
-                <div class="text-sm text-zinc-400">AI Latency Reduction</div>
-            </div>
-        </section>
+        <section id="experience" data-aos="fade-up">
+            <div class="section-header">01 / Experience</div>
 
-        <section id="experience" class="mb-24 fade-in-up">
-            <h2 class="text-2xl font-bold mb-10 flex items-center gap-2">
-                <i data-lucide="briefcase" class="w-5 h-5 text-zinc-500"></i> Experience
-            </h2>
+            <div class="space-y-12 border-l border-neutral-200 ml-2 md:ml-4 pl-8 md:pl-12 py-2">
 
-            <div class="relative pl-8 timeline-line space-y-12">
-                
-                <div class="relative">
-                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-white"></div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-white">Software Engineer</h3>
-                        <span class="font-mono text-xs text-zinc-500">June 2025 - Nov 2025</span>
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-black rounded-full border border-black group-hover:scale-125 transition-all">
                     </div>
-                    <div class="text-sm text-zinc-300 font-medium mb-4">HumanAI <span class="text-zinc-600">•</span> Remote</div>
-                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
-                        <li>Engineered backend for voice AI agents using <span class="text-white">Python, FastAPI & LiveKit</span>. Reduced initial latency from 3s to ~1s (66% improvement).</li>
-                        <li>Re-architected landing page with <span class="text-white">Next.js (SSR)</span>, significantly boosting Core Web Vitals and SEO.</li>
-                        <li>Streamlined CI/CD pipelines, cutting build times by 50% (4m to 2m) for faster iteration.</li>
-                        <li>Built internal services for call data capture and dynamic summary generation using Redis.</li>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-2xl font-bold text-black">Software Engineer 1</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">Sept 2025 - Nov 2025</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">HumanAI • Gurugram, India</div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li>Engineered backend for voice AI agents using <strong>Python, FastAPI, and
+                                LiveKit</strong>.</li>
+                        <li>Reduced agent initial greeting latency from 3s to ~1s (66% improvement).</li>
+                        <li>Re-architected landing page using <strong>Next.js (SSR)</strong>, improving Core Web Vitals
+                            and SEO.</li>
+                        <li>Streamlined CI/CD pipeline, reducing build times by ~50% (4m to 2m).</li>
+                        <li>Developed services for real-time call data capture using Redis.</li>
                     </ul>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-zinc-700"></div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-white">Python Developer Intern</h3>
-                        <span class="font-mono text-xs text-zinc-500">Feb 2025 - May 2025</span>
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-white rounded-full border border-neutral-400 group-hover:bg-black group-hover:border-black transition-all">
                     </div>
-                    <div class="text-sm text-zinc-300 font-medium mb-4">JustGetLeads <span class="text-zinc-600">•</span> Remote</div>
-                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
-                        <li>Architected "Project R0ws": A system processing 5GB-10GB CSV files in-browser without timeouts.</li>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-xl font-bold text-neutral-800">Engineering Intern</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">June 2025 - Sept 2025</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">HumanAI • Gurugram, India </div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li>Built and maintained RESTful APIs (PHP/Python) for legacy integration.</li>
+                        <li>Ensured seamless communication between legacy systems and modern AI microservices.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-white rounded-full border border-neutral-400 group-hover:bg-black group-hover:border-black transition-all">
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-xl font-bold text-neutral-800">Python Developer</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">Feb 2025 - Apr 2025</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">JustGetLeads • United States (Remote) </div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li><strong>High-Volume Data Engine:</strong> Architected a system processing 5GB-10GB CSV files
+                            in-browser.</li>
                         <li>Implemented chunked processing, Parquet compression, and Redis caching.</li>
-                        <li>Built "Deep" (SaaS): A role-based fitness tracking app using React.js and Firebase.</li>
+                        <li>Utilized Django Celery for asynchronous task management.</li>
                     </ul>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-zinc-700"></div>
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-white">Software Developer Intern</h3>
-                        <span class="font-mono text-xs text-zinc-500">Mar 2024 - Aug 2024</span>
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-white rounded-full border border-neutral-400 group-hover:bg-black group-hover:border-black transition-all">
                     </div>
-                    <div class="text-sm text-zinc-300 font-medium mb-4">Figleo Web Services <span class="text-zinc-600">•</span> Hybrid</div>
-                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
-                        <li>Developed Steel Industry Process Automation app using <span class="text-white">React, Django, PostgreSQL</span>.</li>
-                        <li>Increased production efficiency by 21% by automating inventory tracking and reporting.</li>
-                        <li>Created custom Google Apps Script tools for invoice automation and bulk marketing.</li>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-xl font-bold text-neutral-800">Freelance Software Engineer</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">Nov 2023 - Feb 2025</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">Innovaft • Hisar, India </div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li>Delivered responsive websites using React, Next.js, and Node.js.</li>
+                        <li>Completed 7+ ReactJS/NextJS projects (e.g., Chelo, HapperTv) and 1 Django project.
+                        </li>
                     </ul>
                 </div>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-white rounded-full border border-neutral-400 group-hover:bg-black group-hover:border-black transition-all">
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-xl font-bold text-neutral-800">Software Development Intern</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">Aug 2024 - Nov 2024</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">Chelo Services • South Africa (Remote) </div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li>Developed web features using <strong>Next.js and TypeScript</strong>.</li>
+                        <li>Followed agile methodologies (Scrum/Kanban) and participated in code reviews.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[38px] md:-left-[54px] top-2 w-3 h-3 bg-white rounded-full border border-neutral-400 group-hover:bg-black group-hover:border-black transition-all">
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h3 class="text-xl font-bold text-neutral-800">Software Engineer Intern</h3>
+                        <span class="font-mono text-sm text-neutral-500 whitespace-nowrap">Mar 2024 - Aug 2024</span>
+                    </div>
+                    <div class="text-neutral-600 mb-4 font-medium">Figleo Web Services • Hisar, India </div>
+                    <ul class="experience-list space-y-2 text-neutral-600 leading-relaxed max-w-4xl text-sm">
+                        <li>Developed a full-lifecycle Steel Industry Process Automation app using <strong>React,
+                                Django, and PostgreSQL</strong>.</li>
+                        <li>Increased production efficiency by 21% by automating inventory tracking.</li>
+                        <li>Created Google Apps Script tools for invoice generation and bulk marketing.</li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
-        <section id="projects" class="mb-24 fade-in-up">
-            <h2 class="text-2xl font-bold mb-10 flex items-center gap-2">
-                <i data-lucide="code" class="w-5 h-5 text-zinc-500"></i> Featured Projects
-            </h2>
+        <section id="projects" data-aos="fade-up">
+            <div class="section-header">02 / Key Projects</div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="group rounded-xl border border-border bg-surface p-6 hover:border-zinc-600 transition-all cursor-default">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-lg font-bold group-hover:text-blue-400 transition-colors">Rescue Connect</h3>
-                        <a href="#" class="text-zinc-500 hover:text-white"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="project-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-black">High-Volume Data Engine</h3>
+                        </div>
+                        <p class="text-neutral-600 text-sm mb-6 leading-relaxed">
+                            A robust CSV management system capable of processing and visualizing 5GB-10GB files in the
+                            browser without server timeouts.
+                        </p>
                     </div>
-                    <p class="text-sm text-zinc-400 mb-6 leading-relaxed">
-                        Rescue agency platform with map-based tracking for 50+ locations. Integrated resource sharing for 100+ teams. 
-                        <br><span class="text-yellow-500 text-xs mt-2 block">★ 1st place in SIH Internal Hackathon</span>
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-auto">
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">React.js</span>
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">MapBox</span>
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Redux</span>
+                    <div class="flex gap-2 flex-wrap">
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Django
+                            Celery</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Redis</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Parquet</span>
                     </div>
                 </div>
 
-                <div class="group rounded-xl border border-border bg-surface p-6 hover:border-zinc-600 transition-all cursor-default">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-lg font-bold group-hover:text-blue-400 transition-colors">Face Recognition System</h3>
-                        <a href="#" class="text-zinc-500 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <div class="project-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-black">"Deep" SaaS App</h3>
+                        </div>
+                        <p class="text-neutral-600 text-sm mb-6 leading-relaxed">
+                            A role-based fitness tracking application featuring complex data visualization for user
+                            progress and workout planning.
+                        </p>
                     </div>
-                    <p class="text-sm text-zinc-400 mb-6 leading-relaxed">
-                        Real-time student identification using Haar Cascade algorithms. Designed efficient UI and database for record management.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-auto">
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Python</span>
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">OpenCV</span>
-                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Flask</span>
+                    <div class="flex gap-2 flex-wrap">
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">React.js</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Firebase</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Visualization</span>
                     </div>
                 </div>
+
+                <div class="project-card rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-black">Industrial Automation</h3>
+                        </div>
+                        <p class="text-neutral-600 text-sm mb-6 leading-relaxed">
+                            Full-lifecycle Steel Industry Process Automation application. Automated inventory tracking
+                            resulting in 21% efficiency increase.
+                        </p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap">
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">PostgreSQL</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">Django</span>
+                        <span
+                            class="px-2 py-1 bg-neutral-100 border border-neutral-200 rounded text-xs font-mono text-neutral-600">React</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section class="mb-24 fade-in-up">
-            <h2 class="text-2xl font-bold mb-8">Technical Arsenal</h2>
-            <div class="space-y-4">
-                <div>
-                    <span class="text-xs font-mono text-zinc-500 mb-2 block uppercase tracking-wider">Languages</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Python</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">TypeScript</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">JavaScript</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">SQL (Postgres)</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">HTML/CSS</span>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-xs font-mono text-zinc-500 mb-2 block uppercase tracking-wider">Frameworks & Tools</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-white border-white/20">Next.js</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-white border-white/20">FastAPI</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Django</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Docker</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">AWS</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Redis</span>
-                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">CI/CD</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 pb-20" data-aos="fade-up">
 
-        <footer class="border-t border-zinc-800 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 text-sm">
-            <div>
-                &copy; 2025 Mukesh. Built with Tailwind & Passion.
-            </div>
-            <div class="flex gap-6">
-                <a href="mailto:mukeshxmarco@gmail.com" class="hover:text-white transition-colors">mukeshxmarco@gmail.com</a>
-                <span class="hidden md:inline">•</span>
-                <span>+91-7339758494</span>
-            </div>
-        </footer>
+            <section>
+                <div class="section-header">03 / Tech Stack </div>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-black text-sm font-bold uppercase tracking-wide mb-3">Languages</h4>
+                        <div class="text-neutral-600 leading-relaxed text-sm">
+                            Python, JavaScript, TypeScript, SQL (PostgreSQL).
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-black text-sm font-bold uppercase tracking-wide mb-3">Technologies</h4>
+                        <div class="text-neutral-600 leading-relaxed text-sm">
+                            Next.js, React.js, Django, FastAPI, Tailwind CSS, LiveKit.
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-black text-sm font-bold uppercase tracking-wide mb-3">DevOps & Tools</h4>
+                        <div class="text-neutral-600 leading-relaxed text-sm">
+                            Redis, Celery, CI/CD Pipelines, Docker, Google Apps Script.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">04 / Highlights & Community</div>
+                <ul class="space-y-6">
+                    <li class="flex gap-4 group">
+                        <div class="mt-1 text-neutral-400 group-hover:text-black transition-colors"><i
+                                data-lucide="telescope" class="w-5 h-5"></i></div>
+                        <div>
+                            <strong class="text-black block text-sm">Citizen Scientist (IASC)</strong>
+                            <span class="text-neutral-500 text-xs">Participated in asteroid search campaigns (Feb
+                                2024).</span>
+                        </div>
+                    </li>
+                    <li class="flex gap-4 group">
+                        <div class="mt-1 text-neutral-400 group-hover:text-black transition-colors"><i
+                                data-lucide="users" class="w-5 h-5"></i></div>
+                        <div>
+                            <strong class="text-black block text-sm">Leadership & Mentoring</strong>
+                            <span class="text-neutral-500 text-xs">
+                                - Back-end Mentor at Geekhub UIET.
+                                <br>
+                                - Co-Web Lead at DSC UIET.
+                            </span>
+                        </div>
+                    </li>
+                    <li class="flex gap-4 group">
+                        <div class="mt-1 text-neutral-400 group-hover:text-black transition-colors"><i
+                                data-lucide="graduation-cap" class="w-5 h-5"></i></div>
+                        <div>
+                            <strong class="text-black block text-sm">B.Tech Mechanical Engineering</strong>
+                            <span class="text-neutral-500 text-xs">UIET MDU Rohtak (2021-2025).</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
 
     </main>
 
+    <footer class="border-t border-neutral-200 bg-white/80 backdrop-blur-md py-12">
+        <div
+            class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 gap-4">
+            <p>&copy; 2025 Mukesh Kumar.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/mukeshxmarco" class="hover:text-black">GitHub</a>
+                <a href="https://linkedin.com/in/mukeshxmarco" class="hover:text-black">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         lucide.createIcons();
-
-        // Simple Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+        AOS.init({
+            duration: 800,
+            offset: 30,
+            once: true
+        });
     </script>
 </body>
+
 </html>
