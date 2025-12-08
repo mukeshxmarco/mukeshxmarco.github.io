@@ -1,171 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukesh</title>
+    <title>Mukesh | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: "#030303", // Deepest black
+                        surface: "#0f0f10",    // Slightly lighter for cards
+                        border: "#27272a",     // Zinc 800
+                        primary: "#fafafa",
+                        muted: "#a1a1aa",      // Zinc 400
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #030303; color: #fafafa; }
+        
+        /* Subtle Noise Texture for "Paper" feel */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
 
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        /* Glow Effect behind Hero */
+        .glow-spot {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-    <!-- Custom Style -->
-    <link rel="stylesheet" href="style.css">
+        /* Animation Utilities */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline connector line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, #27272a, #27272a 80%, transparent);
+        }
+    </style>
 </head>
+<body class="antialiased bg-noise selection:bg-white selection:text-black">
 
-<body class="bg-black dark font-sans flex flex-col items-center">
-    <!-- --------NAVBAR-------- -->
-    <nav class="container w-fit sticky z-10 top-2 backdrop-blur-xs rounded-lg">
-        <div class="container mx-auto px-10 py-3">
-            <div class="flex items-center justify-center space-x-10">
-                <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
-                <a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+    <div class="glow-spot"></div>
+
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-xl">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-bold text-lg tracking-tight">Mukesh<span class="text-zinc-500">.dev</span></span>
+            <div class="flex items-center gap-6 text-sm font-medium text-zinc-400">
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="mailto:mukeshxmarco@gmail.com" class="hidden sm:block px-4 py-2 bg-white text-black rounded-full hover:bg-zinc-200 transition-colors">Let's Talk</a>
             </div>
         </div>
     </nav>
 
-
-    <!-- --------HERO-------- -->
-    <div id="home" class="container">
-     
-    </div>
-
-
-    <!-- --------PROJECTS-------- -->
-    <div class="container flex flex-wrap justify-center ">
-        <article class="group w-1/4 backdrop-blur-xs my-6">
-            <img alt=""
-                src="https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="h-56 w-full rounded-xl object-cover" />
-
-            <div class="p-4">
-                <a href="#">
-                    <h3 class="text-lg font-medium text-white">
-                        Finding the Journey to Mordor
-                    </h3>
-                </a>
-
-                <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae dolores, possimus
-                    pariatur animi temporibus nesciunt praesentium dolore sed nulla ipsum eveniet corporis quidem,
-                    mollitia itaque minus soluta, voluptates neque explicabo tempora nisi culpa eius atque
-                    dignissimos. Molestias explicabo corporis voluptatem?
-                </p>
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        
+        <section class="mb-24 fade-in-up">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 font-mono">
+                    📍 Gurugram, India
+                </span>
+                <span class="px-3 py-1 rounded-full bg-green-900/20 border border-green-900/50 text-xs text-green-400 font-mono flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Open to Work
+                </span>
             </div>
-        </article>
-    </div>
+            
+            <h1 class="text-5xl sm:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-zinc-500">
+                Mukesh.
+            </h1>
+            <p class="text-xl sm:text-2xl text-zinc-400 max-w-2xl leading-relaxed">
+                Software Engineer specializing in <span class="text-white font-medium">Real-Time AI</span> and <span class="text-white font-medium">Scalable Web Systems</span>. 
+                I reduce latency, optimize builds, and turn complex data into clean interfaces.
+            </p>
 
-    <!-- --------TEAM-------- -->
-    <div class="container px-6 py-10 mx-auto">
-        <!-- team intro -->
-        <h1 class="text-2xl font-semibold text-center capitalize lg:text-3xl text-white">Our
-            <span class="text-blue-500">Executive Team</span></h1>
+            <div class="flex gap-4 mt-8">
+                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="code-2" class="w-5 h-5"></i></a> <a href="mailto:mukeshxmarco@gmail.com" class="p-2 text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 rounded-md transition-all"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+        </section>
 
-        <p class="max-w-2xl mx-auto my-6 text-center text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia error
-            alias, adipisci rem similique, at omnis eligendi optio eos harum.
-        </p>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-24 fade-in-up">
+            <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
+                <div class="flex justify-between items-start mb-2">
+                    <i data-lucide="trophy" class="w-5 h-5 text-yellow-500"></i>
+                    <span class="text-xs text-zinc-500 font-mono">RANK</span>
+                </div>
+                <div class="text-2xl font-bold">AIR 106</div>
+                <div class="text-sm text-zinc-400">LeetCode Contest (Top 0.3%)</div>
+            </div>
+             <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
+                <div class="flex justify-between items-start mb-2">
+                    <i data-lucide="rocket" class="w-5 h-5 text-blue-500"></i>
+                    <span class="text-xs text-zinc-500 font-mono">NASA</span>
+                </div>
+                <div class="text-2xl font-bold">Citizen Scientist</div>
+                <div class="text-sm text-zinc-400">Asteroid Identification (IASC)</div>
+            </div>
+             <div class="p-6 rounded-xl border border-border bg-surface hover:border-zinc-700 transition-colors">
+                <div class="flex justify-between items-start mb-2">
+                    <i data-lucide="zap" class="w-5 h-5 text-purple-500"></i>
+                    <span class="text-xs text-zinc-500 font-mono">IMPACT</span>
+                </div>
+                <div class="text-2xl font-bold">66% Faster</div>
+                <div class="text-sm text-zinc-400">AI Latency Reduction</div>
+            </div>
+        </section>
 
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
-            <!-- Harsh Sindhu -->
-            <div
-                class="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl group border-gray-700 backdrop-blur-xs">
-                <div class="flex flex-col sm:-mx-4 sm:flex-row">
-                    <img class="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
-                        src="https://media.licdn.com/dms/image/v2/D4D03AQEARa1CJpVydw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1693982290041?e=1756339200&v=beta&t=pOSnJzVbysBlY2Ee6CcjQ88MGM6VPRJ7QU8W85HroLw"
-                        alt="">
+        <section id="experience" class="mb-24 fade-in-up">
+            <h2 class="text-2xl font-bold mb-10 flex items-center gap-2">
+                <i data-lucide="briefcase" class="w-5 h-5 text-zinc-500"></i> Experience
+            </h2>
 
-                    <!-- developer name and role -->
-                    <div class="mt-4 sm:mx-4">
-                        <h1 class="text-xl font-semibold capitalize md:text-2xl text-white group-hover:text-white">
-                            Harsh Sindhu</h1>
+            <div class="relative pl-8 timeline-line space-y-12">
+                
+                <div class="relative">
+                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-white"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                        <span class="font-mono text-xs text-zinc-500">June 2025 - Nov 2025</span>
+                    </div>
+                    <div class="text-sm text-zinc-300 font-medium mb-4">HumanAI <span class="text-zinc-600">•</span> Remote</div>
+                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+                        <li>Engineered backend for voice AI agents using <span class="text-white">Python, FastAPI & LiveKit</span>. Reduced initial latency from 3s to ~1s (66% improvement).</li>
+                        <li>Re-architected landing page with <span class="text-white">Next.js (SSR)</span>, significantly boosting Core Web Vitals and SEO.</li>
+                        <li>Streamlined CI/CD pipelines, cutting build times by 50% (4m to 2m) for faster iteration.</li>
+                        <li>Built internal services for call data capture and dynamic summary generation using Redis.</li>
+                    </ul>
+                </div>
 
-                        <p class="mt-2 capitalize text-gray-300 group-hover:text-gray-300">Software Engineer</p>
+                <div class="relative">
+                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-zinc-700"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Python Developer Intern</h3>
+                        <span class="font-mono text-xs text-zinc-500">Feb 2025 - May 2025</span>
+                    </div>
+                    <div class="text-sm text-zinc-300 font-medium mb-4">JustGetLeads <span class="text-zinc-600">•</span> Remote</div>
+                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+                        <li>Architected "Project R0ws": A system processing 5GB-10GB CSV files in-browser without timeouts.</li>
+                        <li>Implemented chunked processing, Parquet compression, and Redis caching.</li>
+                        <li>Built "Deep" (SaaS): A role-based fitness tracking app using React.js and Firebase.</li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-black border-2 border-zinc-700"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Software Developer Intern</h3>
+                        <span class="font-mono text-xs text-zinc-500">Mar 2024 - Aug 2024</span>
+                    </div>
+                    <div class="text-sm text-zinc-300 font-medium mb-4">Figleo Web Services <span class="text-zinc-600">•</span> Hybrid</div>
+                    <ul class="list-disc ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+                        <li>Developed Steel Industry Process Automation app using <span class="text-white">React, Django, PostgreSQL</span>.</li>
+                        <li>Increased production efficiency by 21% by automating inventory tracking and reporting.</li>
+                        <li>Created custom Google Apps Script tools for invoice automation and bulk marketing.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-24 fade-in-up">
+            <h2 class="text-2xl font-bold mb-10 flex items-center gap-2">
+                <i data-lucide="code" class="w-5 h-5 text-zinc-500"></i> Featured Projects
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group rounded-xl border border-border bg-surface p-6 hover:border-zinc-600 transition-all cursor-default">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-bold group-hover:text-blue-400 transition-colors">Rescue Connect</h3>
+                        <a href="#" class="text-zinc-500 hover:text-white"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+                    </div>
+                    <p class="text-sm text-zinc-400 mb-6 leading-relaxed">
+                        Rescue agency platform with map-based tracking for 50+ locations. Integrated resource sharing for 100+ teams. 
+                        <br><span class="text-yellow-500 text-xs mt-2 block">★ 1st place in SIH Internal Hackathon</span>
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">React.js</span>
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">MapBox</span>
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Redux</span>
                     </div>
                 </div>
 
-                <!-- developer description -->
-                <p class="mt-4 capitalize text-gray-300 group-hover:text-gray-300">Results-driven Full Stack
-                    Engineer with 3+ years of experience specializing in microservices architecture, real-time
-                    systems, and high-performance web applications.</p>
-
-                <!-- developer socials -->
-                <div class="flex mt-4 -mx-2">
-                    <a target="_blank" href="https://github.com/harshsindhu0408"
-                        class="mx-2 text-gray-300 hover:text-gray-300 group-hover:text-white" aria-label="Github">
-                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z">
-                            </path>
-                        </svg>
-                    </a>
+                <div class="group rounded-xl border border-border bg-surface p-6 hover:border-zinc-600 transition-all cursor-default">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-bold group-hover:text-blue-400 transition-colors">Face Recognition System</h3>
+                        <a href="#" class="text-zinc-500 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+                    </div>
+                    <p class="text-sm text-zinc-400 mb-6 leading-relaxed">
+                        Real-time student identification using Haar Cascade algorithms. Designed efficient UI and database for record management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Python</span>
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">OpenCV</span>
+                        <span class="px-2 py-1 text-[10px] font-mono border border-zinc-800 rounded bg-zinc-900 text-zinc-300">Flask</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-
-    <!-- --------CONTACT-------- -->
-    <div id="contact" class="container mx-auto px-6 py-10">
-        <h1 class="text-2xl font-semibold text-center capitalize lg:text-3xl text-white">Contact
-            <span class="text-blue-500">Us</span></h1>
-        <p class="max-w-2xl mx-auto my-6 text-center text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia error
-            alias, adipisci rem similique, at omnis eligendi optio eos harum.
-        </p>
-        <form class="max-w-2xl mx-auto mt-8 space-y-6">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
-                <input type="text" id="name" name="name"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    required>
+        <section class="mb-24 fade-in-up">
+            <h2 class="text-2xl font-bold mb-8">Technical Arsenal</h2>
+            <div class="space-y-4">
+                <div>
+                    <span class="text-xs font-mono text-zinc-500 mb-2 block uppercase tracking-wider">Languages</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Python</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">TypeScript</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">JavaScript</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">SQL (Postgres)</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">HTML/CSS</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xs font-mono text-zinc-500 mb-2 block uppercase tracking-wider">Frameworks & Tools</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-white border-white/20">Next.js</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-white border-white/20">FastAPI</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Django</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Docker</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">AWS</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">Redis</span>
+                        <span class="px-3 py-1.5 text-sm border border-zinc-800 rounded-md bg-zinc-900/50 text-zinc-300">CI/CD</span>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <footer class="border-t border-zinc-800 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 text-sm">
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
-                <input type="email" id="email" name="email"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    required>
+                &copy; 2025 Mukesh. Built with Tailwind & Passion.
             </div>
-            <div>
-                <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-                <textarea id="message" name="message"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    rows="4" required></textarea>
+            <div class="flex gap-6">
+                <a href="mailto:mukeshxmarco@gmail.com" class="hover:text-white transition-colors">mukeshxmarco@gmail.com</a>
+                <span class="hidden md:inline">•</span>
+                <span>+91-7339758494</span>
             </div>
-            <div>
-                <button type="submit"
-                    class="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                    Send Message
-                </button>
-            </div>
-        </form>
-    </div>
+        </footer>
 
+    </main>
 
-    <!-- --------FOOTER-------- -->
-    <footer class="container w-full py-10 px-6 mt-10 flex justify-between items-center">
-        <p class="text-sm">© 2023 Mukesh. All rights reserved.</p>
+    <script>
+        lucide.createIcons();
 
-        <!-- socials -->
-        <div class="flex">
-            <a href="" class="text-gray-300 hover:text-white transition-colors" aria-label="Facebook">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M22.675 0H1.325C0.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.494V14.706h-3.12v-3.62h3.12V9.412c0-3.09 1.892-4.788 4.655-4.788c1.325 0 2.465.098 2.8.142v3.25h-1.92c-1.505 0-1.794.716-1.794 1.766v2.31h3.588l-.467 3.62h-3.121V24h6.116c.731 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z">
-                    </path>
-                </svg>
-            </a>
-        </div>
-    </footer>
+        // Simple Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-
-    <!-- Scripts -->
-    <script src=" script.js"></script>
+        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    </script>
 </body>
-
 </html>
