@@ -14,8 +14,10 @@ Every colour, size, radius and shadow resolves from the `:root` token block at t
 
 Cards, the nav pill, the footer and the mono chips are frosted glass (`--surface-glass` / `--surface-glass-strong` + `--glass-blur`). Two fixed layers behind the content make the frost legible — `backdrop-filter` is invisible over a flat colour:
 
-- `body::before` — a colour field of radial blobs drawn only from colours already in the system (olive, plus the sunset ornament's terracotta/cream/blue)
+- `body::before` — a colour field of six radial blobs drawn only from colours already in the system (olive, plus the sunset ornament's terracotta/cream/blue) at real opacities (.18–.60). The field is `position: fixed`, so it stays with the viewport and every scroll position keeps the glass alive. Heat sits where text is ink or glass-protected (hero, right edge, corners); the text-heavy middle band gets butter, which raises luminance instead of eating it.
 - `body::after` — a fine SVG-noise paper grain at 9% opacity; the glass blurs the grain away, which is what visibly separates panel from canvas
+
+`.tag` pills carry the translucent fill without the blur — at 12px the luminance lift is what matters, and it keeps the compositing cost down.
 
 `@supports` and `prefers-reduced-transparency` both collapse the glass to solid `--color-paper` and drop both layers.
 
@@ -32,7 +34,7 @@ Key rules the CSS holds to:
 
 ### Contrast
 
-The reference palette's Mist and Olive Branch fail WCAG AA at body and caption sizes, so `--color-ink-soft` carries secondary body text and `--color-olive-deep` carries olive at caption sizes; Mist and Olive Branch stay on dividers and 18px+ headings. Both soft tokens are sized for the **worst** spot on the canvas — the olive corner under the colour field — not the average: measured on rendered pixels, the worst ratio anywhere is 4.8:1 (floor 4.5). If you change the blob opacities or the canvas tone, re-sample.
+The reference palette's Mist and Olive Branch fail WCAG AA at body and caption sizes, so `--color-ink-soft` carries secondary body text and `--color-olive-deep` carries olive at caption sizes; Mist and Olive Branch stay on dividers and 18px+ headings. Both soft tokens are sized for the **worst** spot on the canvas — the olive corner under the colour field — not the average: measured on rendered pixels at every spot where soft text sits on the bare canvas, the worst ratio is 5.06:1 (floor 4.5). If you change the blob opacities or the canvas tone, re-sample — and sample beside the glyphs, not on them.
 
 ## Editing content
 
