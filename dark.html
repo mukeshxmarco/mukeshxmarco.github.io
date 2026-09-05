@@ -1731,6 +1731,18 @@
             setInterval(tick, 30000);
         })();
 
+        // back-to-top arrow: JS scroll so it works regardless of the
+        // current URL hash
+        (function () {
+            var btn = document.querySelector('.to-top');
+            if (!btn) return;
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+            });
+        })();
+
         // left rail: overall progress thumb + current section label
         (function () {
             var thumb = document.getElementById('railThumb');

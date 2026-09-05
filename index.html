@@ -751,6 +751,45 @@
         }
 
         /* ============================================================
+           BACK TO TOP — floating, appears after the first screen
+           ============================================================ */
+        .to-top {
+            position: fixed;
+            right: max(16px, env(safe-area-inset-right));
+            bottom: max(18px, env(safe-area-inset-bottom));
+            z-index: 60;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--line-strong);
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .07);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s, border-color .15s var(--ease);
+        }
+
+        .to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        .to-top:hover { border-color: var(--ink); }
+
+        .to-top:active { transform: scale(.95); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .to-top { transition: none; }
+            .to-top:active { transform: none; }
+        }
+
+        /* ============================================================
            REVEAL
            ============================================================ */
         .reveal {
@@ -1250,6 +1289,12 @@
 
     </main>
 
+    <a href="#top" class="to-top" id="toTop" aria-label="Back to top">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
     <footer>
         <div class="wrap foot">
             <span>© <span id="year">2026</span> Mukesh Kumar</span>
@@ -1291,6 +1336,27 @@
             }
             tick();
             setInterval(tick, 30000);
+        })();
+
+        // back-to-top: appears after the first screen, JS scroll so it
+        // works regardless of the current URL hash
+        (function () {
+            var btn = document.getElementById('toTop');
+            if (!btn) return;
+            var ticking = false;
+            function update() {
+                ticking = false;
+                btn.classList.toggle('show', window.scrollY > 600);
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+            });
+            update();
         })();
 
         // scroll reveal (respects prefers-reduced-motion via CSS fallback)
