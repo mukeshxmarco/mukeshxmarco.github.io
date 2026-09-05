@@ -411,8 +411,8 @@
             gap: 6px;
         }
 
-        .brand-name {
-            max-width: 80px;
+        .brand .dots {
+            max-width: 40px;
             overflow: hidden;
             opacity: 1;
             transition: max-width .4s var(--ease), opacity .25s var(--ease);
@@ -442,9 +442,9 @@
         }
 
         /* Scrolled: the bar folds into a small capsule — dots + CTA */
-        header.shrunk .nav { max-width: 300px; }
+        header.shrunk .nav { max-width: 380px; }
 
-        header.shrunk .brand-name {
+        header.shrunk .brand .dots {
             max-width: 0;
             opacity: 0;
         }
@@ -466,8 +466,40 @@
 
         header.shrunk .nav-cta:hover { background: #ffffff; }
 
+        /* Back-to-top: lives in the capsule, appears only when folded */
+        .to-top {
+            width: 0;
+            height: 44px;
+            margin-left: calc(var(--spacing-8) * -1);
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+            flex: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-ink);
+            border-radius: 50%;
+            background: var(--surface-glass);
+            color: var(--color-ink);
+            cursor: pointer;
+            transition: width .5s var(--ease), opacity .3s var(--ease), visibility .5s, background-color .15s var(--ease);
+        }
+
+        .to-top:hover { background: var(--surface-glass-hover); }
+
+        .to-top:active { transform: scale(.95); }
+
+        header.shrunk .to-top {
+            width: 44px;
+            margin-left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .nav, .brand-name, .nav-links { transition: none; }
+            .nav, .brand .dots, .nav-links, .to-top { transition: none; }
+            .to-top:active { transform: none; }
         }
 
         .nav-links .link {
@@ -1097,6 +1129,11 @@
             </div>
             <div class="nav-end">
                 <a href="#contact" class="btn btn-secondary nav-cta">Get in touch</a>
+                <a href="#top" class="to-top" aria-label="Back to top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
+                        <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                </a>
                 <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
             </div>
         </nav>
