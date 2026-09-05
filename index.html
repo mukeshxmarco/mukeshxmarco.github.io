@@ -33,7 +33,7 @@
            ============================================================ */
         :root {
             /* --- Colour --- */
-            --color-parchment: #f7f3ec;
+            --color-parchment: #f1eadc;
             --color-ink: #121212;
             --color-black: #000000;
             --color-paper: #ffffff;
@@ -41,14 +41,16 @@
             --color-olive-branch: #6c853b;
             --color-bone: #121c0f;
 
-            /* Contrast-safe extensions of the neutral/olive ramp.
-               --color-ink-soft   4.8:1 on parchment — secondary body text
-                                  (--color-mist is 1.9:1, dividers only)
-               --color-olive-deep 5.3:1 on parchment — olive at caption sizes
-                                  (--color-olive-branch is 3.6:1, 18px+ only)
+            /* Contrast-safe extensions of the neutral/olive ramp, sized for
+               the WORST spot on the canvas (the olive corner under the colour
+               field), not the average:
+               --color-ink-soft   >=4.6:1 everywhere — secondary body text
+                                  (--color-mist is dividers only)
+               --color-olive-deep >=5:1 everywhere — olive at caption sizes
+                                  (--color-olive-branch is 18px+ only)
                --color-rule       hairline separators inside stacked lists */
-            --color-ink-soft: #6a6a66;
-            --color-olive-deep: #556a2d;
+            --color-ink-soft: #5c5c58;
+            --color-olive-deep: #4c5f26;
             --color-rule: #ddd8cd;
 
             /* --- Type families ---
@@ -128,6 +130,15 @@
             /* --- The single decorative gradient: a rare ornament, never a fill --- */
             --gradient-sunset: linear-gradient(90deg, rgb(203, 53, 15) 0%, rgb(244, 224, 155) 50%, rgb(171, 193, 227) 100%);
 
+            /* --- Glass ---
+               Blur is only visible when high-frequency detail sits behind the
+               pane. The canvas therefore carries colour blobs AND a fine paper
+               grain (body::before / body::after); the glass smooths the grain
+               away, which is what makes the frost legible on every panel. */
+            --surface-glass: rgba(255, 255, 255, .42);
+            --surface-glass-strong: rgba(255, 255, 255, .60);
+            --glass-blur: blur(14px) saturate(1.5);
+
             --ease: cubic-bezier(.22, .61, .36, 1);
         }
 
@@ -156,6 +167,31 @@
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
+        }
+
+        /* Colour field — drawn only from colours already in the system */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(55vw 55vh at 10% 6%, rgba(108, 133, 59, .16), transparent 62%),
+                radial-gradient(50vw 55vh at 92% 24%, rgba(203, 53, 15, .12), transparent 60%),
+                radial-gradient(60vw 55vh at 24% 72%, rgba(244, 224, 155, .40), transparent 62%),
+                radial-gradient(50vw 50vh at 88% 96%, rgba(171, 193, 227, .14), transparent 58%);
+        }
+
+        /* Paper grain — the high-frequency layer the glass visibly erases */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: .09;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
         ::selection {
@@ -215,12 +251,30 @@
             border: 0;
         }
 
-        .eyebrow {
+        /* Mono micro-labels, worn as chips */
+        .hero-meta span,
+        .scroll-prompt,
+        .eyebrow,
+        .more-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-family: var(--font-geist-mono);
             font-size: var(--text-caption);
+            line-height: var(--leading-caption);
             letter-spacing: .05em;
-            color: var(--color-olive-deep);
             font-feature-settings: "ss01" on;
+            padding: 6px 14px;
+            border: 1px solid var(--color-rule);
+            border-radius: var(--radius-badges);
+            background: var(--surface-glass);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .eyebrow {
+            color: var(--color-olive-deep);
+            border-color: var(--color-olive-deep);
             margin-bottom: var(--spacing-24);
         }
 
@@ -291,18 +345,20 @@
         .btn-primary:hover { background: var(--color-bone); }
 
         .btn-secondary {
-            background: var(--color-paper);
+            background: var(--surface-glass-strong);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             color: var(--color-ink);
         }
 
-        .btn-secondary:hover { background: var(--color-parchment); }
+        .btn-secondary:hover { background: var(--color-paper); }
 
         .btn-ghost {
             background: transparent;
             color: var(--color-ink);
         }
 
-        .btn-ghost:hover { background: var(--color-paper); }
+        .btn-ghost:hover { background: var(--surface-glass-strong); }
 
         .btn:active,
         .btn-ghost:active { transform: scale(.98); }
@@ -332,7 +388,9 @@
             align-items: center;
             justify-content: space-between;
             gap: var(--spacing-16);
-            background: var(--color-paper);
+            background: var(--surface-glass-strong);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-nav);
             box-shadow: var(--shadow-xl);
@@ -406,7 +464,9 @@
             max-width: var(--page-max-width);
             margin-inline: auto;
             padding: var(--spacing-8);
-            background: var(--color-paper);
+            background: var(--surface-glass-strong);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
             box-shadow: var(--shadow-xl);
@@ -443,12 +503,10 @@
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-16) var(--spacing-24);
+            gap: var(--spacing-8);
             color: var(--color-ink-soft);
             margin-bottom: var(--spacing-40);
         }
-
-        .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
 
         .hero-meta .dot {
             width: 6px;
@@ -488,6 +546,9 @@
             color: var(--color-ink-soft);
         }
 
+        .eyebrow.reveal,
+        .more-label.reveal { display: inline-flex; }
+
         @media (max-width: 560px) {
             .hero-cta { flex-direction: column; align-items: stretch; }
             .hero-cta .btn,
@@ -513,7 +574,9 @@
 
         .about-card {
             padding: var(--spacing-32);
-            background: var(--color-paper);
+            background: var(--surface-glass);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
         }
@@ -727,12 +790,9 @@
         .more { margin-top: var(--section-gap); }
 
         .more-label {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
             color: var(--color-olive-deep);
+            border-color: var(--color-olive-deep);
             margin-bottom: var(--spacing-24);
-            font-feature-settings: "ss01" on;
         }
 
         .more-grid {
@@ -747,14 +807,16 @@
             flex-direction: column;
             gap: var(--spacing-8);
             padding: var(--card-padding);
-            background: var(--color-paper);
+            background: var(--surface-glass);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
             transition: background-color .15s var(--ease), transform .15s var(--ease);
         }
 
         a.mini:hover {
-            background: var(--color-parchment);
+            background: var(--surface-glass-strong);
             transform: translateY(-2px);
         }
 
@@ -913,7 +975,9 @@
         }
 
         footer {
-            background: var(--color-paper);
+            background: var(--surface-glass);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border-top: 1px solid var(--color-ink);
         }
 
@@ -924,6 +988,26 @@
             gap: var(--spacing-8) var(--spacing-24);
             justify-content: space-between;
             color: var(--color-ink-soft);
+        }
+
+        /* No backdrop-filter support, or reduced-transparency users:
+           solid Paper panels, flat canvas. */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            :root {
+                --surface-glass: var(--color-paper);
+                --surface-glass-strong: var(--color-paper);
+            }
+        }
+
+        @media (prefers-reduced-transparency: reduce) {
+            :root {
+                --surface-glass: var(--color-paper);
+                --surface-glass-strong: var(--color-paper);
+                --glass-blur: none;
+            }
+
+            body::before,
+            body::after { display: none; }
         }
 
         /* ============================================================
@@ -970,8 +1054,8 @@
         <section class="wrap hero">
             <div class="hero-meta mono reveal">
                 <span id="localTime">—</span>
-                <span>[ freelance ai &amp; backend engineer ]</span>
-                <span>[ gurugram, india ]</span>
+                <span>freelance ai &amp; backend engineer</span>
+                <span>gurugram, india</span>
                 <span><i class="dot"></i>open to remote — us &amp; europe</span>
             </div>
 
@@ -991,14 +1075,14 @@
                 </a>
             </div>
 
-            <p class="scroll-prompt mono reveal">[ scroll to discover ]</p>
+            <p class="scroll-prompt mono reveal">scroll to discover ↓</p>
 
         </section>
 
         <!-- ============================ ABOUT ============================ -->
         <section class="wrap" id="about">
             <h2 class="vh">About</h2>
-            <div class="eyebrow reveal">[ 00 — about ]</div>
+            <div class="eyebrow reveal">00 — about</div>
             <div class="about-grid">
                 <div class="about-copy reveal">
                     <p>I'm <strong>Mukesh</strong> (I also go by <strong>Marco</strong>) — an AI and backend engineer
@@ -1061,7 +1145,7 @@
         <!-- ============================ EXPERIENCE ============================ -->
         <section class="wrap" id="experience">
             <h2 class="vh">Experience</h2>
-            <div class="eyebrow reveal">[ 01 — experience ]</div>
+            <div class="eyebrow reveal">01 — experience</div>
             <div class="role-list">
 
                 <article class="role reveal">
@@ -1165,7 +1249,7 @@
 
         <!-- ============================ WORK ============================ -->
         <section class="wrap" id="work">
-            <div class="eyebrow reveal">[ 02 — selected work ]</div>
+            <div class="eyebrow reveal">02 — selected work</div>
             <h2 class="reveal">Problems solved, at speed and scale.</h2>
             <p class="section-intro reveal">AI, automation, and backend work — each one shipped to fix a concrete
                 problem under real constraints. The metric is the point.</p>
@@ -1229,7 +1313,7 @@
             </div>
 
             <div class="more reveal">
-                <div class="more-label">[ more projects ]</div>
+                <div class="more-label">more projects</div>
                 <div class="more-grid">
 
                     <a class="mini" href="https://tackt.vercel.app/" target="_blank" rel="noopener">
@@ -1318,7 +1402,7 @@
         <!-- ============================ SKILLS ============================ -->
         <section class="wrap" id="skills">
             <h2 class="vh">Toolkit</h2>
-            <div class="eyebrow reveal">[ 03 — toolkit ]</div>
+            <div class="eyebrow reveal">03 — toolkit</div>
             <div class="skills-grid">
                 <div class="skill-group reveal">
                     <h3>Languages</h3>
@@ -1378,7 +1462,7 @@
 
         <!-- ============================ CONTACT ============================ -->
         <section class="wrap contact" id="contact">
-            <div class="eyebrow reveal">[ 04 — contact ]</div>
+            <div class="eyebrow reveal">04 — contact</div>
             <h2 class="reveal">Let's build something fast.</h2>
             <p class="section-intro reveal">I'm open to remote roles and freelance work with US &amp; Europe teams,
                 and I keep hours flexible to overlap with your timezone. Tell me what you're building.</p>
@@ -1454,7 +1538,7 @@
                 var t = new Date().toLocaleTimeString('en-IN', {
                     timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit'
                 });
-                if (badge) badge.textContent = '[ ' + t + ' IST ]';
+                if (badge) badge.textContent = t + ' IST';
                 if (foot) foot.textContent = 'Gurugram, IN · ' + t + ' IST';
             }
             tick();

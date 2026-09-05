@@ -10,22 +10,29 @@ The page runs on **until** — a warm parchment editorial system. Cream `#f7f3ec
 
 Every colour, size, radius and shadow resolves from the `:root` token block at the top of the `<style>`. There is no raw hex anywhere in the component CSS — reskin the whole site by editing tokens only.
 
+### Glass surfaces
+
+Cards, the nav pill, the footer and the mono chips are frosted glass (`--surface-glass` / `--surface-glass-strong` + `--glass-blur`). Two fixed layers behind the content make the frost legible — `backdrop-filter` is invisible over a flat colour:
+
+- `body::before` — a colour field of radial blobs drawn only from colours already in the system (olive, plus the sunset ornament's terracotta/cream/blue)
+- `body::after` — a fine SVG-noise paper grain at 9% opacity; the glass blurs the grain away, which is what visibly separates panel from canvas
+
+`@supports` and `prefers-reduced-transparency` both collapse the glass to solid `--color-paper` and drop both layers.
+
+### Chips
+
+The Geist Mono micro-labels (hero meta, `scroll to discover`, section eyebrows, `more projects`) are pill chips — the shared rule sits above `.eyebrow`. Eyebrows keep the olive border; the rest use `--color-rule`.
+
 Key rules the CSS holds to:
 
 - **Radii are fixed by role:** 64px pills (buttons, nav), 32px cards, 50px chips. Don't introduce new values.
 - **Borders, not shadows.** Separation comes from 1px ink borders and hairline `--color-rule` dividers. The two defined shadows are reserved for the floating nav.
-- **One ink-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (Paper fill) or `.btn-ghost` (transparent). Two exist on the page — hero and contact.
+- **One ink-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (glass) or `.btn-ghost` (transparent). Two exist on the page — hero and contact.
 - **Olive is for headings and annotations only** — never a button fill or a large surface.
 
 ### Contrast
 
-The reference palette's Mist (`#bebebe`, 1.9:1) and Olive Branch (`#6c853b`, 3.6:1) fail WCAG AA at body and caption sizes, so:
-
-- `--color-ink-soft` (4.8:1) carries secondary body text
-- `--color-olive-deep` (5.3:1) carries olive at caption sizes
-- `--color-mist` and `--color-olive-branch` stay on dividers and 18px+ headings
-
-Measured on the rendered page, body text sits above 5:1 on both the parchment canvas and the Paper card surfaces.
+The reference palette's Mist and Olive Branch fail WCAG AA at body and caption sizes, so `--color-ink-soft` carries secondary body text and `--color-olive-deep` carries olive at caption sizes; Mist and Olive Branch stay on dividers and 18px+ headings. Both soft tokens are sized for the **worst** spot on the canvas — the olive corner under the colour field — not the average: measured on rendered pixels, the worst ratio anywhere is 4.8:1 (floor 4.5). If you change the blob opacities or the canvas tone, re-sample.
 
 ## Editing content
 
