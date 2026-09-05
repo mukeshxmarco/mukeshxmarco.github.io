@@ -390,6 +390,7 @@
             align-items: center;
             justify-content: space-between;
             gap: var(--spacing-16);
+            transition: max-width .5s var(--ease);
             background: var(--surface-glass-strong);
             -webkit-backdrop-filter: var(--glass-blur);
             backdrop-filter: var(--glass-blur);
@@ -409,6 +410,13 @@
             gap: 6px;
         }
 
+        .brand-name {
+            max-width: 80px;
+            overflow: hidden;
+            opacity: 1;
+            transition: max-width .4s var(--ease), opacity .25s var(--ease);
+        }
+
         .brand .dots {
             display: inline-flex;
             gap: 4px;
@@ -426,6 +434,30 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-24);
+            max-width: 640px;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width .5s var(--ease), opacity .3s var(--ease), visibility .5s;
+        }
+
+        /* Scrolled: the bar folds into a small capsule — dots + CTA */
+        header.shrunk .nav { max-width: 300px; }
+
+        header.shrunk .brand-name {
+            max-width: 0;
+            opacity: 0;
+        }
+
+        header.shrunk .nav-links {
+            max-width: 0;
+            gap: 0;
+            opacity: 0;
+        }
+
+        header.shrunk .nav-links .link { visibility: hidden; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .nav, .brand-name, .nav-links { transition: none; }
         }
 
         .nav-links .link {
@@ -486,10 +518,20 @@
 
         .mobile-menu a:hover { background: var(--color-parchment); }
 
+        .nav-end {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-8);
+        }
+
         @media (max-width: 860px) {
             .nav-links { display: none; }
             .nav-toggle { display: inline-flex; align-items: center; }
             .nav { padding-right: var(--spacing-8); }
+        }
+
+        @media (max-width: 560px) {
+            .nav-cta { display: none; }
         }
 
         /* ============================================================
@@ -1034,14 +1076,16 @@
 
     <header>
         <nav class="nav" aria-label="Primary">
-            <a href="#top" class="brand">Mukesh<span class="dots"><i></i><i></i><i></i></span></a>
+            <a href="#top" class="brand"><span class="brand-name">Mukesh</span><span class="dots"><i></i><i></i><i></i></span></a>
             <div class="nav-links">
                 <a href="#work" class="link">Work</a>
                 <a href="#experience" class="link">Experience</a>
                 <a href="#skills" class="link">Skills</a>
-                <a href="#contact" class="btn btn-secondary">Get in touch</a>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+            <div class="nav-end">
+                <a href="#contact" class="btn btn-secondary nav-cta">Get in touch</a>
+                <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+            </div>
         </nav>
         <div class="mobile-menu" id="mobileMenu">
             <a href="#work">Work</a>
@@ -1546,6 +1590,23 @@
             }
             tick();
             setInterval(tick, 30000);
+        })();
+
+        // nav folds into a capsule on scroll (hysteresis avoids flicker at the threshold)
+        (function () {
+            var header = document.querySelector('header');
+            if (!header) return;
+            var ticking = false;
+            function update() {
+                ticking = false;
+                var y = window.scrollY;
+                if (y > 110) header.classList.add('shrunk');
+                else if (y < 50) header.classList.remove('shrunk');
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            update();
         })();
 
         // scroll reveal (respects prefers-reduced-motion via CSS fallback)

@@ -36,6 +36,10 @@ Key rules the CSS holds to:
 
 The reference palette's Mist and Olive Branch fail WCAG AA at body and caption sizes, so `--color-ink-soft` carries secondary body text and `--color-olive-deep` carries olive at caption sizes; Mist and Olive Branch stay on dividers and 18px+ headings. Both soft tokens are sized for the **worst** spot on the canvas — the olive corner under the colour field — not the average: measured on rendered pixels at every spot where soft text sits on the bare canvas, the worst ratio is 5.06:1 (floor 4.5). If you change the blob opacities or the canvas tone, re-sample — and sample beside the glyphs, not on them.
 
+### Nav
+
+The nav is untillabs.com's pattern: a full pill bar at the top of the page that folds into a small centered capsule (brand dots + CTA) once you scroll past ~110px, and unfolds below 50px — the gap between the two thresholds is hysteresis so it never flickers. The collapse animates `max-width` on `.nav`, `.brand-name` and `.nav-links`; the script is the small `shrunk`-class toggle above the reveal observer.
+
 ## Editing content
 
 Everything lives in `index.html`. Look for the `<!-- ==== SECTION ==== -->` comment banners.
