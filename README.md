@@ -6,7 +6,7 @@ It's a single, self-contained `index.html`: hand-written HTML + CSS with a tiny 
 
 ## Design system
 
-The page runs on **until** — a warm parchment editorial system. Cream `#f7f3ec` canvas, near-black `#121212` for all text and borders, olive `#6c853b` as the single accent. Type is Inter at until's negative tracking (standing in for the licensed Neue Haas faces) with Geist Mono for bracketed micro-labels like `[ scroll to discover ]`.
+The page copies **untillabs.com's homepage**: a deep forest canvas (`#121c0f`, the reference sheet's Bone tone) under film grain and a soft olive glow, Parchment `#f7f3ec` as the text colour, olive as the accent. The until style reference describes their light inner-page system; the homepage inverts it, and so do we — token *names* keep their reference meanings while their *values* swap roles (`--color-ink` = cream foreground, `--color-parchment` = forest canvas, `--color-paper` = the cream-filled CTA, their "Join Us"). Type is Inter at until's negative tracking (standing in for the licensed Neue Haas faces) with Geist Mono for the micro-label chips.
 
 Every colour, size, radius and shadow resolves from the `:root` token block at the top of the `<style>`. There is no raw hex anywhere in the component CSS — reskin the whole site by editing tokens only.
 
@@ -14,12 +14,12 @@ Every colour, size, radius and shadow resolves from the `:root` token block at t
 
 Cards, the nav pill, the footer and the mono chips are frosted glass (`--surface-glass` / `--surface-glass-strong` + `--glass-blur`). Two fixed layers behind the content make the frost legible — `backdrop-filter` is invisible over a flat colour:
 
-- `body::before` — a colour field of six radial blobs drawn only from colours already in the system (olive, plus the sunset ornament's terracotta/cream/blue) at real opacities (.18–.60). The field is `position: fixed`, so it stays with the viewport and every scroll position keeps the glass alive. Heat sits where text is ink or glass-protected (hero, right edge, corners); the text-heavy middle band gets butter, which raises luminance instead of eating it.
-- `body::after` — a fine SVG-noise paper grain at 9% opacity; the glass blurs the grain away, which is what visibly separates panel from canvas
+- `body::before` — a fixed olive glow (top-left, echoed bottom-right) plus a vignette darkening the frame edges, matching the homepage's lighting
+- `body::after` — a fine SVG-noise film grain at 7%; the glass blurs the grain away, which is what visibly separates panel from canvas
 
 `.tag` pills carry the translucent fill without the blur — at 12px the luminance lift is what matters, and it keeps the compositing cost down.
 
-`@supports` and `prefers-reduced-transparency` both collapse the glass to solid `--color-paper` and drop both layers.
+`@supports` and `prefers-reduced-transparency` both collapse the glass to solid moss panels and drop both layers.
 
 ### Chips
 
@@ -28,13 +28,13 @@ The Geist Mono micro-labels (hero meta, `scroll to discover`, section eyebrows, 
 Key rules the CSS holds to:
 
 - **Radii are fixed by role:** 64px pills (buttons, nav), 32px cards, 50px chips. Don't introduce new values.
-- **Borders, not shadows.** Separation comes from 1px ink borders and hairline `--color-rule` dividers. The two defined shadows are reserved for the floating nav.
-- **One ink-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (glass) or `.btn-ghost` (transparent). Two exist on the page — hero and contact.
+- **Borders, not shadows.** Structure separates with the soft cream `--color-line` on cards/nav and moss `--color-rule` hairlines in lists; buttons keep full-strength `--color-ink` borders. The two defined shadows are reserved for the floating nav.
+- **One cream-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (glass) or `.btn-ghost` (transparent). Two exist on the page — hero and contact — plus the folded nav capsule's CTA, which takes the fill only while it is the sole action on screen.
 - **Olive is for headings and annotations only** — never a button fill or a large surface.
 
 ### Contrast
 
-The reference palette's Mist and Olive Branch fail WCAG AA at body and caption sizes, so `--color-ink-soft` carries secondary body text and `--color-olive-deep` carries olive at caption sizes; Mist and Olive Branch stay on dividers and 18px+ headings. Both soft tokens are sized for the **worst** spot on the canvas — the olive corner under the colour field — not the average: measured on rendered pixels at every spot where soft text sits on the bare canvas, the worst ratio is 5.06:1 (floor 4.5). If you change the blob opacities or the canvas tone, re-sample — and sample beside the glyphs, not on them.
+`--color-ink-soft` carries secondary body text, `--color-olive-deep` carries olive at caption sizes, and `--color-olive-branch` is for 24px+ headings only. All three are sized for the **worst** spot on the canvas — the olive glow's hotspot, which the fixed background parks at the viewport's top-left at every scroll depth — not the average: measured on rendered pixels, the worst soft-text ratio is 4.65:1 (floor 4.5). If you change the glow opacities or the canvas tone, re-sample — and sample beside the glyphs, not on them.
 
 ### Nav
 
