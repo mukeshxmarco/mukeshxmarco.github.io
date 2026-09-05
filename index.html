@@ -128,16 +128,6 @@
             /* --- The single decorative gradient: a rare ornament, never a fill --- */
             --gradient-sunset: linear-gradient(90deg, rgb(203, 53, 15) 0%, rgb(244, 224, 155) 50%, rgb(171, 193, 227) 100%);
 
-            /* --- Glass: replaces the flat Paper surface ---
-               backdrop-filter only reads as "blurred" when something sits
-               behind it, so the canvas carries a faint ambient wash (below)
-               drawn from the olive accent and the sunset ornament's own
-               terracotta and blue. No colour enters the system that wasn't
-               already in it. */
-            --surface-glass: rgba(255, 255, 255, .55);
-            --surface-glass-strong: rgba(255, 255, 255, .68);
-            --glass-blur: saturate(1.4) blur(20px);
-
             --ease: cubic-bezier(.22, .61, .36, 1);
         }
 
@@ -166,21 +156,6 @@
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
-        }
-
-        /* Ambient wash — the only thing the glass has to blur. Fixed, behind
-           all content, low enough to read as warmth rather than colour. */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                radial-gradient(60vw 60vh at 12% 8%, rgba(108, 133, 59, .09), transparent 60%),
-                radial-gradient(55vw 55vh at 88% 30%, rgba(203, 53, 15, .05), transparent 62%),
-                radial-gradient(60vw 60vh at 72% 86%, rgba(171, 193, 227, .09), transparent 58%),
-                radial-gradient(55vw 55vh at 25% 68%, rgba(244, 224, 155, .13), transparent 60%);
         }
 
         ::selection {
@@ -316,20 +291,18 @@
         .btn-primary:hover { background: var(--color-bone); }
 
         .btn-secondary {
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             color: var(--color-ink);
         }
 
-        .btn-secondary:hover { background: var(--color-paper); }
+        .btn-secondary:hover { background: var(--color-parchment); }
 
         .btn-ghost {
             background: transparent;
             color: var(--color-ink);
         }
 
-        .btn-ghost:hover { background: var(--surface-glass-strong); }
+        .btn-ghost:hover { background: var(--color-paper); }
 
         .btn:active,
         .btn-ghost:active { transform: scale(.98); }
@@ -359,9 +332,7 @@
             align-items: center;
             justify-content: space-between;
             gap: var(--spacing-16);
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-nav);
             box-shadow: var(--shadow-xl);
@@ -435,9 +406,7 @@
             max-width: var(--page-max-width);
             margin-inline: auto;
             padding: var(--spacing-8);
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
             box-shadow: var(--shadow-xl);
@@ -550,9 +519,7 @@
             gap: var(--spacing-24);
             min-height: 176px;
             padding: var(--card-padding);
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
         }
@@ -604,9 +571,7 @@
 
         .about-card {
             padding: var(--spacing-32);
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
         }
@@ -840,16 +805,14 @@
             flex-direction: column;
             gap: var(--spacing-8);
             padding: var(--card-padding);
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border: 1px solid var(--color-ink);
             border-radius: var(--radius-cards);
             transition: background-color .15s var(--ease), transform .15s var(--ease);
         }
 
         a.mini:hover {
-            background: var(--surface-glass-strong);
+            background: var(--color-parchment);
             transform: translateY(-2px);
         }
 
@@ -1008,9 +971,7 @@
         }
 
         footer {
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
+            background: var(--color-paper);
             border-top: 1px solid var(--color-ink);
         }
 
@@ -1021,25 +982,6 @@
             gap: var(--spacing-8) var(--spacing-24);
             justify-content: space-between;
             color: var(--color-ink-soft);
-        }
-
-        /* Browsers without backdrop-filter (and users who ask for reduced
-           transparency) get an opaque Paper surface instead of muddy glass. */
-        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-            :root {
-                --surface-glass: var(--color-paper);
-                --surface-glass-strong: var(--color-paper);
-            }
-        }
-
-        @media (prefers-reduced-transparency: reduce) {
-            :root {
-                --surface-glass: var(--color-paper);
-                --surface-glass-strong: var(--color-paper);
-                --glass-blur: none;
-            }
-
-            body::before { display: none; }
         }
 
         /* ============================================================

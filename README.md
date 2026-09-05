@@ -14,14 +14,8 @@ Key rules the CSS holds to:
 
 - **Radii are fixed by role:** 64px pills (buttons, nav), 32px cards, 50px chips. Don't introduce new values.
 - **Borders, not shadows.** Separation comes from 1px ink borders and hairline `--color-rule` dividers. The two defined shadows are reserved for the floating nav.
-- **One ink-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (glass) or `.btn-ghost` (transparent). Two exist on the page — hero and contact.
+- **One ink-filled CTA per surface.** `.btn-primary` is the only filled button; everything else is `.btn-secondary` (Paper fill) or `.btn-ghost` (transparent). Two exist on the page — hero and contact.
 - **Olive is for headings and annotations only** — never a button fill or a large surface.
-
-### Glass surfaces
-
-Everything that would be a white card is translucent glass: `--surface-glass` / `--surface-glass-strong` plus `backdrop-filter`. Because `backdrop-filter` needs something behind it to blur, `body::before` paints a fixed ambient wash built only from colours already in the system (the olive accent, plus the terracotta/cream/blue of the `--gradient-sunset` ornament), all under 13% opacity.
-
-`@supports` and `prefers-reduced-transparency` both collapse the glass tokens back to solid `--color-paper` and drop the wash.
 
 ### Contrast
 
@@ -31,7 +25,7 @@ The reference palette's Mist (`#bebebe`, 1.9:1) and Olive Branch (`#6c853b`, 3.6
 - `--color-olive-deep` (5.3:1) carries olive at caption sizes
 - `--color-mist` and `--color-olive-branch` stay on dividers and 18px+ headings
 
-Measured on the rendered page, body text sits at 5.1–5.2:1 on every glass surface. If you change the wash opacities, re-check that.
+Measured on the rendered page, body text sits above 5:1 on both the parchment canvas and the Paper card surfaces.
 
 ## Editing content
 
