@@ -56,6 +56,15 @@
             --color-rule: #39422e;
             --color-line: rgba(247, 243, 236, .32);
 
+            /* untillabs.com's own accent palette (from their stylesheet) —
+               used only by the glow ellipses and the ornament */
+            --color-green-dark: #293423;
+            --color-green: #465724;
+            --color-orange: #cb350f;
+            --color-orange-dark: #a32506;
+            --color-blue: #5880bd;
+            --color-yellow: #f2d159;
+
             /* --- Type families ---
                Neue Haas Display / Text are licensed faces; Inter at matching
                weights with the brand's negative tracking is the documented
@@ -143,7 +152,16 @@
             --surface-glass-hover: rgba(247, 243, 236, .18);
             --glass-blur: blur(20px) saturate(1.3);
 
-            --ease: cubic-bezier(.22, .61, .36, 1);
+            /* until's .gradient-card, verbatim: a bottom-up cream sheen over
+               a 5% tint, hairline inset highlights, and a whisper of drop */
+            --surface-card: radial-gradient(100% 100% at 50% 100%, rgba(247, 243, 236, .2) 0%, rgba(247, 243, 236, 0) 100%), rgba(247, 243, 236, .05);
+            --shadow-card: inset 0 1px 2px rgba(255, 255, 255, .1), inset 0 -1px 2px rgba(255, 255, 255, .1), 0 2.7px 15px rgba(0, 0, 0, .05), 0 0 1.8px rgba(0, 0, 0, .1);
+
+            /* until's signature curve, verbatim from their CSS */
+            --ease: cubic-bezier(.4, .25, .2, 1);
+
+            /* theatre display type — until's d2 scale */
+            --text-theatre: clamp(44px, 2.4rem + 3.4vw, 96px);
         }
 
         /* ============================================================
@@ -173,28 +191,70 @@
             overflow-x: hidden;
         }
 
-        /* Colour field — drawn only from colours already in the system */
+        /* Edge vignette — the glow ellipses are real blurred elements now */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             z-index: -2;
             pointer-events: none;
-            background:
-                radial-gradient(70vw 60vh at 18% 8%, rgba(108, 133, 59, .12), transparent 62%),
-                radial-gradient(55vw 50vh at 88% 90%, rgba(108, 133, 59, .10), transparent 60%),
-                radial-gradient(130vw 130vh at 50% 42%, transparent 55%, rgba(0, 0, 0, .42) 100%);
+            background: radial-gradient(130vw 130vh at 50% 42%, transparent 55%, rgba(0, 0, 0, .45) 100%);
         }
 
-        /* Paper grain — the high-frequency layer the glass visibly erases */
-        body::after {
-            content: "";
+        /* Film grain OVER everything — until's noise layer is z-500 with
+           mix-blend overlay at 20%, above content, panels and nav alike */
+        .film {
             position: fixed;
             inset: 0;
-            z-index: -1;
+            z-index: 200;
             pointer-events: none;
-            opacity: .07;
+            opacity: .18;
+            mix-blend-mode: overlay;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Glow ellipses — until's .gradient-ellipse: a coloured div under
+           heavy blur, placed per scene */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(150px);
+            z-index: -1;
+        }
+
+        /* a glow's parent section clips it so it never widens the page */
+        section:has(> .glow) { overflow: clip; }
+
+        html { overflow-x: clip; }
+
+        .glow-olive {
+            width: min(700px, 80vw);
+            height: min(700px, 80vh);
+            background: var(--color-olive-branch);
+            opacity: .30;
+        }
+
+        .glow-green {
+            width: min(900px, 90vw);
+            height: min(500px, 60vh);
+            background: var(--color-green);
+            opacity: .55;
+        }
+
+        .glow-orange {
+            width: min(420px, 70vw);
+            height: min(420px, 70vh);
+            background: var(--color-orange);
+            opacity: .16;
+            filter: blur(130px);
+        }
+
+        .glow-blue {
+            width: min(520px, 75vw);
+            height: min(420px, 60vh);
+            background: var(--color-blue);
+            opacity: .14;
         }
 
         ::selection {
@@ -577,21 +637,42 @@
         }
 
         /* ============================================================
-           HERO — typographic, no photography. The display headline
-           carries the whole first screen.
+           HERO THEATRE — until's sticky stage. A tall scroll region pins
+           a full-height stage; big centered messages crossfade with
+           word-by-word brightening as the visitor scrolls through it.
            ============================================================ */
-        /* Clears the fixed nav capsule (16px offset + ~62px pill) with room to breathe */
-        .hero {
-            padding-block-start: clamp(132px, 19vh, 190px);
-            padding-block-end: var(--section-gap);
+        .theatre {
+            position: relative;
+            height: 340vh;
+            /* opt out of the section rhythm: padding here would offset the
+               sticky stage by the section gap until it pins */
+            padding-block: 0;
+        }
+
+        .stage {
+            position: sticky;
+            top: 0;
+            height: 100svh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: calc(var(--spacing-16) + 78px) var(--gutter) clamp(40px, 7vh, 72px);
+        }
+
+        .stage .glow-olive {
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
         }
 
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: var(--spacing-8);
             color: var(--color-ink-soft);
-            margin-bottom: var(--spacing-40);
         }
 
         .hero-meta .dot {
@@ -601,23 +682,65 @@
             background: var(--color-olive-branch);
         }
 
-        .hero h1 {
-            font-size: var(--text-display);
-            line-height: var(--leading-display);
-            letter-spacing: var(--tracking-display);
-            font-weight: var(--font-weight-regular);
-            max-width: 14ch;
+        .messages {
+            position: relative;
+            flex: 1;
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: flex-end;
         }
 
-        .hero h1 em {
+        .msg {
+            position: absolute;
+            inset-inline: 0;
+            bottom: 0;
+            margin: 0;
+            font-family: var(--font-neuehaasdisplay);
+            font-size: var(--text-theatre);
+            line-height: .95;
+            letter-spacing: -0.024em;
+            font-weight: var(--font-weight-medium);
+            text-align: center;
+            text-wrap: balance;
+            color: var(--color-ink);
+            text-shadow: 0 4px 24px rgba(0, 0, 0, .25);
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .msg .w { opacity: .18; }
+
+        .msg em {
             font-style: normal;
             color: var(--color-olive-branch);
         }
 
-        .hero .lead {
-            margin-top: var(--spacing-32);
+        .scroll-prompt {
+            margin-top: clamp(24px, 4vh, 48px);
+            color: var(--color-ink-soft);
+            transition: opacity .3s var(--ease);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .theatre { height: auto; }
+            .stage { position: relative; height: 100svh; }
+            .msg { position: relative; display: none; }
+            .msg:first-child { display: block; opacity: 1; }
+            .msg .w { opacity: 1; }
+        }
+
+        /* ============================================================
+           HERO OUTRO — the lead statement and CTAs, after the theatre
+           ============================================================ */
+        .hero-outro .lead {
             max-width: var(--measure);
             color: var(--color-ink);
+            font-size: var(--text-subheading);
+            line-height: 1.35;
+            letter-spacing: var(--tracking-subheading);
+            font-family: var(--font-neuehaasdisplay);
+            font-weight: var(--font-weight-regular);
         }
 
         .hero-cta {
@@ -627,11 +750,6 @@
             gap: var(--spacing-16);
         }
 
-        .scroll-prompt {
-            margin-top: var(--spacing-40);
-            color: var(--color-ink-soft);
-        }
-
         .eyebrow.reveal,
         .more-label.reveal { display: inline-flex; }
 
@@ -639,6 +757,55 @@
             .hero-cta { flex-direction: column; align-items: stretch; }
             .hero-cta .btn,
             .hero-cta .btn-ghost { width: 100%; }
+        }
+
+        /* ============================================================
+           RAIL — left-edge scroll gauge (desktop): a hairline track,
+           a moving thumb, and the current section's mono label
+           ============================================================ */
+        .rail {
+            position: fixed;
+            left: clamp(16px, 2.5vw, 40px);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 55;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-16);
+            width: 17px;
+        }
+
+        @media (min-width: 1150px) {
+            .rail { display: flex; }
+        }
+
+        .rail-label {
+            font-family: var(--font-geist-mono);
+            font-size: var(--text-caption);
+            letter-spacing: .05em;
+            color: var(--color-ink-soft);
+            font-feature-settings: "ss01" on;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+        }
+
+        .rail-track {
+            position: relative;
+            width: 2px;
+            height: 200px;
+            border-radius: 2px;
+            background: var(--color-rule);
+        }
+
+        .rail-thumb {
+            position: absolute;
+            left: 0;
+            width: 2px;
+            height: 28px;
+            border-radius: 2px;
+            background: var(--color-olive-deep);
         }
 
         /* ============================================================
@@ -660,11 +827,12 @@
 
         .about-card {
             padding: var(--spacing-32);
-            background: var(--surface-glass);
+            background: var(--surface-card);
             -webkit-backdrop-filter: var(--glass-blur);
             backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--color-line);
+            border: 1px solid rgba(247, 243, 236, .22);
             border-radius: var(--radius-cards);
+            box-shadow: var(--shadow-card);
         }
 
         .about-card h3 {
@@ -894,17 +1062,18 @@
             flex-direction: column;
             gap: var(--spacing-8);
             padding: var(--card-padding);
-            background: var(--surface-glass);
+            background: var(--surface-card);
             -webkit-backdrop-filter: var(--glass-blur);
             backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--color-line);
+            border: 1px solid rgba(247, 243, 236, .22);
             border-radius: var(--radius-cards);
-            transition: background-color .15s var(--ease), transform .15s var(--ease);
+            box-shadow: var(--shadow-card);
+            transition: border-color .15s var(--ease), transform .3s var(--ease);
         }
 
         a.mini:hover {
-            background: var(--surface-glass-hover);
-            transform: translateY(-2px);
+            border-color: rgba(247, 243, 236, .45);
+            transform: translateY(-3px);
         }
 
         a.mini:active { transform: translateY(0); }
@@ -1105,9 +1274,16 @@
            ============================================================ */
         .reveal {
             opacity: 0;
-            transform: translateY(14px);
-            transition: opacity .5s var(--ease), transform .5s var(--ease);
+            transform: translateY(26px);
+            transition: opacity .8s var(--ease), transform .8s var(--ease);
         }
+
+        .more-grid .reveal:nth-child(4n+2),
+        .skills-grid .reveal:nth-child(2n) { transition-delay: .08s; }
+
+        .more-grid .reveal:nth-child(4n+3) { transition-delay: .16s; }
+
+        .more-grid .reveal:nth-child(4n+4) { transition-delay: .24s; }
 
         .reveal.in { opacity: 1; transform: none; }
 
@@ -1118,6 +1294,21 @@
 </head>
 
 <body>
+
+    <div class="film" aria-hidden="true"></div>
+
+    <noscript>
+        <style>
+            .msg:first-child { opacity: 1; }
+            .msg:first-child .w { opacity: 1; }
+            .theatre { height: 100svh; }
+        </style>
+    </noscript>
+
+    <div class="rail" aria-hidden="true">
+        <span class="rail-label" id="railLabel">intro</span>
+        <span class="rail-track"><span class="rail-thumb" id="railThumb"></span></span>
+    </div>
 
     <header>
         <nav class="nav" aria-label="Primary">
@@ -1147,21 +1338,34 @@
 
     <main id="top">
 
-        <!-- ============================ HERO ============================ -->
-        <section class="wrap hero">
-            <div class="hero-meta mono reveal">
-                <span id="localTime">—</span>
-                <span>freelance ai &amp; backend engineer</span>
-                <span>gurugram, india</span>
-                <span><i class="dot"></i>open to remote — us &amp; europe</span>
+        <!-- ===================== HERO THEATRE ===================== -->
+        <section class="theatre" aria-label="Introduction">
+            <div class="stage">
+                <div class="glow glow-olive" aria-hidden="true"></div>
+
+                <div class="hero-meta mono">
+                    <span id="localTime">—</span>
+                    <span>freelance ai &amp; backend engineer</span>
+                    <span>gurugram, india</span>
+                    <span><i class="dot"></i>open to remote — us &amp; europe</span>
+                </div>
+
+                <div class="messages">
+                    <h1 class="msg" aria-label="Mukesh Kumar — Marco"><span class="w" aria-hidden="true">Mukesh</span> <span class="w" aria-hidden="true">Kumar</span> <span class="w" aria-hidden="true"><em>Marco</em></span></h1>
+                    <p class="msg" aria-label="builds voice AI agents, automation, and backends"><span class="w" aria-hidden="true">builds</span> <span class="w" aria-hidden="true">voice</span> <span class="w" aria-hidden="true"><em>AI</em></span> <span class="w" aria-hidden="true"><em>agents</em>,</span> <span class="w" aria-hidden="true">automation,</span> <span class="w" aria-hidden="true">and</span> <span class="w" aria-hidden="true">backends</span></p>
+                    <p class="msg" aria-label="that ship fast, and stay fast at scale."><span class="w" aria-hidden="true">that</span> <span class="w" aria-hidden="true">ship</span> <span class="w" aria-hidden="true"><em>fast</em>,</span> <span class="w" aria-hidden="true">and</span> <span class="w" aria-hidden="true">stay</span> <span class="w" aria-hidden="true"><em>fast</em></span> <span class="w" aria-hidden="true">at</span> <span class="w" aria-hidden="true">scale.</span></p>
+                </div>
+
+                <p class="scroll-prompt mono" id="scrollPrompt">scroll to discover ↓</p>
             </div>
+        </section>
 
-            <h1 class="reveal">Mukesh Kumar <em>Marco</em></h1>
-
+        <!-- ===================== HERO OUTRO ===================== -->
+        <section class="wrap hero-outro">
             <p class="lead reveal">I build AI-powered products, automation, and backends that solve real business
-                problems — real-time voice agents, tools that kill manual work, and pipelines that stay fast at scale.
-                Building and shipping production software since 2021, now remote with teams across the US &amp;
-                Europe — where the numbers do the talking.</p>
+                problems — real-time voice agents, tools that kill manual work, and pipelines that stay fast at
+                scale. Building and shipping production software since 2021, now remote with teams across the US
+                &amp; Europe — where the numbers do the talking.</p>
 
             <div class="hero-cta reveal">
                 <a href="#contact" class="btn btn-primary">Get in touch</a>
@@ -1171,13 +1375,11 @@
                     </svg>
                 </a>
             </div>
-
-            <p class="scroll-prompt mono reveal">scroll to discover ↓</p>
-
         </section>
 
         <!-- ============================ ABOUT ============================ -->
-        <section class="wrap" id="about">
+        <section class="wrap" id="about" data-rail="00 — about" style="position:relative">
+            <div class="glow glow-green" style="right:-20%;top:-10%" aria-hidden="true"></div>
             <h2 class="vh">About</h2>
             <div class="eyebrow reveal">00 — about</div>
             <div class="about-grid">
@@ -1240,7 +1442,7 @@
         </section>
 
         <!-- ============================ EXPERIENCE ============================ -->
-        <section class="wrap" id="experience">
+        <section class="wrap" id="experience" data-rail="01 — experience">
             <h2 class="vh">Experience</h2>
             <div class="eyebrow reveal">01 — experience</div>
             <div class="role-list">
@@ -1345,7 +1547,8 @@
         </section>
 
         <!-- ============================ WORK ============================ -->
-        <section class="wrap" id="work">
+        <section class="wrap" id="work" data-rail="02 — selected work" style="position:relative">
+            <div class="glow glow-orange" style="left:-12%;top:8%" aria-hidden="true"></div>
             <div class="eyebrow reveal">02 — selected work</div>
             <h2 class="reveal">Problems solved, at speed and scale.</h2>
             <p class="section-intro reveal">AI, automation, and backend work — each one shipped to fix a concrete
@@ -1497,7 +1700,7 @@
         </section>
 
         <!-- ============================ SKILLS ============================ -->
-        <section class="wrap" id="skills">
+        <section class="wrap" id="skills" data-rail="03 — toolkit">
             <h2 class="vh">Toolkit</h2>
             <div class="eyebrow reveal">03 — toolkit</div>
             <div class="skills-grid">
@@ -1558,7 +1761,8 @@
         <hr class="ornament">
 
         <!-- ============================ CONTACT ============================ -->
-        <section class="wrap contact" id="contact">
+        <section class="wrap contact" id="contact" data-rail="04 — contact" style="position:relative">
+            <div class="glow glow-blue" style="right:-15%;bottom:-20%" aria-hidden="true"></div>
             <div class="eyebrow reveal">04 — contact</div>
             <h2 class="reveal">Let's build something fast.</h2>
             <p class="section-intro reveal">I'm open to remote roles and freelance work with US &amp; Europe teams,
@@ -1640,6 +1844,80 @@
             }
             tick();
             setInterval(tick, 30000);
+        })();
+
+        // hero theatre: message crossfade + word-by-word brightening,
+        // driven by scroll progress through the tall .theatre region
+        (function () {
+            var theatre = document.querySelector('.theatre');
+            if (!theatre) return;
+            var msgs = Array.prototype.slice.call(theatre.querySelectorAll('.msg'));
+            var words = msgs.map(function (m) {
+                return Array.prototype.slice.call(m.querySelectorAll('.w'));
+            });
+            var prompt = document.getElementById('scrollPrompt');
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+            var ticking = false;
+            function update() {
+                ticking = false;
+                var total = theatre.offsetHeight - window.innerHeight;
+                if (total <= 0) return;
+                var p = clamp(-theatre.getBoundingClientRect().top / total, 0, 1);
+                var n = msgs.length;
+                msgs.forEach(function (m, i) {
+                    // each message owns an equal slice of the scroll; within it:
+                    // rise+fade in over the first 18%, words brighten through
+                    // the middle, fade up and out over the last 18%
+                    var t = clamp(p * n - i, 0, 1.2);
+                    var enter = i === 0 ? 1 : clamp(t / .18, 0, 1);
+                    var exit = i === n - 1 ? 1 : clamp((1 - t) / .18, 0, 1);
+                    var o = Math.min(enter, exit);
+                    m.style.opacity = o;
+                    m.style.transform = 'translate3d(0,' + ((1 - enter) * 34 - (1 - exit) * 26) + 'px,0)';
+                    m.style.visibility = o === 0 ? 'hidden' : 'visible';
+                    var ws = words[i];
+                    ws.forEach(function (w, j) {
+                        // word j lights up as local progress crosses its slot
+                        var lit = clamp((t - .12) / .55 * (ws.length + 1) - j, .18, 1);
+                        w.style.opacity = i === 0 && p === 0 ? Math.max(lit, j === 0 ? 1 : .18) : lit;
+                    });
+                });
+                if (prompt) prompt.style.opacity = 1 - clamp(p * 6, 0, 1);
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+
+        // left rail: overall progress thumb + current section label
+        (function () {
+            var thumb = document.getElementById('railThumb');
+            var label = document.getElementById('railLabel');
+            if (!thumb || !label) return;
+            var sections = Array.prototype.slice.call(document.querySelectorAll('[data-rail]'));
+            var ticking = false;
+            function update() {
+                ticking = false;
+                var doc = document.documentElement;
+                var p = doc.scrollTop / (doc.scrollHeight - doc.clientHeight || 1);
+                thumb.style.top = (p * 172) + 'px';
+                var current = 'intro';
+                sections.forEach(function (sec) {
+                    if (sec.getBoundingClientRect().top < window.innerHeight * .5) {
+                        current = sec.getAttribute('data-rail');
+                    }
+                });
+                if (label.textContent !== current) label.textContent = current;
+            }
+            window.addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            update();
         })();
 
         // nav folds into a capsule on scroll (hysteresis avoids flicker at the threshold)
