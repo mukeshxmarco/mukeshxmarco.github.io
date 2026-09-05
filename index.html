@@ -488,65 +488,7 @@
             color: var(--color-ink-soft);
         }
 
-        /* Four-up card grid — until's numbered showcase, carrying the metrics */
-        .stats {
-            margin-top: var(--section-gap);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-24);
-            align-items: stretch;
-        }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-8);
-        }
-
-        .stat .idx {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-olive-deep);
-            font-feature-settings: "ss01" on;
-        }
-
-        .stat .card {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: var(--spacing-24);
-            min-height: 176px;
-            padding: var(--card-padding);
-            background: var(--color-paper);
-            border: 1px solid var(--color-ink);
-            border-radius: var(--radius-cards);
-        }
-
-        .stat .num {
-            font-family: var(--font-neuehaasdisplay);
-            font-size: var(--text-heading-sm);
-            line-height: var(--leading-heading-sm);
-            letter-spacing: var(--tracking-heading-sm);
-            font-weight: var(--font-weight-medium);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .stat .cap {
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            color: var(--color-ink-soft);
-        }
-
-        @media (max-width: 900px) {
-            .stats { grid-template-columns: repeat(2, 1fr); }
-        }
-
         @media (max-width: 560px) {
-            .stats { grid-template-columns: 1fr; gap: var(--spacing-16); }
-            .stat .card { min-height: 0; }
             .hero-cta { flex-direction: column; align-items: stretch; }
             .hero-cta .btn,
             .hero-cta .btn-ghost { width: 100%; }
@@ -1051,36 +993,6 @@
 
             <p class="scroll-prompt mono reveal">[ scroll to discover ]</p>
 
-            <div class="stats">
-                <div class="stat reveal">
-                    <span class="idx">| 1 |</span>
-                    <div class="card">
-                        <span class="num">AIR&nbsp;106</span>
-                        <span class="cap">LeetCode contest — top 0.3% of 29K</span>
-                    </div>
-                </div>
-                <div class="stat reveal">
-                    <span class="idx">| 2 |</span>
-                    <div class="card">
-                        <span class="num">3s → 1s</span>
-                        <span class="cap">Voice-agent latency cut 66%</span>
-                    </div>
-                </div>
-                <div class="stat reveal">
-                    <span class="idx">| 3 |</span>
-                    <div class="card">
-                        <span class="num">60 → 90+</span>
-                        <span class="cap">Core Web Vitals lifted</span>
-                    </div>
-                </div>
-                <div class="stat reveal">
-                    <span class="idx">| 4 |</span>
-                    <div class="card">
-                        <span class="num">5–10GB</span>
-                        <span class="cap">CSV processed in-browser</span>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- ============================ ABOUT ============================ -->
