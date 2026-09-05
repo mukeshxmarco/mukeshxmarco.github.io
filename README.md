@@ -7,7 +7,7 @@ Two complete, self-contained variants live in this repo — same content, two de
 | File | Variant | Feel |
 |---|---|---|
 | `index.html` | **A — Ink & Signal** | Light, minimal, confident: near-white canvas, black ink, one signal-orange accent, hairline rules, mono numerals. No decoration that doesn't carry information. |
-| `dark.html` | **B — Charcoal & Ember** | Dark editorial: warm charcoal canvas, cream text, ember-orange accent, film grain, glow ellipses, a sticky scroll "theatre" hero with word-by-word text reveal, and a nav that folds into a capsule on scroll (untillabs.com's motion system). |
+| `dark.html` | **B — Charcoal & Ember** | Dark editorial: warm charcoal canvas, cream text, ember-orange accent, film grain, glow ellipses, a full-viewport bottom-left hero (name + dimmed tagline), and a nav that folds into a capsule on scroll (untillabs.com's system). |
 
 GitHub Pages serves `index.html` at the root; `dark.html` is reachable at `/dark.html`. To ship B instead, swap the filenames:
 
@@ -29,7 +29,7 @@ Both are hand-written HTML + CSS with vanilla JS (scroll reveal, IST clock, mobi
 
 Same content on untillabs.com's machinery (their shipped CSS was torn down for this — easing `cubic-bezier(.4,.25,.2,1)`, `.gradient-card` panel recipe, blurred-div glow ellipses, film grain at mix-blend overlay above all content):
 
-- Sticky hero theatre: a 340vh region pins a full-height stage; three messages crossfade with word-by-word brightening. Reduced-motion and no-JS collapse it to a static first message.
+- Full-viewport hero, bottom-left: name with a dimmed second line, ember kicker, lead paragraph. No buttons — the nav's cream-filled CTA is the single primary action on the first screen.
 - Nav folds into a centered capsule (name + cream CTA + back-to-top arrow) past 110px, unfolds under 50px.
 - Left rail gauge (≥1150px): scroll-progress thumb + vertical mono label of the current section.
 - Glass panels blur the glows behind them; fallbacks collapse to solid charcoal panels for no-`backdrop-filter` and `prefers-reduced-transparency`.
@@ -37,9 +37,9 @@ Same content on untillabs.com's machinery (their shipped CSS was torn down for t
 
 ## Editing content
 
-Both files share the same content blocks — edit in both if you change copy. Look for the `<!-- ==== SECTION ==== -->` banners: hero/theatre, about (`.about-grid` + `.about-card` facts), experience (`.role` articles; `badge-now` marks current roles; `metric-inline` sets numbers in mono), selected work (`.work-row`s with right-aligned `.work-metric`), more projects (`.mini` cards; `<a>` when live, `<article>` when not), skills (`.skill-group` + `.chip`s), contact.
+Both files share the same content blocks — edit in both if you change copy. Look for the `<!-- ==== SECTION ==== -->` banners: hero, about (`.about-grid` + `.about-card` facts), experience (`.role` articles; `badge-now` marks current roles; `metric-inline` sets numbers in mono), selected work (`.work-row`s with right-aligned `.work-metric`), more projects (`.mini` cards; `<a>` when live, `<article>` when not), skills (`.skill-group` + `.chip`s), contact.
 
-Accessibility invariants: every section keeps an `h2`; decorative SVGs carry `aria-hidden="true"`; external links carry `rel="noopener"`; interactive elements are ≥44px tall; the theatre's word spans are `aria-hidden` with the full sentence on the message's `aria-label`.
+Accessibility invariants: every section keeps an `h2`; decorative SVGs carry `aria-hidden="true"`; external links carry `rel="noopener"`; interactive elements are ≥44px tall.
 
 ## ⚠️ Verify the LeetCode link
 

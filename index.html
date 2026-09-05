@@ -342,47 +342,7 @@
 
         .hero-foot span { display: inline-flex; align-items: center; }
 
-        /* metric strip */
-        .stats {
-            margin-top: clamp(56px, 8vw, 84px);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid var(--line);
-        }
-
-        .stat {
-            padding: 22px 24px 0 0;
-            margin-right: 24px;
-            border-right: 1px solid var(--line);
-        }
-
-        .stat:last-child { border-right: 0; margin-right: 0; }
-
-        .num {
-            font-family: var(--font-mono);
-            font-size: clamp(21px, 2vw, 26px);
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .num em { color: var(--accent); font-style: normal; }
-
-        .cap {
-            font-size: 13px;
-            color: var(--soft);
-            margin-top: 8px;
-        }
-
-        @media (max-width: 860px) {
-            .stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
-            .stat:nth-child(2) { border-right: 0; }
-        }
-
         @media (max-width: 480px) {
-            .stats { grid-template-columns: 1fr; }
-            .stat { border-right: 0; margin-right: 0; padding-right: 0; }
             .hero-cta .btn { width: 100%; }
         }
 
@@ -856,24 +816,6 @@
                 <span><i class="dot"></i>Open to remote — US &amp; Europe</span>
             </div>
 
-            <div class="stats">
-                <div class="stat reveal">
-                    <div class="num">3s <em>→</em> 1s</div>
-                    <div class="cap">Voice-agent latency, production</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">5–10<em>GB</em></div>
-                    <div class="cap">CSVs processed in-browser</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">AIR <em>106</em></div>
-                    <div class="cap">LeetCode contest, top 0.3% of 29K</div>
-                </div>
-                <div class="stat reveal">
-                    <div class="num">60 <em>→</em> 90+</div>
-                    <div class="cap">Core Web Vitals lifted</div>
-                </div>
-            </div>
         </section>
 
         <!-- ============================ ABOUT ============================ -->

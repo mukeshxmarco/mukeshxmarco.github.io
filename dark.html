@@ -160,8 +160,6 @@
             /* until's signature curve, verbatim from their CSS */
             --ease: cubic-bezier(.4, .25, .2, 1);
 
-            /* theatre display type — until's d2 scale */
-            --text-theatre: clamp(44px, 2.4rem + 3.4vw, 96px);
         }
 
         /* ============================================================
@@ -227,13 +225,6 @@
         section:has(> .glow) { overflow: clip; }
 
         html { overflow-x: clip; }
-
-        .glow-olive {
-            width: min(700px, 80vw);
-            height: min(700px, 80vh);
-            background: var(--color-orange-dark);
-            opacity: .34;
-        }
 
         .glow-green {
             width: min(900px, 90vw);
@@ -517,14 +508,14 @@
 
         header.shrunk .nav-links .link { visibility: hidden; }
 
-        /* Folded, the capsule's CTA is the only action on screen — it takes
-           the cream fill, exactly like until's Join Us */
-        header.shrunk .nav-cta {
+        /* The nav CTA carries the cream fill at all times — it is the only
+           primary action on the first screen (the hero has no buttons) */
+        .nav-cta {
             background: var(--color-paper);
             color: var(--color-parchment);
         }
 
-        header.shrunk .nav-cta:hover { background: #ffffff; }
+        .nav-cta:hover { background: #ffffff; }
 
         /* Back-to-top: lives in the capsule, appears only when folded */
         .to-top {
@@ -637,129 +628,59 @@
         }
 
         /* ============================================================
-           HERO THEATRE — until's sticky stage. A tall scroll region pins
-           a full-height stage; big centered messages crossfade with
-           word-by-word brightening as the visitor scrolls through it.
+           HERO — the approved preview: full-viewport, bottom-anchored,
+           left-aligned name with a dimmed second line, lead left and a
+           mono fact column right. Ember glow top-right, no scroll story.
            ============================================================ */
-        .theatre {
+        .hero {
             position: relative;
-            height: 340vh;
-            /* opt out of the section rhythm: padding here would offset the
-               sticky stage by the section gap until it pins */
-            padding-block: 0;
-        }
-
-        .stage {
-            position: sticky;
-            top: 0;
-            height: 100svh;
-            overflow: hidden;
+            min-height: 100svh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: flex-end;
-            padding: calc(var(--spacing-16) + 78px) var(--gutter) clamp(40px, 7vh, 72px);
+            padding-block: 0 clamp(48px, 8vh, 76px);
+            overflow: clip;
         }
 
-        .stage .glow-olive {
-            left: 50%;
-            top: 55%;
-            transform: translate(-50%, -50%);
+        .glow-hero {
+            width: min(640px, 85vw);
+            height: min(640px, 85vh);
+            background: var(--color-orange-dark);
+            opacity: .26;
+            top: -160px;
+            right: -120px;
         }
 
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--spacing-8);
-            color: var(--color-ink-soft);
+        .hero-inner { width: 100%; }
+
+        .kick {
+            color: var(--color-olive-deep);
+            letter-spacing: .07em;
         }
 
-        .hero-meta .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--color-olive-branch);
-        }
-
-        .messages {
-            position: relative;
-            flex: 1;
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .msg {
-            position: absolute;
-            inset-inline: 0;
-            bottom: 0;
-            margin: 0;
-            font-family: var(--font-neuehaasdisplay);
-            font-size: var(--text-theatre);
+        .hero h1 {
+            font-size: clamp(52px, 8.4vw, 116px);
             line-height: .95;
-            letter-spacing: -0.024em;
+            letter-spacing: -0.04em;
             font-weight: var(--font-weight-medium);
-            text-align: center;
-            text-wrap: balance;
-            color: var(--color-ink);
-            text-shadow: 0 4px 24px rgba(0, 0, 0, .25);
-            opacity: 0;
-            will-change: transform, opacity;
+            margin-top: 20px;
         }
 
-        .msg .w { opacity: .18; }
+        .hero h1 .dim { color: #6b665f; }
 
-        .msg em {
-            font-style: normal;
-            color: var(--color-olive-branch);
-        }
-
-        .scroll-prompt {
-            margin-top: clamp(24px, 4vh, 48px);
+        .hero .lead {
+            max-width: 52ch;
             color: var(--color-ink-soft);
-            transition: opacity .3s var(--ease);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .theatre { height: auto; }
-            .stage { position: relative; height: 100svh; }
-            .msg { position: relative; display: none; }
-            .msg:first-child { display: block; opacity: 1; }
-            .msg .w { opacity: 1; }
-        }
-
-        /* ============================================================
-           HERO OUTRO — the lead statement and CTAs, after the theatre
-           ============================================================ */
-        .hero-outro .lead {
-            max-width: var(--measure);
-            color: var(--color-ink);
-            font-size: var(--text-subheading);
-            line-height: 1.35;
-            letter-spacing: var(--tracking-subheading);
-            font-family: var(--font-neuehaasdisplay);
-            font-weight: var(--font-weight-regular);
-        }
-
-        .hero-cta {
+            font-size: 17px;
             margin-top: var(--spacing-32);
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-16);
         }
+
+        .hero .lead b { color: var(--color-ink); font-weight: var(--font-weight-medium); }
 
         .eyebrow.reveal,
         .more-label.reveal { display: inline-flex; }
 
-        @media (max-width: 560px) {
-            .hero-cta { flex-direction: column; align-items: stretch; }
-            .hero-cta .btn,
-            .hero-cta .btn-ghost { width: 100%; }
-        }
-
-        /* ============================================================
+                /* ============================================================
            RAIL — left-edge scroll gauge (desktop): a hairline track,
            a moving thumb, and the current section's mono label
            ============================================================ */
@@ -1297,14 +1218,6 @@
 
     <div class="film" aria-hidden="true"></div>
 
-    <noscript>
-        <style>
-            .msg:first-child { opacity: 1; }
-            .msg:first-child .w { opacity: 1; }
-            .theatre { height: 100svh; }
-        </style>
-    </noscript>
-
     <div class="rail" aria-hidden="true">
         <span class="rail-label" id="railLabel">intro</span>
         <span class="rail-track"><span class="rail-thumb" id="railThumb"></span></span>
@@ -1338,42 +1251,14 @@
 
     <main id="top">
 
-        <!-- ===================== HERO THEATRE ===================== -->
-        <section class="theatre" aria-label="Introduction">
-            <div class="stage">
-                <div class="glow glow-olive" aria-hidden="true"></div>
-
-                <div class="hero-meta mono">
-                    <span id="localTime">—</span>
-                    <span>freelance ai &amp; backend engineer</span>
-                    <span>gurugram, india</span>
-                    <span><i class="dot"></i>open to remote — us &amp; europe</span>
-                </div>
-
-                <div class="messages">
-                    <h1 class="msg" aria-label="Mukesh Kumar — Marco"><span class="w" aria-hidden="true">Mukesh</span> <span class="w" aria-hidden="true">Kumar</span> <span class="w" aria-hidden="true"><em>Marco</em></span></h1>
-                    <p class="msg" aria-label="builds voice AI agents, automation, and backends"><span class="w" aria-hidden="true">builds</span> <span class="w" aria-hidden="true">voice</span> <span class="w" aria-hidden="true"><em>AI</em></span> <span class="w" aria-hidden="true"><em>agents</em>,</span> <span class="w" aria-hidden="true">automation,</span> <span class="w" aria-hidden="true">and</span> <span class="w" aria-hidden="true">backends</span></p>
-                    <p class="msg" aria-label="that ship fast, and stay fast at scale."><span class="w" aria-hidden="true">that</span> <span class="w" aria-hidden="true">ship</span> <span class="w" aria-hidden="true"><em>fast</em>,</span> <span class="w" aria-hidden="true">and</span> <span class="w" aria-hidden="true">stay</span> <span class="w" aria-hidden="true"><em>fast</em></span> <span class="w" aria-hidden="true">at</span> <span class="w" aria-hidden="true">scale.</span></p>
-                </div>
-
-                <p class="scroll-prompt mono" id="scrollPrompt">scroll to discover ↓</p>
-            </div>
-        </section>
-
-        <!-- ===================== HERO OUTRO ===================== -->
-        <section class="wrap hero-outro">
-            <p class="lead reveal">I build AI-powered products, automation, and backends that solve real business
-                problems — real-time voice agents, tools that kill manual work, and pipelines that stay fast at
-                scale. Building and shipping production software since 2021, now remote with teams across the US
-                &amp; Europe — where the numbers do the talking.</p>
-
-            <div class="hero-cta reveal">
-                <a href="#contact" class="btn btn-primary">Get in touch</a>
-                <a href="#work" class="btn-ghost">View work
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <path d="M7 17 17 7M7 7h10v10" />
-                    </svg>
-                </a>
+        <!-- ============================ HERO ============================ -->
+        <section class="hero" aria-label="Introduction">
+            <div class="glow glow-hero" aria-hidden="true"></div>
+            <div class="wrap hero-inner">
+                <div class="kick mono">[ ai &amp; backend engineer — remote, us &amp; europe ]</div>
+                <h1>Mukesh Kumar<br><span class="dim">builds fast systems.</span></h1>
+                <p class="lead">Real-time <b>voice AI agents</b>, automation that kills manual work, and
+                    backends that stay fast at scale — <b>shipping since 2021</b>.</p>
             </div>
         </section>
 
@@ -1844,54 +1729,6 @@
             }
             tick();
             setInterval(tick, 30000);
-        })();
-
-        // hero theatre: message crossfade + word-by-word brightening,
-        // driven by scroll progress through the tall .theatre region
-        (function () {
-            var theatre = document.querySelector('.theatre');
-            if (!theatre) return;
-            var msgs = Array.prototype.slice.call(theatre.querySelectorAll('.msg'));
-            var words = msgs.map(function (m) {
-                return Array.prototype.slice.call(m.querySelectorAll('.w'));
-            });
-            var prompt = document.getElementById('scrollPrompt');
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-
-            var ticking = false;
-            function update() {
-                ticking = false;
-                var total = theatre.offsetHeight - window.innerHeight;
-                if (total <= 0) return;
-                var p = clamp(-theatre.getBoundingClientRect().top / total, 0, 1);
-                var n = msgs.length;
-                msgs.forEach(function (m, i) {
-                    // each message owns an equal slice of the scroll; within it:
-                    // rise+fade in over the first 18%, words brighten through
-                    // the middle, fade up and out over the last 18%
-                    var t = clamp(p * n - i, 0, 1.2);
-                    var enter = i === 0 ? 1 : clamp(t / .18, 0, 1);
-                    var exit = i === n - 1 ? 1 : clamp((1 - t) / .18, 0, 1);
-                    var o = Math.min(enter, exit);
-                    m.style.opacity = o;
-                    m.style.transform = 'translate3d(0,' + ((1 - enter) * 34 - (1 - exit) * 26) + 'px,0)';
-                    m.style.visibility = o === 0 ? 'hidden' : 'visible';
-                    var ws = words[i];
-                    ws.forEach(function (w, j) {
-                        // word j lights up as local progress crosses its slot
-                        var lit = clamp((t - .12) / .55 * (ws.length + 1) - j, .18, 1);
-                        w.style.opacity = i === 0 && p === 0 ? Math.max(lit, j === 0 ? 1 : .18) : lit;
-                    });
-                });
-                if (prompt) prompt.style.opacity = 1 - clamp(p * 6, 0, 1);
-            }
-            window.addEventListener('scroll', function () {
-                if (!ticking) { ticking = true; requestAnimationFrame(update); }
-            }, { passive: true });
-            window.addEventListener('resize', update);
-            update();
         })();
 
         // left rail: overall progress thumb + current section label
