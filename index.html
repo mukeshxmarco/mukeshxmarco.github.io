@@ -14,10 +14,10 @@
     <meta property="og:description"
         content="I build fast, production-grade systems: real-time voice AI agents, scalable backends, and high-throughput data pipelines. Remote — US &amp; Europe.">
     <meta property="og:url" content="https://mukeshxmarco.github.io/">
-    <meta name="theme-color" content="#0b1020">
+    <meta name="theme-color" content="#faf9f7">
 
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b1020'/><text x='50' y='72' font-size='64' font-family='monospace' font-weight='700' fill='%2322d3ee' text-anchor='middle'>M</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230c0c0d'/><text x='50' y='72' font-size='64' font-family='monospace' font-weight='700' fill='%2322d3ee' text-anchor='middle'>M</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,54 +27,36 @@
 
     <style>
         /* ============================================================
-           DESIGN TOKENS — edit these to reskin the whole site
+           DESIGN TOKENS — the whole palette lives here. Nowhere else.
            ============================================================ */
         :root {
-            /* palette */
-            --bg: #0b1020;
-            /* page background (deep slate-navy) */
-            --surface: #121a30;
-            /* elevated cards / panels */
-            --surface-2: #0f1628;
-            /* subtle inset panels */
-            --ink: #e9edf6;
-            /* primary text */
-            --muted: #94a0bd;
-            /* secondary text */
-            --line: #232d47;
-            /* borders / hairlines */
-            --accent: #22d3ee;
-            /* single signal accent (cyan) */
-            --accent-deep: #0e7490;
-            --highlight: #fbbf24;
-            /* reserved ONLY for the crown metric (AIR 106) */
+            --bg: #faf9f7;
+            --surface: #ffffff;
+            --line: #d9d6cf;
+            --ink: #16151a;
+            --muted: #6b6a66;
+            --muted-2: #4d4c48;
+            --accent: #0891a8;
+            --accent-ink: #ffffff;
 
-            /* type */
             --font-display: 'Space Grotesk', system-ui, sans-serif;
             --font-body: 'Inter', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
 
-            /* shape + rhythm */
             --radius: 14px;
             --radius-sm: 10px;
-            --maxw: 1120px;
-            --section-gap: clamp(5rem, 12vw, 9rem);
+            --maxw: 1180px;
+            --gap: clamp(4.5rem, 11vw, 8rem);
         }
 
         *,
         *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+        *::after { box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
+            html { scroll-behavior: auto; }
         }
 
         body {
@@ -89,46 +71,21 @@
             overflow-x: hidden;
         }
 
-        /* subtle instrument-grid backdrop */
+        /* ambient depth: a clean, crisp light surface reads better than a hazy glow/grain */
         body::before {
             content: "";
             position: fixed;
-            inset: 0;
-            z-index: -2;
-            background-image:
-                linear-gradient(to right, rgba(255, 255, 255, .025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, .025) 1px, transparent 1px);
-            background-size: 56px 56px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 900px;
-            height: 600px;
+            inset: -10% -10% auto -10%;
+            height: 60vh;
             z-index: -1;
-            background: radial-gradient(circle, rgba(34, 211, 238, .10), transparent 65%);
+            background: linear-gradient(180deg, rgba(8, 145, 168, .05), transparent 70%);
             pointer-events: none;
         }
 
-        ::selection {
-            background: var(--accent);
-            color: var(--bg);
-        }
+        ::selection { background: var(--accent); color: var(--accent-ink); }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
 
         :focus-visible {
             outline: 2px solid var(--accent);
@@ -143,9 +100,12 @@
             padding-inline: clamp(1.25rem, 5vw, 2.5rem);
         }
 
-        .mono {
-            font-family: var(--font-mono);
-            font-variant-numeric: tabular-nums;
+        .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+        svg.ic {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
         }
 
         /* ============================================================
@@ -154,14 +114,14 @@
         header {
             position: fixed;
             inset: 0 0 auto 0;
-            z-index: 50;
-            background: rgba(11, 16, 32, .72);
-            backdrop-filter: blur(12px);
+            z-index: 60;
+            background: rgba(250, 249, 247, .82);
+            backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
         }
 
         .nav {
-            height: 64px;
+            height: 68px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -170,31 +130,24 @@
 
         .brand {
             font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.15rem;
-            letter-spacing: -.02em;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: -.01em;
         }
 
-        .brand span {
-            color: var(--accent);
-        }
+        .brand span { color: var(--accent); }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.75rem;
-        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
 
         .nav-links a.link {
-            font-size: .9rem;
+            font-size: .88rem;
             color: var(--muted);
             font-weight: 500;
             transition: color .15s ease;
         }
 
-        .nav-links a.link:hover {
-            color: var(--ink);
-        }
+        .nav-links a.link:hover,
+        .nav-links a.link:focus-visible { color: var(--ink); }
 
         .btn {
             display: inline-flex;
@@ -202,206 +155,313 @@
             gap: .5rem;
             font-family: var(--font-body);
             font-weight: 500;
-            font-size: .92rem;
-            padding: .6rem 1.15rem;
-            border-radius: var(--radius-sm);
+            font-size: .9rem;
+            padding: .65rem 1.2rem;
+            border-radius: 999px;
             border: 1px solid transparent;
             cursor: pointer;
             transition: transform .12s ease, background .15s ease, border-color .15s ease, color .15s ease;
             white-space: nowrap;
         }
 
-        .btn:active {
-            transform: translateY(1px);
-        }
+        .btn:active { transform: scale(.97); }
 
-        .btn-primary {
-            background: var(--accent);
-            color: #04222a;
-            font-weight: 600;
-        }
+        .btn-primary { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+        .btn-primary:hover { background: #0a7a90; transform: translateY(-2px); }
 
-        .btn-primary:hover {
-            background: #4be3f5;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--ink);
-            border-color: var(--line);
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+        .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+        .btn-ghost:hover { border-color: var(--ink); }
 
         .nav-toggle {
             display: none;
             background: none;
             border: 1px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: .45rem;
+            border-radius: 999px;
+            padding: .6rem 1rem;
+            font: inherit;
+            font-size: .88rem;
+            font-weight: 500;
             color: var(--ink);
             cursor: pointer;
         }
 
-        @media (max-width: 720px) {
-            .nav-links .link {
-                display: none;
-            }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 68px 0 auto 0;
+            z-index: 55;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            padding: .5rem clamp(1.25rem, 5vw, 2.5rem) 1.5rem;
+            flex-direction: column;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .mobile-menu a:last-child { border-bottom: 0; }
+
+        @media (max-width: 760px) {
+            .nav-links .link { display: none; }
+            .nav-toggle { display: inline-flex; }
         }
 
         /* ============================================================
            HERO
            ============================================================ */
-        main {
-            padding-top: 64px;
-        }
+        main { padding-top: 68px; }
 
-        section {
-            padding-block: var(--section-gap);
-        }
+        section { padding-block: var(--gap); }
 
         .hero {
-            padding-top: clamp(3rem, 9vw, 6rem);
-            padding-bottom: clamp(3rem, 8vw, 5rem);
+            padding-top: clamp(2.5rem, 7vw, 4.5rem);
+            padding-bottom: clamp(3rem, 7vw, 4.5rem);
         }
 
-        .badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .6rem;
-            margin-bottom: 2rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            font-size: .78rem;
-            font-weight: 500;
-            padding: .4rem .8rem;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: var(--surface-2);
-            color: var(--muted);
-        }
-
-        .badge.live {
-            color: #6ee7b7;
-            border-color: rgba(110, 231, 183, .3);
-            background: rgba(16, 185, 129, .08);
-        }
-
-        .dot {
-            position: relative;
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #34d399;
-        }
-
+        .dot { position: relative; width: 7px; height: 7px; border-radius: 999px; background: #10b981; }
         .dot::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 999px;
-            background: #34d399;
-            animation: ping 1.8s cubic-bezier(0, 0, .2, 1) infinite;
+            content: ""; position: absolute; inset: 0; border-radius: 999px;
+            background: #10b981; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite;
         }
 
-        @keyframes ping {
-            75%,
-            100% {
-                transform: scale(2.4);
-                opacity: 0;
-            }
+        @keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+        @media (prefers-reduced-motion: reduce) { .dot::after { animation: none; } }
+
+        /* kinetic marquee headline */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-inline: calc(clamp(1.25rem, 5vw, 2.5rem) * -1);
+            mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 26s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee span {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(3rem, 11vw, 8.5rem);
+            line-height: 1;
+            letter-spacing: -.03em;
+            padding-inline: .5em;
+            color: var(--ink);
+        }
+
+        .marquee span em {
+            font-style: normal;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--muted);
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .dot::after {
-                animation: none;
-            }
+            .marquee-track { animation: none; }
         }
 
-        h1 {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(2.6rem, 7vw, 5rem);
-            line-height: 1.02;
-            letter-spacing: -.03em;
-            margin: 0 0 1.5rem;
-            max-width: 16ch;
+        /* counter-scrolling ticker — same trick, opposite direction, smaller scale */
+        .ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-inline: calc(clamp(1.25rem, 5vw, 2.5rem) * -1);
+            margin-top: .5rem;
+            mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
         }
 
-        h1 .grad {
-            color: var(--accent);
+        .ticker-track {
+            display: inline-flex;
+            animation: ticker 18s linear infinite;
+            will-change: transform;
+        }
+
+        .ticker span {
+            font-family: var(--font-mono);
+            font-size: .85rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding-inline: 1em;
+        }
+
+        .ticker span::after { content: "—"; margin-left: 2em; color: var(--line); }
+
+        @keyframes ticker {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
         }
 
         .lead {
-            font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+            font-size: clamp(1.1rem, 2.4vw, 1.4rem);
             color: var(--muted);
-            max-width: 60ch;
+            max-width: 62ch;
             line-height: 1.6;
-            margin: 0 0 2.25rem;
+            margin: clamp(1.75rem, 5vw, 2.5rem) 0 2.5rem;
         }
 
-        .hero-cta {
+        .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-bottom: clamp(3rem, 8vw, 5rem); }
+
+        .hero-cta .btn { padding: .9rem 1.75rem; font-size: 1rem; }
+
+        .hero-cta .btn-ghost { border: 0; padding-inline: 0; display: inline-flex; align-items: center; gap: .4rem; }
+        .hero-cta .btn-ghost:hover { color: var(--accent); }
+        .hero-cta .btn-ghost svg { transition: transform .15s ease; }
+        .hero-cta .btn-ghost:hover svg { transform: translate(3px, -3px); }
+
+        /* stat strip — secondary hierarchy under the headline */
+        .stats {
             display: flex;
             flex-wrap: wrap;
-            gap: .9rem;
-            margin-bottom: 3.5rem;
+            border-top: 1px solid var(--line);
+            padding-top: 1.75rem;
         }
 
-        .hero-cta .btn {
-            padding: .8rem 1.5rem;
-            font-size: 1rem;
+        .stat {
+            flex: 1 1 200px;
+            padding: 0 1.75rem 0 0;
+            margin-right: 1.75rem;
+            border-right: 1px solid var(--line);
         }
 
-        /* METRICS RAIL — the visual signature */
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--line);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
+        .stat:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
 
-        .metric {
-            background: var(--surface);
-            padding: 1.4rem 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: .35rem;
-        }
-
-        .metric .num {
+        .stat .num {
             font-family: var(--font-mono);
             font-weight: 700;
-            font-variant-numeric: tabular-nums;
-            font-size: clamp(1.5rem, 3.4vw, 2.25rem);
-            line-height: 1;
-            color: var(--accent);
-            letter-spacing: -.02em;
+            font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+            color: var(--ink);
+            display: block;
+            margin-bottom: .3rem;
         }
 
-        .metric.crown .num {
-            color: var(--highlight);
-        }
+        .stat.crown .num { color: var(--accent); }
 
-        .metric .cap {
-            font-size: .74rem;
-            color: var(--muted);
-            line-height: 1.35;
-        }
+        .stat .cap { font-size: .82rem; color: var(--muted); line-height: 1.4; }
 
         @media (max-width: 720px) {
-            .metrics {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .stats { flex-direction: column; gap: 1.25rem; }
+            .stat { border-right: 0; margin-right: 0; padding-right: 0; }
+        }
+
+        /* ============================================================
+           HERO VISUAL PANEL — abstract gradient backdrop, no stock photo
+           ============================================================ */
+        .hero-visual {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            min-height: clamp(420px, 74vh, 760px);
+            margin-bottom: clamp(2.5rem, 6vw, 4rem);
+            background:
+                radial-gradient(120% 90% at 15% 0%, rgba(148, 163, 171, .9), transparent 60%),
+                radial-gradient(100% 90% at 85% 100%, rgba(31, 34, 38, .95), transparent 65%),
+                linear-gradient(160deg, #4b5157 0%, #2c2f33 55%, #1a1c1f 100%);
+        }
+
+        .hero-visual-top,
+        .hero-visual-bottom {
+            position: absolute;
+            inset-inline: clamp(1rem, 3vw, 2rem);
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            z-index: 2;
+        }
+
+        .hero-visual-top { top: clamp(1rem, 3vw, 2rem); justify-content: space-between; }
+        .hero-visual-bottom { bottom: clamp(1rem, 3vw, 2rem); justify-content: space-between; flex-wrap: wrap; }
+
+        .glass-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            font-size: .8rem;
+            font-weight: 500;
+            color: #f4f4f1;
+            padding: .5rem .9rem .5rem .5rem;
+            border-radius: 999px;
+            background: rgba(15, 16, 18, .45);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .14);
+        }
+
+        .glass-pill .ic-ring {
+            width: 26px; height: 26px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .35);
+            display: grid; place-items: center;
+            flex-shrink: 0;
+        }
+
+        .role-pill {
+            font-size: .8rem;
+            font-weight: 500;
+            color: #f4f4f1;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem .9rem;
+            border-radius: 999px;
+            background: rgba(15, 16, 18, .45);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .14);
+        }
+
+        .hero-name-overlay {
+            position: absolute;
+            inset-inline: 0;
+            bottom: clamp(-.5rem, -1vw, 0rem);
+            z-index: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+        }
+
+        .hero-name-overlay .marquee-track {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+            will-change: transform;
+        }
+
+        .hero-name-overlay span {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(2.75rem, 10vw, 7.5rem);
+            line-height: 1;
+            letter-spacing: -.03em;
+            padding-inline: .4em;
+            color: #f4f4f1;
+        }
+
+        .hero-name-overlay span em {
+            font-style: normal;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(244, 244, 241, .55);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-name-overlay .marquee-track { animation: none; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-visual-bottom { flex-direction: column; align-items: flex-start; }
         }
 
         /* ============================================================
@@ -419,27 +479,19 @@
             margin-bottom: 2.75rem;
         }
 
-        .eyebrow::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line);
-        }
+        .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
         h2 {
             font-family: var(--font-display);
             font-weight: 600;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-size: clamp(1.9rem, 4.2vw, 2.75rem);
             letter-spacing: -.02em;
-            line-height: 1.1;
+            line-height: 1.15;
+            max-width: 20ch;
             margin: 0 0 1rem;
         }
 
-        .section-intro {
-            color: var(--muted);
-            max-width: 60ch;
-            margin: 0 0 3rem;
-        }
+        .section-intro { color: var(--muted); max-width: 60ch; margin: 0 0 3.5rem; font-size: 1.05rem; }
 
         /* ============================================================
            ABOUT
@@ -451,20 +503,9 @@
             align-items: start;
         }
 
-        .about-copy p {
-            color: #c4cce0;
-            max-width: 62ch;
-            margin: 0 0 1.25rem;
-        }
-
-        .about-copy p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-copy strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
+        .about-copy p { color: var(--muted-2); max-width: 60ch; margin: 0 0 1.4rem; font-size: 1.05rem; }
+        .about-copy p:last-child { margin-bottom: 0; }
+        .about-copy strong { color: var(--ink); font-weight: 600; }
 
         .about-card {
             background: var(--surface);
@@ -475,7 +516,7 @@
 
         .about-card h3 {
             font-family: var(--font-mono);
-            font-size: .74rem;
+            font-size: .72rem;
             text-transform: uppercase;
             letter-spacing: .14em;
             color: var(--muted);
@@ -483,76 +524,43 @@
             font-weight: 500;
         }
 
-        .fact {
+        .fact { display: flex; gap: .85rem; padding: .8rem 0; border-top: 1px solid var(--line); }
+        .fact:first-of-type { border-top: 0; padding-top: 0; }
+        .fact .ic { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact b { display: block; font-size: .92rem; color: var(--ink); font-weight: 600; }
+        .fact span { font-size: .84rem; color: var(--muted); }
+
+        .circle-cta {
+            width: 128px;
+            height: 128px;
+            border-radius: 999px;
+            background: var(--ink);
+            color: var(--bg);
             display: flex;
-            gap: .85rem;
-            padding: .7rem 0;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: .85rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .circle-cta:hover { background: var(--accent); transform: scale(1.05); }
+
+        @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+
+        /* ============================================================
+           EXPERIENCE — clean row list, no timeline rail
+           ============================================================ */
+        .role-list { display: flex; flex-direction: column; }
+
+        .role {
+            padding-block: clamp(1.75rem, 4vw, 2.5rem);
             border-top: 1px solid var(--line);
         }
 
-        .fact:first-of-type {
-            border-top: 0;
-            padding-top: 0;
-        }
-
-        .fact .ic {
-            color: var(--accent);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .fact b {
-            display: block;
-            font-size: .92rem;
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        .fact span {
-            font-size: .84rem;
-            color: var(--muted);
-        }
-
-        @media (max-width: 860px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================================
-           EXPERIENCE — timeline
-           ============================================================ */
-        .timeline {
-            border-left: 1px solid var(--line);
-            margin-left: .5rem;
-            padding-left: clamp(1.5rem, 4vw, 2.75rem);
-            display: flex;
-            flex-direction: column;
-            gap: 3.25rem;
-        }
-
-        .role {
-            position: relative;
-        }
-
-        .role::before {
-            content: "";
-            position: absolute;
-            left: calc(-1 * clamp(1.5rem, 4vw, 2.75rem) - 5px);
-            top: 7px;
-            width: 9px;
-            height: 9px;
-            border-radius: 999px;
-            background: var(--bg);
-            border: 2px solid var(--muted);
-            transition: border-color .2s ease, background .2s ease;
-        }
-
-        .role.current::before {
-            background: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(34, 211, 238, .15);
-        }
+        .role:last-child { padding-bottom: 0; }
 
         .role-head {
             display: flex;
@@ -560,166 +568,111 @@
             justify-content: space-between;
             align-items: baseline;
             gap: .25rem 1rem;
-            margin-bottom: .35rem;
+            margin-bottom: .4rem;
         }
 
         .role-head h3 {
             font-family: var(--font-display);
-            font-size: 1.3rem;
+            font-size: clamp(1.15rem, 2vw, 1.4rem);
             font-weight: 600;
             margin: 0;
             letter-spacing: -.01em;
         }
 
-        .role-date {
-            font-family: var(--font-mono);
-            font-size: .82rem;
-            color: var(--muted);
-            white-space: nowrap;
+        .role.current .role-head h3::after {
+            content: "";
+            display: inline-block;
+            width: 7px; height: 7px;
+            margin-left: .6rem;
+            border-radius: 999px;
+            background: var(--accent);
+            vertical-align: middle;
         }
 
-        .role-org {
-            color: var(--accent);
-            font-weight: 500;
-            font-size: .95rem;
-            margin-bottom: 1rem;
-        }
+        .role-date { font-family: var(--font-mono); font-size: .82rem; color: var(--muted); white-space: nowrap; }
+        .role-org { color: var(--accent); font-weight: 500; font-size: .95rem; margin-bottom: 1.1rem; }
+        .role-org .sep { color: var(--muted); }
 
-        .role-org .sep {
-            color: var(--muted);
-        }
+        .role ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; max-width: 74ch; }
 
-        .role ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: .6rem;
-        }
+        .role li { position: relative; padding-left: 1.4rem; color: var(--muted-2); font-size: .96rem; }
+        .role li::before { content: "—"; position: absolute; left: 0; color: var(--muted); font-size: .85rem; }
+        .role li b { color: var(--ink); font-weight: 600; }
 
-        .role li {
-            position: relative;
-            padding-left: 1.4rem;
-            color: #c4cce0;
-            font-size: .95rem;
-            max-width: 70ch;
-        }
-
-        .role li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: .8rem;
-            top: 2px;
-        }
-
-        .role li b {
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        .metric-inline {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            color: var(--accent);
-            font-variant-numeric: tabular-nums;
-        }
+        .metric-inline { font-family: var(--font-mono); font-weight: 700; color: var(--accent); }
 
         /* ============================================================
-           PROJECTS
+           WORK — editorial numbered rows
            ============================================================ */
-        .projects-grid {
+        .work-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+
+        .work-row {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
+            grid-template-columns: 2.5rem 1fr auto auto;
+            align-items: center;
+            gap: clamp(1rem, 3vw, 2rem);
+            padding-block: clamp(1.5rem, 4vw, 2.25rem);
+            border-bottom: 1px solid var(--line);
+            transition: background .2s ease, padding-inline .2s ease;
         }
 
-        .card {
+        .work-row:hover,
+        .work-row:focus-within {
             background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            transition: transform .2s ease, border-color .2s ease;
+            padding-inline: 1rem;
+            margin-inline: -1rem;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-        }
+        .work-idx { font-family: var(--font-mono); font-size: .85rem; color: var(--muted); }
 
-        .card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-metric {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-            font-size: 1.7rem;
-            line-height: 1;
-            color: var(--accent);
-            letter-spacing: -.02em;
-        }
-
-        .card-metric small {
-            display: block;
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: .72rem;
-            letter-spacing: .02em;
-            color: var(--muted);
-            margin-top: .4rem;
-        }
-
-        .card h3 {
+        .work-main h3 {
             font-family: var(--font-display);
-            font-size: 1.2rem;
+            font-size: clamp(1.2rem, 2.6vw, 1.7rem);
             font-weight: 600;
-            margin: 0 0 .5rem;
             letter-spacing: -.01em;
+            margin: 0 0 .5rem;
         }
 
-        .card .prob {
-            color: var(--muted);
-            font-size: .92rem;
-            margin: 0 0 1.5rem;
-            flex: 1;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .45rem;
-        }
+        .work-main .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
         .tag {
             font-family: var(--font-mono);
-            font-size: .72rem;
+            font-size: .7rem;
             padding: .28rem .6rem;
             border-radius: 6px;
-            background: var(--surface-2);
             border: 1px solid var(--line);
             color: var(--muted);
         }
 
+        .work-metric {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            color: var(--ink);
+            text-align: right;
+            white-space: nowrap;
+            transition: color .2s ease;
+        }
+
+        .work-metric small { display: block; font-family: var(--font-body); font-weight: 500; font-size: .68rem; color: var(--muted); margin-top: .25rem; }
+
+        .work-row:hover .work-metric { color: var(--accent); }
+
+        .work-arrow { color: var(--muted); flex-shrink: 0; transition: transform .2s ease, color .2s ease; }
+        .work-row:hover .work-arrow { color: var(--accent); transform: translate(4px, -4px); }
+
+        .work-main p.prob { color: var(--muted); font-size: .92rem; margin: 0 0 .75rem; max-width: 68ch; }
+
         @media (max-width: 720px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .work-row { grid-template-columns: 1fr auto; grid-template-areas: "idx metric" "main main"; row-gap: .75rem; }
+            .work-idx { grid-area: idx; }
+            .work-metric { grid-area: metric; }
+            .work-main { grid-area: main; }
+            .work-arrow { display: none; }
         }
 
         /* more projects — compact secondary grid */
-        .more {
-            margin-top: 3rem;
-        }
+        .more { margin-top: clamp(3rem, 6vw, 4rem); }
 
         .more-label {
             font-family: var(--font-mono);
@@ -727,55 +680,27 @@
             text-transform: uppercase;
             letter-spacing: .14em;
             color: var(--muted);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
-        .more-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
+        .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 
         .mini {
             display: flex;
             flex-direction: column;
             gap: .6rem;
-            padding: 1.25rem;
+            padding: 1.35rem;
             border: 1px solid var(--line);
             border-radius: var(--radius-sm);
-            background: var(--surface-2);
-            transition: border-color .15s ease, transform .12s ease;
+            transition: border-color .15s ease, transform .15s ease;
         }
 
-        a.mini:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
+        a.mini:hover, a.mini:focus-visible { border-color: var(--accent); transform: translateY(-3px); }
 
-        .mini-head {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: .6rem;
-        }
-
-        .mini-head h3 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0;
-            letter-spacing: -.01em;
-        }
-
-        .mini .arw {
-            color: var(--muted);
-            flex-shrink: 0;
-            transition: color .15s ease;
-        }
-
-        a.mini:hover .arw {
-            color: var(--accent);
-        }
+        .mini-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+        .mini-head h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0; letter-spacing: -.01em; }
+        .mini .arw { color: var(--muted); flex-shrink: 0; transition: color .15s ease; }
+        a.mini:hover .arw { color: var(--accent); }
 
         .mini .win {
             flex-shrink: 0;
@@ -785,230 +710,120 @@
             letter-spacing: .04em;
             padding: .2rem .45rem;
             border-radius: 5px;
-            color: var(--highlight);
-            background: rgba(251, 191, 36, .1);
-            border: 1px solid rgba(251, 191, 36, .28);
+            color: var(--accent);
+            border: 1px solid rgba(8, 145, 168, .3);
             white-space: nowrap;
         }
 
-        .mini p {
-            color: var(--muted);
-            font-size: .85rem;
-            margin: 0;
-            flex: 1;
-        }
+        .mini p { color: var(--muted); font-size: .85rem; margin: 0; flex: 1; }
 
-        @media (max-width: 860px) {
-            .more-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        @media (max-width: 860px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .more-grid { grid-template-columns: 1fr; } }
 
-        @media (max-width: 560px) {
-            .more-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* "see all" card */
         a.mini.cta {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            gap: .5rem;
-            border-style: dashed;
-            border-color: var(--accent-deep);
-            background: rgba(34, 211, 238, .05);
+            justify-content: center; align-items: center; text-align: center; gap: .5rem;
+            border-style: dashed; border-color: var(--line);
         }
 
-        a.mini.cta:hover {
-            background: rgba(34, 211, 238, .1);
-            border-color: var(--accent);
-        }
+        a.mini.cta:hover { border-color: var(--accent); }
 
-        a.mini.cta .big {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--accent);
-            line-height: 1;
-        }
+        a.mini.cta .big { font-family: var(--font-mono); font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1; }
 
-        a.mini.cta span.lbl {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            font-size: .88rem;
-            color: var(--ink);
-            font-weight: 500;
-        }
+        a.mini.cta span.lbl { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--ink); font-weight: 500; }
 
         /* ============================================================
-           SKILLS
+           SKILLS — flat grouped lists, hairline separators
            ============================================================ */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .skill-group {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.75rem, 4vw, 3rem); border-top: 1px solid var(--line); padding-top: clamp(1.75rem, 4vw, 2.5rem); }
 
         .skill-group h3 {
             font-family: var(--font-mono);
             font-size: .74rem;
             text-transform: uppercase;
             letter-spacing: .12em;
-            color: var(--accent);
-            margin: 0 0 1rem;
+            color: var(--muted);
+            margin: 0 0 1.1rem;
             font-weight: 500;
         }
 
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem;
-        }
+        .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
 
         .chip {
-            font-size: .84rem;
-            padding: .35rem .7rem;
-            border-radius: 8px;
-            background: var(--surface-2);
+            font-size: .85rem;
+            padding: .4rem .8rem;
+            border-radius: 999px;
             border: 1px solid var(--line);
-            color: #c4cce0;
+            color: var(--muted-2);
         }
 
-        @media (max-width: 860px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width: 860px) { .skills-grid { grid-template-columns: 1fr; } }
 
         /* ============================================================
            CONTACT
            ============================================================ */
-        .contact {
-            text-align: center;
-        }
+        .contact { text-align: center; }
+        .contact .eyebrow { justify-content: center; }
+        .contact .eyebrow::after, .contact .eyebrow::before { content: ""; flex: 1; height: 1px; background: var(--line); }
 
-        .contact .eyebrow {
-            justify-content: center;
-        }
+        .contact h2 { max-width: 20ch; margin-inline: auto; }
+        .contact .section-intro { margin-inline: auto; text-align: center; }
 
-        .contact .eyebrow::after,
-        .contact .eyebrow::before {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line);
-        }
+        .contact-cta { display: inline-flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 3rem; }
+        .contact-cta .btn { padding: .95rem 1.9rem; font-size: 1.05rem; }
+        .contact-cta .btn-ghost { border-color: var(--line); }
 
-        .contact h2 {
-            max-width: 18ch;
-            margin-inline: auto;
-        }
-
-        .contact .section-intro {
-            margin-inline: auto;
-            text-align: center;
-        }
-
-        .contact-cta {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: .9rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .contact-cta .btn {
-            padding: .85rem 1.6rem;
-            font-size: 1rem;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: .75rem;
-        }
+        .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.75rem; }
 
         .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: .55rem;
-            font-size: .9rem;
-            color: var(--muted);
-            padding: .6rem 1.1rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            background: var(--surface);
+            display: inline-flex; align-items: center; gap: .5rem;
+            font-size: .9rem; color: var(--muted);
+            border-bottom: 1px solid transparent;
+            padding-bottom: .2rem;
             transition: color .15s ease, border-color .15s ease;
         }
 
-        .contact-links a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
+        .contact-links a:hover, .contact-links a:focus-visible { color: var(--ink); border-color: var(--muted); }
 
         /* ============================================================
            FOOTER
            ============================================================ */
-        footer {
-            border-top: 1px solid var(--line);
-            padding-block: 2.5rem;
-        }
+        footer { border-top: 1px solid var(--line); padding-block: 2.5rem; }
 
         .foot {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            font-size: .82rem;
-            color: var(--muted);
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+            gap: 1rem; font-size: .82rem; color: var(--muted);
         }
 
-        .foot .mono {
-            font-size: .78rem;
-        }
+        .foot .mono { font-size: .78rem; }
 
         /* ============================================================
            SCROLL REVEAL
            ============================================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
 
-        .reveal.in {
-            opacity: 1;
-            transform: none;
-        }
+        /* cascade — rows within a group reveal a beat apart instead of all at once */
+        .work-row.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .work-row.reveal:nth-of-type(2) { transition-delay: .08s; }
+        .work-row.reveal:nth-of-type(3) { transition-delay: .16s; }
+        .work-row.reveal:nth-of-type(4) { transition-delay: .24s; }
+
+        .role.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .role.reveal:nth-of-type(2) { transition-delay: .06s; }
+        .role.reveal:nth-of-type(3) { transition-delay: .12s; }
+        .role.reveal:nth-of-type(4) { transition-delay: .18s; }
+        .role.reveal:nth-of-type(5) { transition-delay: .24s; }
+
+        .skill-group.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .skill-group.reveal:nth-of-type(2) { transition-delay: .05s; }
+        .skill-group.reveal:nth-of-type(3) { transition-delay: .1s; }
+        .skill-group.reveal:nth-of-type(4) { transition-delay: .15s; }
+        .skill-group.reveal:nth-of-type(5) { transition-delay: .2s; }
+        .skill-group.reveal:nth-of-type(6) { transition-delay: .25s; }
+        .skill-group.reveal:nth-of-type(7) { transition-delay: .3s; }
 
         @media (prefers-reduced-motion: reduce) {
-            .reveal {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        svg.ic {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.75;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
 </head>
@@ -1017,54 +832,97 @@
 
     <header>
         <nav class="wrap nav" aria-label="Primary">
-            <a href="#top" class="brand">Mukesh<span>_</span></a>
+            <a href="#top" class="brand">Mukesh<span>—</span></a>
             <div class="nav-links">
                 <a href="#work" class="link">Work</a>
                 <a href="#experience" class="link">Experience</a>
                 <a href="#skills" class="link">Skills</a>
                 <a href="#contact" class="btn btn-primary">Get in touch</a>
             </div>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
         </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
     </header>
 
     <main id="top">
 
         <!-- ============================ HERO ============================ -->
         <section class="wrap hero">
-            <div class="badges reveal">
-                <span class="badge live"><span class="dot"></span>Open to remote work — US &amp; Europe</span>
-                <span class="badge">📍 Gurugram, India</span>
+            <div class="hero-visual reveal">
+                <div class="hero-visual-top">
+                    <span class="role-pill mono" id="localTime">—</span>
+                    <span class="role-pill">
+                        Freelance AI &amp; Backend Engineer
+                        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px">
+                            <path d="M7 7h10v10M7 17 17 7" />
+                        </svg>
+                    </span>
+                </div>
+
+                <div class="hero-name-overlay">
+                    <div class="marquee-track">
+                        <span>Mukesh Kumar <em>Marco</em></span>
+                        <span>Mukesh Kumar <em>Marco</em></span>
+                    </div>
+                </div>
+
+                <div class="hero-visual-bottom">
+                    <span class="glass-pill">
+                        <span class="ic-ring">
+                            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z" />
+                            </svg>
+                        </span>
+                        Based in Gurugram, India
+                    </span>
+                    <span class="glass-pill"><span class="dot"></span>Open to remote — US &amp; Europe</span>
+                </div>
             </div>
 
-            <h1 class="reveal">AI &amp; Backend Engineer who builds <span class="grad">fast, production-grade</span>
-                systems.</h1>
+            <div class="ticker reveal">
+                <div class="ticker-track">
+                    <span>Voice AI Agents</span><span>Backend Systems</span><span>Automation</span><span>Real-time
+                        Pipelines</span><span>Python · FastAPI</span><span>Voice AI Agents</span><span>Backend
+                        Systems</span><span>Automation</span><span>Real-time Pipelines</span><span>Python ·
+                        FastAPI</span>
+                </div>
+            </div>
 
             <p class="lead reveal">I build AI-powered products, automation, and backends that solve real business
                 problems — real-time voice agents, tools that kill manual work, and pipelines that stay fast at scale.
-                Building and shipping production software since 2021, now remote with teams across the US &amp; Europe —
-                where the numbers do the talking.</p>
+                Building and shipping production software since 2021, now remote with teams across the US &amp;
+                Europe — where the numbers do the talking.</p>
 
             <div class="hero-cta reveal">
                 <a href="#contact" class="btn btn-primary">Get in touch</a>
-                <a href="#work" class="btn btn-ghost">View work</a>
+                <a href="#work" class="btn-ghost">View work
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
+                        <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
+                </a>
             </div>
 
-            <!-- METRICS RAIL — the signature. Edit numbers/captions here. -->
-            <div class="metrics reveal" role="list" aria-label="Career highlights">
-                <div class="metric crown" role="listitem">
+            <div class="stats reveal">
+                <div class="stat crown">
                     <span class="num">AIR&nbsp;106</span>
                     <span class="cap">LeetCode contest — top 0.3% of 29K</span>
                 </div>
-                <div class="metric" role="listitem">
-                    <span class="num">3s→1s</span>
+                <div class="stat">
+                    <span class="num">3s → 1s</span>
                     <span class="cap">Voice-agent latency cut 66%</span>
                 </div>
-                <div class="metric" role="listitem">
-                    <span class="num">60→90+</span>
+                <div class="stat">
+                    <span class="num">60 → 90+</span>
                     <span class="cap">Core Web Vitals lifted</span>
                 </div>
-                <div class="metric" role="listitem">
-                    <span class="num">5–10<span style="font-size:.6em">GB</span></span>
+                <div class="stat">
+                    <span class="num">5–10GB</span>
                     <span class="cap">CSV processed in-browser</span>
                 </div>
             </div>
@@ -1072,20 +930,22 @@
 
         <!-- ============================ ABOUT ============================ -->
         <section class="wrap" id="about">
+            <div class="eyebrow reveal">00 — About</div>
             <div class="about-grid">
                 <div class="about-copy reveal">
-                    <div class="eyebrow" style="max-width:none">00 — About</div>
-                    <p>I'm <strong>Mukesh</strong> (I also go by <strong>Marco</strong>) — an AI and backend engineer in
-                        Gurugram, India, working remotely with teams in the US and Europe. I build things that solve real
-                        problems: <strong>AI-powered features</strong>, <strong>automation</strong> that removes manual
-                        work, internal tools, and backends that stay fast under load.</p>
+                    <p>I'm <strong>Mukesh</strong> (I also go by <strong>Marco</strong>) — an AI and backend engineer
+                        in Gurugram, India, working remotely with teams in the US and Europe. I build things that
+                        solve real problems: <strong>AI-powered features</strong>, <strong>automation</strong> that
+                        removes manual work, internal tools, and backends that stay fast under load.</p>
                     <p>My range is the point. I've engineered real-time voice AI agents, built a browser engine that
                         chews through 5–10GB CSVs without a crash, and automated a factory floor to lift production
-                        efficiency 20–25%. Different stacks, same job every time: <strong>find the bottleneck, automate
-                        the tedious part, and ship something reliable.</strong></p>
-                    <p>I care about fundamentals — I placed <strong>AIR 106</strong> in a LeetCode contest, top 0.3% of
-                        29,000 competitors — and about shipping and communicating clearly. If you've got a problem worth
-                        automating or an AI idea worth building, let's talk.</p>
+                        efficiency 20–25%. Different stacks, same job every time: <strong>find the bottleneck,
+                        automate the tedious part, and ship something reliable.</strong></p>
+                    <p>I care about fundamentals — I placed <strong>AIR 106</strong> in a LeetCode contest, top 0.3%
+                        of 29,000 competitors — and about shipping and communicating clearly. If you've got a problem
+                        worth automating or an AI idea worth building, let's talk.</p>
+
+                    <a href="#contact" class="circle-cta">Let's talk</a>
                 </div>
 
                 <aside class="about-card reveal">
@@ -1132,9 +992,8 @@
         <!-- ============================ EXPERIENCE ============================ -->
         <section class="wrap" id="experience">
             <div class="eyebrow reveal">01 — Experience</div>
-            <div class="timeline">
+            <div class="role-list">
 
-                <!-- Duplicate a .role block to add a job. Mark newest with class "current". -->
                 <article class="role current reveal">
                     <div class="role-head">
                         <h3>Software Engineer</h3>
@@ -1142,10 +1001,11 @@
                     </div>
                     <div class="role-org">Poetistic <span class="sep">·</span> Remote</div>
                     <ul>
-                        <li>Lifted website performance from <span class="metric-inline">60 → 90+</span> across Core Web
-                            Vitals (LCP, CLS, FID) via lazy loading, asset compression, and frontend optimization.</li>
-                        <li>Migrated the frontend from <b>Nuxt 2 to Nuxt 3</b>, and built scalable <b>Laravel</b> APIs
-                            with database optimizations tuned for high traffic.</li>
+                        <li>Lifted website performance from <span class="metric-inline">60 → 90+</span> across Core
+                            Web Vitals (LCP, CLS, FID) via lazy loading, asset compression, and frontend
+                            optimization.</li>
+                        <li>Migrated the frontend from <b>Nuxt 2 to Nuxt 3</b>, and built scalable <b>Laravel</b>
+                            APIs with database optimizations tuned for high traffic.</li>
                         <li>Designed a multi-language content system for publishing poetry across languages.</li>
                     </ul>
                 </article>
@@ -1162,10 +1022,10 @@
                         </li>
                         <li>Re-architected the landing page with <b>Next.js SSR</b> + caching for stronger Core Web
                             Vitals and SEO.</li>
-                        <li>Built services for real-time call-data capture, dynamic model switching, and dynamic summary
-                            generation using Redis caching + background processing.</li>
-                        <li>Tightened CI/CD, cutting build &amp; deploy times <span class="metric-inline">~50%</span> (4m
-                            → 2m).</li>
+                        <li>Built services for real-time call-data capture, dynamic model switching, and dynamic
+                            summary generation using Redis caching + background processing.</li>
+                        <li>Tightened CI/CD, cutting build &amp; deploy times <span class="metric-inline">~50%</span>
+                            (4m → 2m).</li>
                     </ul>
                 </article>
 
@@ -1180,8 +1040,8 @@
                                 class="metric-inline">5–10GB</span> CSV files entirely in the browser.</li>
                         <li>Combined chunked processing, Parquet compression, Redis caching, and Django/Celery async
                             tasks — no crashes, no timeouts.</li>
-                        <li>Built "Deep," a role-based fitness tracking app (React.js, Firebase) with data visualization.
-                        </li>
+                        <li>Built "Deep," a role-based fitness tracking app (React.js, Firebase) with data
+                            visualization.</li>
                     </ul>
                 </article>
 
@@ -1196,8 +1056,8 @@
                             PostgreSQL).</li>
                         <li>Automated inventory, reporting, and process management for a <span
                                 class="metric-inline">20–25%</span> production efficiency gain.</li>
-                        <li>Shipped micro-tools via Google Apps Script — invoice generation, lead management, and bulk
-                            WhatsApp/Email.</li>
+                        <li>Shipped micro-tools via Google Apps Script — invoice generation, lead management, and
+                            bulk WhatsApp/Email.</li>
                     </ul>
                 </article>
 
@@ -1208,10 +1068,11 @@
                     </div>
                     <div class="role-org">Independent <span class="sep">·</span> Remote</div>
                     <ul>
-                        <li>Delivered <span class="metric-inline">12+</span> full-stack projects for real clients across
-                            <b>FastAPI, Flask, Next.js, and React</b> — end to end, from database to deploy.</li>
-                        <li>The constant through my B.Tech and beyond: shipping production software independently since
-                            2021.</li>
+                        <li>Delivered <span class="metric-inline">12+</span> full-stack projects for real clients
+                            across <b>FastAPI, Flask, Next.js, and React</b> — end to end, from database to deploy.
+                        </li>
+                        <li>The constant through my B.Tech and beyond: shipping production software independently
+                            since 2021.</li>
                         <li>Business websites, billing/inventory systems, and an immigration client-intake portal
                             (Next.js · Neon Postgres · Cloudflare R2).</li>
                     </ul>
@@ -1220,69 +1081,83 @@
             </div>
         </section>
 
-        <!-- ============================ PROJECTS ============================ -->
+        <!-- ============================ WORK ============================ -->
         <section class="wrap" id="work">
             <div class="eyebrow reveal">02 — Selected work</div>
             <h2 class="reveal">Problems solved, at speed and scale.</h2>
             <p class="section-intro reveal">AI, automation, and backend work — each one shipped to fix a concrete
                 problem under real constraints. The metric is the point.</p>
 
-            <div class="projects-grid">
-                <!-- Duplicate a .card to add a project. -->
-                <article class="card reveal">
-                    <div class="card-top">
+            <div class="work-list">
+                <article class="work-row reveal">
+                    <span class="work-idx">01</span>
+                    <div class="work-main">
                         <h3>Real-time Voice AI Agent Backend</h3>
-                        <div class="card-metric">3s→1s<small>latency</small></div>
+                        <p class="prob">Backend powering live voice agents — real-time call-data capture, dynamic
+                            model switching, and sub-second responses under production load.</p>
+                        <div class="tags">
+                            <span class="tag">FastAPI</span><span class="tag">LiveKit</span><span
+                                class="tag">Python</span><span class="tag">Redis</span>
+                        </div>
                     </div>
-                    <p class="prob">Backend powering live voice agents — real-time call-data capture, dynamic model
-                        switching, and sub-second responses under production load.</p>
-                    <div class="tags">
-                        <span class="tag">FastAPI</span><span class="tag">LiveKit</span><span
-                            class="tag">Python</span><span class="tag">Redis</span>
-                    </div>
+                    <div class="work-metric">3s→1s<small>latency</small></div>
+                    <svg class="ic work-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
                 </article>
 
-                <article class="card reveal">
-                    <div class="card-top">
+                <article class="work-row reveal">
+                    <span class="work-idx">02</span>
+                    <div class="work-main">
                         <h3>High-Volume Data Engine</h3>
-                        <div class="card-metric">5–10GB<small>in-browser</small></div>
+                        <p class="prob">Processes and visualizes multi-gigabyte CSVs in the browser without crashes
+                            or timeouts — chunked processing, Parquet compression, and async workers.</p>
+                        <div class="tags">
+                            <span class="tag">Django</span><span class="tag">Celery</span><span
+                                class="tag">Parquet</span><span class="tag">Redis</span>
+                        </div>
                     </div>
-                    <p class="prob">Processes and visualizes multi-gigabyte CSVs in the browser without crashes or
-                        timeouts — chunked processing, Parquet compression, and async workers.</p>
-                    <div class="tags">
-                        <span class="tag">Django</span><span class="tag">Celery</span><span
-                            class="tag">Parquet</span><span class="tag">Redis</span>
-                    </div>
+                    <div class="work-metric">5–10GB<small>in-browser</small></div>
+                    <svg class="ic work-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
                 </article>
 
-                <article class="card reveal">
-                    <div class="card-top">
+                <article class="work-row reveal">
+                    <span class="work-idx">03</span>
+                    <div class="work-main">
                         <h3>Industrial Process Automation</h3>
-                        <div class="card-metric">+20–25%<small>efficiency</small></div>
+                        <p class="prob">Full-lifecycle automation for a steel manufacturer — inventory, reporting,
+                            and process management — lifting production efficiency measurably.</p>
+                        <div class="tags">
+                            <span class="tag">React</span><span class="tag">Django</span><span
+                                class="tag">PostgreSQL</span>
+                        </div>
                     </div>
-                    <p class="prob">Full-lifecycle automation for a steel manufacturer — inventory, reporting, and
-                        process management — lifting production efficiency measurably.</p>
-                    <div class="tags">
-                        <span class="tag">React</span><span class="tag">Django</span><span
-                            class="tag">PostgreSQL</span>
-                    </div>
+                    <div class="work-metric">+20–25%<small>efficiency</small></div>
+                    <svg class="ic work-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
                 </article>
 
-                <article class="card reveal">
-                    <div class="card-top">
+                <article class="work-row reveal">
+                    <span class="work-idx">04</span>
+                    <div class="work-main">
                         <h3>Client Work</h3>
-                        <div class="card-metric">Full-stack<small>shipped</small></div>
+                        <p class="prob">Small-business sites with billing/inventory systems, and an immigration
+                            client-intake portal — from database to deploy.</p>
+                        <div class="tags">
+                            <span class="tag">Next.js</span><span class="tag">Neon Postgres</span><span
+                                class="tag">Cloudflare R2</span>
+                        </div>
                     </div>
-                    <p class="prob">Small-business sites with billing/inventory systems, and an immigration client-intake
-                        portal — from database to deploy.</p>
-                    <div class="tags">
-                        <span class="tag">Next.js</span><span class="tag">Neon Postgres</span><span
-                            class="tag">Cloudflare R2</span>
-                    </div>
+                    <div class="work-metric">Full-stack<small>shipped</small></div>
+                    <svg class="ic work-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
                 </article>
             </div>
 
-            <!-- More projects. Live sites are <a class="mini">; non-linked ones are <article class="mini">. -->
             <div class="more reveal">
                 <div class="more-label">More projects</div>
                 <div class="more-grid">
@@ -1394,7 +1269,8 @@
                     <h3>Frontend</h3>
                     <div class="chips">
                         <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Nuxt 2
-                            &amp; 3</span><span class="chip">React Native</span><span class="chip">Redux Toolkit</span>
+                            &amp; 3</span><span class="chip">React Native</span><span class="chip">Redux
+                            Toolkit</span>
                     </div>
                 </div>
                 <div class="skill-group reveal">
@@ -1431,8 +1307,8 @@
         <section class="wrap contact" id="contact">
             <div class="eyebrow reveal">04 — Contact</div>
             <h2 class="reveal">Let's build something fast.</h2>
-            <p class="section-intro reveal">I'm open to remote roles and freelance work with US &amp; Europe teams, and I
-                keep hours flexible to overlap with your timezone. Tell me what you're building.</p>
+            <p class="section-intro reveal">I'm open to remote roles and freelance work with US &amp; Europe teams,
+                and I keep hours flexible to overlap with your timezone. Tell me what you're building.</p>
 
             <div class="contact-cta reveal">
                 <a href="mailto:mukeshxmarco@gmail.com" class="btn btn-primary">Email me</a>
@@ -1441,26 +1317,26 @@
 
             <div class="contact-links reveal">
                 <a href="mailto:mukeshxmarco@gmail.com">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
                         <rect x="3" y="5" width="18" height="14" rx="2" />
                         <path d="m3 7 9 6 9-6" />
                     </svg>mukeshxmarco@gmail.com
                 </a>
                 <a href="https://github.com/mukeshxmarco" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
                         <path
                             d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.5 1.3a12 12 0 0 0-6 0C6.6 1.6 5.5 1.9 5.5 1.9a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 4 8.9c0 5 3 6.2 6 6.5a3.4 3.4 0 0 0-1 2.6V22" />
                     </svg>GitHub
                 </a>
                 <a href="https://linkedin.com/in/mukeshxmarco" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
                         <rect x="2" y="9" width="4" height="12" />
                         <circle cx="4" cy="4" r="2" />
                     </svg>LinkedIn
                 </a>
                 <a href="https://leetcode.com/u/mukeshxmarco/" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
                         <path d="m14 4-8 8 8 8M8 12h11" />
                     </svg>LeetCode — AIR 106
                 </a>
@@ -1472,13 +1348,45 @@
     <footer>
         <div class="wrap foot">
             <span class="mono">© <span id="year">2026</span> Mukesh Kumar</span>
-            <span class="mono">Built for speed · Gurugram, IN</span>
+            <span class="mono" id="footTime">Gurugram, IN</span>
         </div>
     </footer>
 
     <script>
-        // current year
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // mobile menu toggle
+        (function () {
+            var toggle = document.getElementById('navToggle');
+            var menu = document.getElementById('mobileMenu');
+            if (!toggle || !menu) return;
+            toggle.addEventListener('click', function () {
+                var open = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    menu.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+
+        // live Gurugram (IST) clock
+        (function () {
+            var badge = document.getElementById('localTime');
+            var foot = document.getElementById('footTime');
+            if (!badge && !foot) return;
+            function tick() {
+                var t = new Date().toLocaleTimeString('en-IN', {
+                    timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit'
+                });
+                if (badge) badge.textContent = t + ' IST';
+                if (foot) foot.textContent = 'Gurugram, IN · ' + t + ' IST';
+            }
+            tick();
+            setInterval(tick, 30000);
+        })();
 
         // scroll reveal (respects prefers-reduced-motion via CSS fallback)
         (function () {
