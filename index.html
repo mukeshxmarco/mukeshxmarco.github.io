@@ -4,1838 +4,1634 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukesh (Marco) — AI &amp; Backend Engineer</title>
+    <title>Mukesh Kumar — AI &amp; Backend Engineer</title>
     <meta name="description"
-        content="Mukesh (Marco) — AI &amp; Backend Engineer. I build fast, production-grade systems: real-time voice AI agents, scalable backends, and high-throughput data pipelines. Remote, working with teams across the US &amp; Europe.">
+        content="Mukesh (Marco) — AI &amp; Backend Engineer. Real-time voice AI agents, automation that removes manual work, and backends that stay fast at scale. Remote, working with teams across the US &amp; Europe.">
     <meta name="author" content="Mukesh Kumar">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Mukesh (Marco) — AI &amp; Backend Engineer">
+    <meta property="og:title" content="Mukesh Kumar — AI &amp; Backend Engineer">
     <meta property="og:description"
-        content="I build fast, production-grade systems: real-time voice AI agents, scalable backends, and high-throughput data pipelines. Remote — US &amp; Europe.">
+        content="Real-time voice AI agents, automation that removes manual work, and backends that stay fast at scale. Remote — US &amp; Europe.">
     <meta property="og:url" content="https://mukeshxmarco.github.io/">
-    <meta name="theme-color" content="#131211">
+    <meta name="theme-color" content="#141414">
 
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='32' fill='%23131211' stroke='%23f4efe8' stroke-width='6'/><text x='50' y='71' font-size='58' font-family='Inter,sans-serif' font-weight='500' fill='%23ff6a44' text-anchor='middle'>M</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='30' fill='%23141414'/><text x='50' y='68' font-size='52' font-family='system-ui,sans-serif' font-weight='600' fill='%23c2a8ff' text-anchor='middle'>M</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Geist+Mono:wght@400;500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <style>
         /* ============================================================
-           UNTIL — DESIGN TOKENS
-           Warm parchment monograph. Every colour, size, radius and
-           rhythm value on this page resolves from this block.
+           DESIGN TOKENS
+           Every colour, size, radius and rhythm value on this page
+           resolves from this block. No raw hex below this comment.
            ============================================================ */
         :root {
-            /* --- Colour ---
-               untillabs.com's homepage inverts the reference sheet: the deep
-               forest Bone tone is the canvas and Parchment becomes the text.
-               Token NAMES keep their reference meanings; ROLES are swapped
-               here so every component rule below still reads correctly:
-               ink = foreground, parchment = canvas, paper = filled CTA. */
-            --color-parchment: #131211;
-            --color-ink: #f4efe8;
-            --color-black: #000000;
-            --color-paper: #f4efe8;
-            --color-mist: #bebebe;
-            --color-olive-branch: #ff6a44;
-            --color-bone: #0f0e0d;
+            /* Canvas + surfaces — one page bg, one card surface, one raised */
+            --bg: #141414;
+            --surface: #1c1c1c;
+            --surface-raised: #242424;
 
-            /* Contrast-safe steps of the ramp on the forest canvas:
-               --color-ink-soft   ~6.5:1 — secondary body text
-               --color-olive-deep ~6:1  — olive at caption sizes
-               --color-rule       quiet moss hairline for stacked lists
-               --color-line       soft cream edge for cards and the nav */
-            --color-ink-soft: #a9a49c;
-            --color-olive-deep: #ff8b6b;
-            --color-rule: #363029;
-            --color-line: rgba(244, 239, 232, .28);
+            /* Ink ramp — primary text 14.6:1, soft text 5.9:1 on --bg */
+            --ink: #ededed;
+            --ink-soft: #9c9c9c;
+            --ink-faint: #6b6b6b;
 
-            /* untillabs.com's own accent palette (from their stylesheet) —
-               used only by the glow ellipses and the ornament */
-            --color-green-dark: #293423;
-            --color-green: #465724;
-            --color-orange: #cb350f;
-            --color-orange-dark: #a32506;
-            --color-blue: #5880bd;
-            --color-yellow: #f2d159;
+            /* Two accents, used as a pair: lavender leads, yellow answers */
+            --accent: #c2a8ff;
+            --accent-2: #ffef93;
+            --on-accent: #171326;
 
-            /* --- Type families ---
-               Neue Haas Display / Text are licensed faces; Inter at matching
-               weights with the brand's negative tracking is the documented
-               substitute. Geist Mono is the real thing. */
-            --font-neuehaasdisplay: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-neuehaastext: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-geist-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            /* Hairlines */
+            --line: rgba(237, 237, 237, .10);
+            --line-strong: rgba(237, 237, 237, .20);
 
-            /* --- Type scale (tracking in em so clamp() stays proportional) --- */
-            --text-caption: 12px;
-            --leading-caption: 1.4;
-            --tracking-caption: -0.025em;
+            /* Type */
+            --font: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
+                'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-            --text-body-sm: 14px;
-            --leading-body-sm: 1.43;
-            --tracking-body-sm: -0.025em;
+            /* Display scale — tight leading, negative tracking at size */
+            --display: clamp(2.65rem, 7.1vw, 5.5rem);
+            --title: clamp(1.9rem, 4.2vw, 3.1rem);
+            --heading: clamp(1.35rem, 2.4vw, 1.85rem);
+            --lead: clamp(1.05rem, 1.55vw, 1.3rem);
+            --body: 1rem;
+            --meta: .8125rem;
 
-            --text-body: 16px;
-            --leading-body: 1.5;
-            --tracking-body: -0.009em;
+            /* Rhythm — one section gap, one inner step */
+            --gap-section: clamp(6rem, 12vw, 11rem);
+            --gap-block: clamp(2.5rem, 4vw, 4rem);
+            --gap-tight: 1.25rem;
+            --pad-x: clamp(1.25rem, 5vw, 5.5rem);
+            --maxw: 1180px;
 
-            --text-subheading: clamp(20px, 2.4vw, 24px);
-            --leading-subheading: 1.1;
-            --tracking-subheading: -0.025em;
+            /* Shape — cards share one radius, pills are full */
+            --radius: 20px;
+            --radius-sm: 14px;
+            --pill: 999px;
 
-            --text-heading-sm: clamp(24px, 3.4vw, 32px);
-            --leading-heading-sm: 1;
-            --tracking-heading-sm: -0.03em;
-
-            --text-heading: clamp(28px, 4.6vw, 39px);
-            --leading-heading: 1;
-            --tracking-heading: -0.03em;
-
-            --text-heading-lg: clamp(36px, 6.4vw, 56px);
-            --leading-heading-lg: 1;
-            --tracking-heading-lg: -0.03em;
-
-            --text-display: clamp(44px, 9.6vw, 69px);
-            --leading-display: 0.9;
-            --tracking-display: -0.037em;
-
-            --font-weight-regular: 400;
-            --font-weight-medium: 500;
-
-            /* --- Spacing --- */
-            --spacing-8: 8px;
-            --spacing-16: 16px;
-            --spacing-24: 24px;
-            --spacing-32: 32px;
-            --spacing-40: 40px;
-            --spacing-48: 48px;
-            --spacing-96: 96px;
-            --spacing-128: 128px;
-
-            /* --- Layout --- */
-            --page-max-width: 1200px;
-            --section-gap: clamp(48px, 9vw, 96px);
-            --card-padding: 24px;
-            --element-gap: 8px;
-            --gutter: clamp(16px, 5vw, 40px);
-            --measure: 65ch;
-
-            /* --- Radius --- */
-            --radius-small: 6px;
-            --radius-images: 24px;
-            --radius-cards: 32px;
-            --radius-badges: 50px;
-            --radius-buttons: 64px;
-            --radius-nav: 64px;
-
-            /* --- Elevation (the only two shadows on the page) --- */
-            --shadow-subtle: rgba(255, 255, 255, .1) 0 -1px 2px 0 inset, rgba(255, 255, 255, .1) 0 1px 2px 0 inset, rgba(0, 0, 0, .1) 0 0 2px 0, rgba(0, 0, 0, .05) 0 3px 17px 0;
-            --shadow-xl: rgba(0, 0, 0, .043) 0 7.5px 30px 0, rgba(255, 255, 255, .3) 0 1px 1px 0 inset;
-
-            /* --- The single decorative gradient: a rare ornament, never a fill --- */
-            --gradient-sunset: linear-gradient(90deg, rgb(203, 53, 15) 0%, rgb(244, 224, 155) 50%, rgb(171, 193, 227) 100%);
-
-            /* --- Glass ---
-               Blur is only visible when high-frequency detail sits behind the
-               pane. The canvas therefore carries colour blobs AND a fine paper
-               grain (body::before / body::after); the glass smooths the grain
-               away, which is what makes the frost legible on every panel. */
-            --surface-glass: rgba(244, 239, 232, .06);
-            --surface-glass-strong: rgba(244, 239, 232, .11);
-            --surface-glass-hover: rgba(244, 239, 232, .18);
-            --glass-blur: blur(20px) saturate(1.3);
-
-            /* until's .gradient-card, verbatim: a bottom-up cream sheen over
-               a 5% tint, hairline inset highlights, and a whisper of drop */
-            --surface-card: radial-gradient(100% 100% at 50% 100%, rgba(244, 239, 232, .2) 0%, rgba(244, 239, 232, 0) 100%), rgba(244, 239, 232, .05);
-            --shadow-card: inset 0 1px 2px rgba(255, 255, 255, .1), inset 0 -1px 2px rgba(255, 255, 255, .1), 0 2.7px 15px rgba(0, 0, 0, .05), 0 0 1.8px rgba(0, 0, 0, .1);
-
-            /* until's signature curve, verbatim from their CSS */
-            --ease: cubic-bezier(.4, .25, .2, 1);
-
+            /* Motion */
+            --ease: cubic-bezier(.22, .61, .36, 1);
+            --fast: 150ms;
+            --slow: 500ms;
         }
 
         /* ============================================================
-           BASE
+           RESET + BASE
            ============================================================ */
         *,
         *::before,
-        *::after { box-sizing: border-box; }
+        *::after {
+            box-sizing: border-box;
+        }
 
-        html { scroll-behavior: smooth; }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
             margin: 0;
-            background: var(--color-parchment);
-            color: var(--color-ink);
-            font-family: var(--font-neuehaastext);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-            letter-spacing: var(--tracking-body);
-            font-weight: var(--font-weight-regular);
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font);
+            font-size: var(--body);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
             overflow-x: hidden;
         }
 
-        /* Edge vignette — the glow ellipses are real blurred elements now */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-            background: radial-gradient(130vw 130vh at 50% 42%, transparent 55%, rgba(0, 0, 0, .45) 100%);
-        }
-
-        /* Film grain OVER everything — until's noise layer is z-500 with
-           mix-blend overlay at 20%, above content, panels and nav alike */
-        .film {
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            pointer-events: none;
-            opacity: .18;
-            mix-blend-mode: overlay;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        /* Glow ellipses — until's .gradient-ellipse: a coloured div under
-           heavy blur, placed per scene */
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(150px);
-            z-index: -1;
-        }
-
-        html, body { overflow-x: clip; }
-
-        .glow-green {
-            width: min(900px, 90vw);
-            height: min(500px, 60vh);
-            background: var(--color-yellow);
-            opacity: .10;
-        }
-
-        .glow-orange {
-            width: min(420px, 70vw);
-            height: min(420px, 70vh);
-            background: var(--color-orange);
-            opacity: .20;
-            filter: blur(130px);
-        }
-
-        .glow-blue {
-            width: min(520px, 75vw);
-            height: min(420px, 60vh);
-            background: var(--color-blue);
-            opacity: .14;
-        }
-
-        ::selection {
-            background: var(--color-ink);
-            color: var(--color-parchment);
-        }
-
-        a { color: inherit; text-decoration: none; }
-
-        img { max-width: 100%; display: block; }
-
-        h1, h2, h3 {
-            font-family: var(--font-neuehaasdisplay);
-            font-weight: var(--font-weight-medium);
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        ul,
+        ol,
+        figure {
             margin: 0;
         }
 
-        p { margin: 0; }
+        ul {
+            padding: 0;
+            list-style: none;
+        }
 
-        ul { margin: 0; padding: 0; list-style: none; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         :focus-visible {
-            outline: 2px solid var(--color-ink);
+            outline: 2px solid var(--accent);
             outline-offset: 3px;
-            border-radius: var(--radius-small);
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--on-accent);
         }
 
         .wrap {
             width: 100%;
-            max-width: var(--page-max-width);
+            max-width: var(--maxw);
             margin-inline: auto;
-            padding-inline: var(--gutter);
+            padding-inline: var(--pad-x);
         }
 
-        /* Geist Mono bracket captions — the research-journal ornament */
-        .mono {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            line-height: var(--leading-caption);
-            letter-spacing: .05em;
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "ss01" on;
-        }
-
-        /* Sections whose design carries no visible heading still need one in
-           the outline — otherwise the document jumps h1 -> h3. */
-        .vh {
+        .skip {
             position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            clip-path: inset(50%);
-            white-space: nowrap;
-            border: 0;
+            left: -9999px;
+            top: 0;
+            z-index: 100;
+            padding: .75rem 1.25rem;
+            background: var(--ink);
+            color: var(--bg);
+            border-radius: 0 0 var(--radius-sm) 0;
         }
 
-        /* Mono micro-labels, worn as chips */
-        .hero-meta span,
-        .scroll-prompt,
-        .eyebrow,
-        .more-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            line-height: var(--leading-caption);
-            letter-spacing: .05em;
-            font-feature-settings: "ss01" on;
-            padding: 6px 14px;
-            border: 1px solid var(--color-rule);
-            border-radius: var(--radius-badges);
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-        }
-
-        .eyebrow {
-            color: var(--color-olive-deep);
-            border-color: var(--color-olive-deep);
-            margin-bottom: var(--spacing-24);
-        }
-
-        svg.ic {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex: none;
-        }
-
-        /* Section rhythm — one gap value, every section, no exceptions */
-        main > section { padding-block: var(--section-gap); }
-
-        .section-intro {
-            max-width: var(--measure);
-            color: var(--color-ink-soft);
-            margin-top: var(--spacing-16);
-        }
-
-        h2 {
-            font-size: var(--text-heading);
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            color: var(--color-olive-branch);
-            max-width: 18ch;
-        }
-
-        /* The single sunset ornament on the page */
-        .ornament {
-            height: 2px;
-            border: 0;
-            margin: 0;
-            background: var(--gradient-sunset);
-        }
-
-        /* ============================================================
-           BUTTONS — every CTA is a 64px pill with a 1px ink border.
-           .btn-primary is the one ink-filled element per surface.
-           ============================================================ */
-        .btn,
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--element-gap);
-            font-family: var(--font-neuehaastext);
-            font-size: var(--text-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            font-weight: var(--font-weight-medium);
-            line-height: 1;
-            padding: 15px var(--spacing-24);
-            min-height: 46px;
-            border-radius: var(--radius-buttons);
-            border: 1px solid var(--color-ink);
-            cursor: pointer;
-            transition: background-color .15s var(--ease), color .15s var(--ease), transform .15s var(--ease);
-        }
-
-        .btn-primary {
-            background: var(--color-ink);
-            color: var(--color-parchment);
-        }
-
-        .btn-primary:hover { background: #ffffff; }
-
-        .btn-secondary {
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            color: var(--color-ink);
-        }
-
-        .btn-secondary:hover { background: var(--surface-glass-hover); }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--color-ink);
-        }
-
-        .btn-ghost:hover { background: var(--surface-glass-hover); }
-
-        .btn:active,
-        .btn-ghost:active { transform: scale(.98); }
-
-        @media (prefers-reduced-motion: reduce) {
-            .btn, .btn-ghost { transition: none; }
-            .btn:active, .btn-ghost:active { transform: none; }
-        }
-
-        /* ============================================================
-           NAV — floating paper capsule
-           ============================================================ */
-        header {
-            position: fixed;
-            top: var(--spacing-16);
+        .skip:focus {
             left: 0;
-            right: 0;
-            z-index: 60;
-            padding-inline: var(--gutter);
         }
 
+        /* ============================================================
+           TYPE ROLES — three levels of importance, nothing more
+           ============================================================ */
+        .kicker {
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0;
+        }
+
+        .kicker span {
+            color: var(--accent-2);
+        }
+
+        .kicker em {
+            font-style: normal;
+            color: var(--ink-faint);
+            padding-inline: .4em;
+        }
+
+        .display {
+            font-size: var(--display);
+            font-weight: 500;
+            line-height: .92;
+            letter-spacing: -.05em;
+            text-wrap: balance;
+        }
+
+        .display .dim {
+            color: var(--ink-faint);
+        }
+
+        .title {
+            font-size: var(--title);
+            font-weight: 500;
+            line-height: 1.06;
+            letter-spacing: -.035em;
+            text-wrap: balance;
+        }
+
+        .heading {
+            font-size: var(--heading);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -.02em;
+        }
+
+        .lead {
+            font-size: var(--lead);
+            line-height: 1.55;
+            color: var(--ink-soft);
+            max-width: 34ch;
+        }
+
+        .prose {
+            color: var(--ink-soft);
+            max-width: 62ch;
+        }
+
+        .section-label {
+            display: block;
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: var(--gap-block);
+        }
+
+        /* ============================================================
+           NAV — wide bar at rest, folds to a centred capsule on scroll
+           ============================================================ */
         .nav {
-            max-width: var(--page-max-width);
-            margin-inline: auto;
-            padding: var(--spacing-8) var(--spacing-8) var(--spacing-8) var(--spacing-24);
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 60;
+            display: flex;
+            justify-content: center;
+            padding-top: clamp(.75rem, 1.6vw, 1.15rem);
+            pointer-events: none;
+        }
+
+        .nav-inner {
+            pointer-events: auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: var(--spacing-16);
-            transition: max-width .5s var(--ease);
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--color-line);
-            border-radius: var(--radius-nav);
-            box-shadow: var(--shadow-xl);
+            gap: clamp(1rem, 3vw, 2.5rem);
+            width: min(var(--maxw), calc(100% - var(--pad-x) * 2));
+            padding: .5rem .5rem .5rem clamp(1rem, 2.5vw, 1.65rem);
+            border-radius: var(--pill);
+            background: transparent;
+            border: 1px solid transparent;
+            transition: width var(--slow) var(--ease),
+                background var(--slow) var(--ease),
+                border-color var(--slow) var(--ease),
+                backdrop-filter var(--slow) var(--ease);
+        }
+
+        .nav.is-folded .nav-inner {
+            width: min(740px, calc(100% - var(--pad-x) * 2));
+            background: rgba(36, 36, 36, .72);
+            border-color: var(--line);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
         }
 
         .brand {
-            font-family: var(--font-neuehaasdisplay);
-            font-size: var(--text-body);
-            font-weight: var(--font-weight-medium);
-            letter-spacing: -0.025em;
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
-            gap: 6px;
+            font-weight: 600;
+            font-size: .9375rem;
+            letter-spacing: -.01em;
+            white-space: nowrap;
+            min-width: 0;
         }
 
-        .brand .dots {
-            max-width: 40px;
-            overflow: hidden;
-            opacity: 1;
-            transition: max-width .4s var(--ease), opacity .25s var(--ease);
+        .brand .brand-full {
+            transition: opacity var(--fast) var(--ease);
         }
 
-        .brand .dots {
-            display: inline-flex;
-            gap: 4px;
+        .brand .brand-short {
+            display: none;
+            letter-spacing: .18em;
         }
 
-        .brand .dots i {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--color-ink);
-            display: block;
+        .nav.is-folded .brand-full {
+            display: none;
+        }
+
+        .nav.is-folded .brand-short {
+            display: inline;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: var(--spacing-24);
-            max-width: 640px;
-            overflow: hidden;
-            white-space: nowrap;
-            transition: max-width .5s var(--ease), opacity .3s var(--ease), visibility .5s;
+            gap: clamp(1rem, 2.4vw, 2rem);
+            margin-inline: auto;
         }
 
-        /* Scrolled: the bar folds into a small capsule — dots + CTA */
-        header.shrunk .nav { max-width: 380px; }
-
-        header.shrunk .brand .dots {
-            max-width: 0;
-            opacity: 0;
+        .nav-links a {
+            font-size: .9375rem;
+            color: var(--ink-soft);
+            padding: .6rem .25rem;
+            transition: color var(--fast) var(--ease);
         }
 
-        header.shrunk .nav-links {
-            max-width: 0;
-            gap: 0;
-            opacity: 0;
+        .nav-links a:hover {
+            color: var(--ink);
         }
 
-        header.shrunk .nav-links .link { visibility: hidden; }
-
-        /* The nav CTA carries the cream fill at all times — it is the only
-           primary action on the first screen (the hero has no buttons) */
-        .nav-cta {
-            background: var(--color-paper);
-            color: var(--color-parchment);
-        }
-
-        .nav-cta:hover { background: #ffffff; }
-
-        /* Back-to-top: lives in the capsule, appears only when folded */
-        .to-top {
-            width: 0;
-            height: 44px;
-            margin-left: calc(var(--spacing-8) * -1);
-            opacity: 0;
-            visibility: hidden;
-            overflow: hidden;
-            flex: none;
+        /* The one primary action on every screen */
+        .cta {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            border: 1px solid var(--color-ink);
-            border-radius: 50%;
-            background: var(--surface-glass);
-            color: var(--color-ink);
-            cursor: pointer;
-            transition: width .5s var(--ease), opacity .3s var(--ease), visibility .5s, background-color .15s var(--ease);
-        }
-
-        .to-top:hover { background: var(--surface-glass-hover); }
-
-        .to-top:active { transform: scale(.95); }
-
-        header.shrunk .to-top {
-            width: 44px;
-            margin-left: 0;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .nav, .brand .dots, .nav-links, .to-top { transition: none; }
-            .to-top:active { transform: none; }
-        }
-
-        .nav-links .link {
-            display: inline-flex;
-            align-items: center;
+            gap: .55rem;
             min-height: 44px;
-            font-size: var(--text-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            font-weight: var(--font-weight-regular);
-            padding-inline: 2px;
-            box-shadow: inset 0 -1px 0 transparent;
-            transition: box-shadow .15s var(--ease), color .15s var(--ease);
+            padding: .7rem 1.15rem;
+            border-radius: var(--pill);
+            background: var(--ink);
+            color: var(--bg);
+            font-size: .9375rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            transition: transform var(--fast) var(--ease),
+                background var(--fast) var(--ease);
         }
 
-        .nav-links .link:hover {
-            box-shadow: inset 0 -1px 0 var(--color-olive-deep);
-            color: var(--color-olive-deep);
+        .cta svg {
+            transition: transform var(--fast) var(--ease);
+        }
+
+        .cta:hover {
+            background: #fff;
+        }
+
+        .cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        .cta:active {
+            transform: scale(.98);
         }
 
         .nav-toggle {
             display: none;
-            font-family: var(--font-neuehaastext);
-            font-size: var(--text-body-sm);
-            font-weight: var(--font-weight-medium);
-            letter-spacing: var(--tracking-body-sm);
-            min-height: 44px;
-            padding: 12px var(--spacing-24);
-            border-radius: var(--radius-buttons);
-            border: 1px solid var(--color-ink);
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            height: 44px;
+            padding-inline: .85rem;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--pill);
             background: transparent;
-            color: var(--color-ink);
+            color: var(--ink);
+            font: inherit;
+            font-size: .8125rem;
             cursor: pointer;
         }
 
-        .mobile-menu {
-            display: none;
-            margin-top: var(--spacing-8);
-            max-width: var(--page-max-width);
-            margin-inline: auto;
-            padding: var(--spacing-8);
-            background: var(--surface-glass-strong);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--color-line);
-            border-radius: var(--radius-cards);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .mobile-menu.open { display: block; }
-
-        .mobile-menu a {
-            display: block;
-            padding: 14px var(--spacing-16);
-            font-size: var(--text-body);
-            letter-spacing: var(--tracking-body);
-            border-radius: var(--radius-buttons);
-        }
-
-        .mobile-menu a:hover { background: var(--color-parchment); }
-
-        .nav-end {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-8);
-        }
-
-        @media (max-width: 860px) {
-            .nav-links { display: none; }
-            .nav-toggle { display: inline-flex; align-items: center; }
-            .nav { padding-right: var(--spacing-8); }
-        }
-
-        @media (max-width: 560px) {
-            .nav-cta { display: none; }
-        }
-
         /* ============================================================
-           HERO — the approved preview: full-viewport, bottom-anchored,
-           left-aligned name with a dimmed second line, lead left and a
-           mono fact column right. Ember glow top-right, no scroll story.
+           HERO — full viewport, content weighted to the lower third
            ============================================================ */
         .hero {
-            position: relative;
             min-height: 100svh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding-block: 0 clamp(48px, 8vh, 76px);
-            overflow: clip;
+            padding-block: 8rem clamp(3.5rem, 9vh, 7rem);
         }
 
-        .glow-hero {
-            width: min(640px, 85vw);
-            height: min(640px, 85vh);
-            background: var(--color-orange-dark);
-            opacity: .26;
-            top: -160px;
-            right: -120px;
+        .hero .kicker {
+            margin-bottom: clamp(1.25rem, 2.4vw, 2rem);
         }
 
-        .hero-inner { width: 100%; }
-
-        /* Portrait — top-right of the hero. Hides itself (onerror) until
-           portrait.png exists next to index.html, so nothing breaks. */
-        .hero-photo {
-            position: absolute;
-            top: clamp(96px, 14vh, 140px);
-            right: clamp(20px, 6vw, 96px);
-            margin: 0;
-            width: clamp(150px, 22vw, 300px);
-            aspect-ratio: 4 / 5;
-            border-radius: var(--radius-images);
-            overflow: hidden;
-            border: 1px solid var(--color-line);
-            box-shadow: var(--shadow-card);
-            transform: rotate(2deg);
+        .hero .display {
+            max-width: 16ch;
         }
 
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .hero .lead {
+            margin-top: clamp(1.5rem, 3vw, 2.25rem);
+            max-width: 46ch;
         }
 
-        @media (max-width: 760px) {
-            .hero-photo {
-                top: 92px;
-                right: var(--gutter);
-                width: clamp(110px, 32vw, 150px);
-                transform: rotate(1.5deg);
+        .hero-scroll {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            margin-top: clamp(2rem, 4vw, 3rem);
+            font-size: var(--meta);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            transition: color var(--fast) var(--ease);
+        }
+
+        .hero-scroll:hover {
+            color: var(--ink-soft);
+        }
+
+        .hero-scroll svg {
+            animation: nudge 2.4s var(--ease) infinite;
+        }
+
+        @keyframes nudge {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(4px);
             }
         }
 
-        .kick {
-            color: var(--color-olive-deep);
-            letter-spacing: .07em;
-        }
-
-        .hero h1 {
-            font-size: clamp(52px, 8.4vw, 116px);
-            line-height: .95;
-            letter-spacing: -0.04em;
-            font-weight: var(--font-weight-medium);
-            margin-top: 20px;
-        }
-
-        .hero h1 .dim { color: #6b665f; }
-
-        .hero .lead {
-            max-width: 52ch;
-            color: var(--color-ink-soft);
-            font-size: 17px;
-            margin-top: var(--spacing-32);
-        }
-
-        .hero .lead b { color: var(--color-ink); font-weight: var(--font-weight-medium); }
-
-        .eyebrow.reveal,
-        .more-label.reveal { display: inline-flex; }
-
-                /* ============================================================
-           RAIL — left-edge scroll gauge (desktop): a hairline track,
-           a moving thumb, and the current section's mono label
+        /* ============================================================
+           MARQUEE — credential strip between hero and work
            ============================================================ */
-        .rail {
-            position: fixed;
-            left: clamp(16px, 2.5vw, 40px);
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 55;
-            display: none;
-            flex-direction: column;
+        .marquee {
+            border-block: 1px solid var(--line);
+            padding-block: 1.15rem;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: slide 38s linear infinite;
+        }
+
+        .marquee:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .marquee-track span {
+            display: inline-flex;
             align-items: center;
-            gap: var(--spacing-16);
-            width: 17px;
-        }
-
-        @media (min-width: 1150px) {
-            .rail { display: flex; }
-        }
-
-        .rail-label {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-ink-soft);
-            font-feature-settings: "ss01" on;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
+            gap: 2.75rem;
+            padding-right: 2.75rem;
+            font-size: .9375rem;
+            color: var(--ink-soft);
             white-space: nowrap;
         }
 
-        .rail-track {
-            position: relative;
-            width: 2px;
-            height: 200px;
-            border-radius: 2px;
-            background: var(--color-rule);
-        }
-
-        .rail-thumb {
-            position: absolute;
-            left: 0;
-            width: 2px;
-            height: 28px;
-            border-radius: 2px;
-            background: var(--color-olive-deep);
-        }
-
-        /* ============================================================
-           ABOUT — two-column editorial block
-           ============================================================ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: var(--spacing-48);
-            align-items: start;
-        }
-
-        .about-copy p {
-            max-width: var(--measure);
-            margin-bottom: var(--spacing-24);
-        }
-
-        .about-copy strong { font-weight: var(--font-weight-medium); }
-
-        .about-card {
-            padding: var(--spacing-32);
-            background: var(--surface-card);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(244, 239, 232, .22);
-            border-radius: var(--radius-cards);
-            box-shadow: var(--shadow-card);
-        }
-
-        .about-card h3 {
-            font-size: var(--text-subheading);
-            line-height: var(--leading-subheading);
-            letter-spacing: var(--tracking-subheading);
-            color: var(--color-olive-branch);
-            margin-bottom: var(--spacing-24);
-        }
-
-        .fact {
-            display: flex;
-            gap: var(--spacing-16);
-            padding-block: var(--spacing-16);
-            border-top: 1px solid var(--color-rule);
-        }
-
-        .fact:first-of-type { border-top: 0; padding-top: 0; }
-
-        .fact:last-child { padding-bottom: 0; }
-
-        .fact .glyph { color: var(--color-olive-deep); padding-top: 2px; }
-
-        .fact b {
-            display: block;
-            font-weight: var(--font-weight-medium);
-            font-size: var(--text-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-        }
-
-        .fact span.sub {
-            display: block;
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            color: var(--color-ink-soft);
-        }
-
-        @media (max-width: 860px) {
-            .about-grid { grid-template-columns: 1fr; gap: var(--spacing-32); }
-        }
-
-        /* ============================================================
-           EXPERIENCE — borderless stacked list, hairline rules
-           ============================================================ */
-        .role {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: var(--spacing-32);
-            padding-block: var(--spacing-32);
-            border-top: 1px solid var(--color-rule);
-        }
-
-        .role-aside { display: flex; flex-direction: column; gap: var(--element-gap); }
-
-        .role-date {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-ink-soft);
-            font-feature-settings: "ss01" on;
-        }
-
-        .role-org {
-            font-size: var(--text-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            font-weight: var(--font-weight-medium);
-        }
-
-        .badge-now {
-            align-self: flex-start;
-            margin-top: 4px;
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-olive-deep);
-            border: 1px solid var(--color-olive-deep);
-            border-radius: var(--radius-badges);
-            padding: 3px 10px;
-            font-feature-settings: "ss01" on;
-        }
-
-        .role h3 {
-            font-size: var(--text-subheading);
-            line-height: var(--leading-subheading);
-            letter-spacing: var(--tracking-subheading);
-            margin-bottom: var(--spacing-16);
-        }
-
-        .role li {
-            position: relative;
-            padding-left: var(--spacing-24);
-            margin-bottom: var(--spacing-8);
-            max-width: var(--measure);
-            color: var(--color-ink-soft);
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-        }
-
-        .role li::before {
+        .marquee-track span::after {
             content: "";
-            position: absolute;
-            left: 4px;
-            top: 8px;
             width: 5px;
             height: 5px;
-            border-radius: 50%;
-            background: var(--color-olive-branch);
+            border-radius: var(--pill);
+            background: var(--accent);
+            opacity: .7;
         }
 
-        .role li b { color: var(--color-ink); font-weight: var(--font-weight-medium); }
-
-        .metric-inline {
-            font-family: var(--font-geist-mono);
-            color: var(--color-ink);
-            font-variant-numeric: tabular-nums;
-            font-feature-settings: "ss01" on;
-        }
-
-        @media (max-width: 760px) {
-            .role { grid-template-columns: 1fr; gap: var(--spacing-16); }
+        @keyframes slide {
+            to {
+                transform: translateX(-50%);
+            }
         }
 
         /* ============================================================
-           WORK — ruled list, then a bordered card grid
+           SECTIONS
            ============================================================ */
-        .work-list { margin-top: var(--spacing-48); }
-
-        .work-row {
-            display: grid;
-            grid-template-columns: 48px 1fr 160px;
-            gap: var(--spacing-24);
-            align-items: start;
-            padding-block: var(--spacing-32);
-            border-top: 1px solid var(--color-rule);
+        section {
+            scroll-margin-top: 6rem;
         }
 
-        .work-idx {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-olive-deep);
-            padding-top: 6px;
-            font-feature-settings: "ss01" on;
+        .section {
+            padding-block: var(--gap-section);
         }
 
-        .work-main h3 {
-            font-size: var(--text-subheading);
-            line-height: var(--leading-subheading);
-            letter-spacing: var(--tracking-subheading);
-        }
-
-        .work-main .prob {
-            margin-top: var(--spacing-8);
-            max-width: var(--measure);
-            color: var(--color-ink-soft);
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-        }
-
-        .tags {
+        /* ---- Selected work -------------------------------------- */
+        .work-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: var(--element-gap);
-            margin-top: var(--spacing-16);
+            flex-direction: column;
+            gap: var(--gap-section);
         }
 
-        .tag {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            line-height: var(--leading-caption);
-            letter-spacing: .05em;
-            color: var(--color-ink-soft);
-            background: var(--surface-glass);
-            border: 1px solid var(--color-rule);
-            border-radius: var(--radius-badges);
-            padding: 4px 12px;
-            font-feature-settings: "ss01" on;
+        .work-panel {
+            position: relative;
+            display: grid;
+            place-items: center;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .work-panel::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: radial-gradient(45% 45% at 30% 25%, var(--glow, var(--accent)), transparent 70%);
+            opacity: .16;
+            filter: blur(40px);
         }
 
         .work-metric {
-            text-align: right;
-            font-family: var(--font-neuehaasdisplay);
-            font-size: var(--text-heading-sm);
-            line-height: var(--leading-heading-sm);
-            letter-spacing: var(--tracking-heading-sm);
-            font-weight: var(--font-weight-medium);
+            position: relative;
+            text-align: center;
+            padding: var(--gap-tight);
+        }
+
+        .work-metric b {
+            display: block;
+            font-size: clamp(2.75rem, 8vw, 6rem);
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -.05em;
             font-variant-numeric: tabular-nums;
+            color: var(--ink);
         }
 
         .work-metric small {
             display: block;
-            margin-top: 6px;
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            font-weight: var(--font-weight-regular);
-            color: var(--color-ink-soft);
-            font-feature-settings: "ss01" on;
+            margin-top: .85rem;
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
         }
 
-        @media (max-width: 760px) {
-            .work-row { grid-template-columns: 1fr; gap: var(--spacing-16); }
-            .work-metric { text-align: left; }
-            .work-metric small { display: inline; margin-left: var(--spacing-8); }
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem 1rem;
+            margin-top: var(--gap-block);
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
         }
 
-        .more { margin-top: var(--section-gap); }
-
-        .more-label {
-            color: var(--color-olive-deep);
-            border-color: var(--color-olive-deep);
-            margin-bottom: var(--spacing-24);
+        .work-tags li + li::before {
+            content: "—";
+            padding-right: 1rem;
+            color: var(--line-strong);
         }
 
-        .more-grid {
+        .work-item h3 {
+            margin-top: var(--gap-tight);
+            font-size: var(--heading);
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -.02em;
+            max-width: 30ch;
+        }
+
+        .work-item p {
+            margin-top: 1rem;
+            color: var(--ink-soft);
+            max-width: 58ch;
+        }
+
+        /* ---- How I work — sticky stack --------------------------- */
+        .stack {
+            position: relative;
+        }
+
+        .principle {
+            position: sticky;
+            top: 22vh;
+            padding-bottom: 32vh;
+            will-change: opacity, transform, filter;
+        }
+
+        .principle:last-child {
+            padding-bottom: 0;
+        }
+
+        .principle-num {
+            display: block;
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .16em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .principle p {
+            margin-top: 1.25rem;
+            font-size: var(--lead);
+            line-height: 1.5;
+            color: var(--ink-soft);
+            max-width: 40ch;
+        }
+
+        /* ---- What I do — two accent cards ------------------------ */
+        .cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-24);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            align-items: stretch;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: var(--on-accent);
+        }
+
+        .card.is-alt {
+            background: var(--accent-2);
+        }
+
+        .card .card-kicker {
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            opacity: .72;
+        }
+
+        .card h3 {
+            font-size: var(--heading);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -.02em;
+            max-width: 20ch;
+        }
+
+        .card p {
+            margin-top: auto;
+            padding-top: .75rem;
+            line-height: 1.55;
+            opacity: .82;
+            max-width: 44ch;
+        }
+
+        /* ---- Background: experience + toolkit -------------------- */
+        .split {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+            gap: clamp(2.5rem, 6vw, 6rem);
+            align-items: start;
+        }
+
+        .roles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role {
+            display: grid;
+            grid-template-columns: 8.5rem minmax(0, 1fr);
+            gap: 1.5rem;
+            padding-block: 1.75rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .role:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .role-when {
+            font-size: var(--meta);
+            color: var(--ink-faint);
+            font-variant-numeric: tabular-nums;
+            padding-top: .2rem;
+        }
+
+        .role h3 {
+            font-size: 1.0625rem;
+            font-weight: 500;
+            letter-spacing: -.01em;
+        }
+
+        .role .where {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-top: .25rem;
+            font-size: var(--meta);
+            color: var(--ink-soft);
+        }
+
+        .now {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .15rem .5rem;
+            border-radius: var(--pill);
+            background: rgba(194, 168, 255, .16);
+            color: var(--accent);
+            font-size: .6875rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .role p {
+            margin-top: .85rem;
+            font-size: .9375rem;
+            color: var(--ink-soft);
+            max-width: 54ch;
+        }
+
+        .role b {
+            color: var(--ink);
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .toolkit {
+            position: sticky;
+            top: 7rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .tool-group h3 {
+            font-size: var(--meta);
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: .85rem;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .chips li {
+            padding: .4rem .75rem;
+            border-radius: var(--pill);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            font-size: .8125rem;
+            color: var(--ink-soft);
+        }
+
+        /* ---- More projects --------------------------------------- */
+        .minis {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: clamp(.75rem, 1.5vw, 1rem);
             align-items: stretch;
         }
 
         .mini {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-8);
-            padding: var(--card-padding);
-            background: var(--surface-card);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(244, 239, 232, .22);
-            border-radius: var(--radius-cards);
-            box-shadow: var(--shadow-card);
-            transition: border-color .15s var(--ease), transform .3s var(--ease);
+            gap: .6rem;
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            transition: border-color var(--fast) var(--ease),
+                background var(--fast) var(--ease),
+                transform var(--fast) var(--ease);
         }
 
         a.mini:hover {
-            border-color: rgba(244, 239, 232, .45);
-            transform: translateY(-3px);
+            background: var(--surface-raised);
+            border-color: var(--line-strong);
         }
 
-        a.mini:active { transform: translateY(0); }
-
-        @media (prefers-reduced-motion: reduce) {
-            .mini { transition: none; }
-            a.mini:hover { transform: none; }
+        a.mini:active {
+            transform: scale(.99);
         }
 
-        .mini-head {
+        .mini-top {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             justify-content: space-between;
-            gap: var(--spacing-8);
-            min-height: 22px;
+            gap: .75rem;
         }
-
-        .mini-head h3 { flex: 1 1 auto; }
 
         .mini h3 {
-            font-size: var(--text-body);
-            line-height: 1.2;
-            letter-spacing: -0.025em;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: -.01em;
         }
 
-        .mini p {
-            color: var(--color-ink-soft);
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            flex: 1;
-        }
-
-        .mini .arw { width: 15px; height: 15px; color: var(--color-ink-soft); }
-
-        .win {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            color: var(--color-olive-deep);
-            font-feature-settings: "ss01" on;
+        .mini .flag {
+            padding: .15rem .5rem;
+            border-radius: var(--pill);
+            background: rgba(255, 239, 147, .14);
+            color: var(--accent-2);
+            font-size: .6875rem;
+            font-weight: 600;
+            letter-spacing: .06em;
             white-space: nowrap;
         }
 
-        .mini.cta {
-            justify-content: center;
-            gap: var(--spacing-16);
+        .mini p {
+            font-size: .9375rem;
+            color: var(--ink-soft);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .mini.cta .big {
-            font-family: var(--font-neuehaasdisplay);
-            font-size: var(--text-heading);
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            font-weight: var(--font-weight-medium);
-            font-variant-numeric: tabular-nums;
+        .mini .stack-line {
+            margin-top: auto;
+            padding-top: .75rem;
+            font-size: var(--meta);
+            color: var(--ink-faint);
         }
 
-        .mini.cta .lbl {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            color: var(--color-ink-soft);
+        /* ---- Final CTA ------------------------------------------- */
+        .final {
+            border-top: 1px solid var(--line);
+            padding-block: clamp(4rem, 9vw, 7rem);
+            text-align: center;
         }
 
-        @media (max-width: 1000px) {
-            .more-grid { grid-template-columns: repeat(2, 1fr); }
+        .final .title {
+            margin-inline: auto;
+            max-width: 18ch;
         }
 
-        @media (max-width: 560px) {
-            .more-grid { grid-template-columns: 1fr; gap: var(--spacing-16); }
+        .final .cta {
+            margin-top: clamp(1.75rem, 3vw, 2.5rem);
+            padding: .95rem 1.6rem;
+            font-size: 1rem;
         }
 
-        /* ============================================================
-           SKILLS
-           ============================================================ */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-40) var(--spacing-48);
+        /* ---- Footer ---------------------------------------------- */
+        .footer {
+            border-top: 1px solid var(--line);
+            padding-block: clamp(3rem, 6vw, 4.5rem);
         }
 
-        .skill-group h3 {
-            font-family: var(--font-geist-mono);
-            font-size: var(--text-caption);
-            letter-spacing: .05em;
-            font-weight: var(--font-weight-medium);
-            color: var(--color-olive-deep);
-            margin-bottom: var(--spacing-16);
-            padding-bottom: var(--spacing-8);
-            border-bottom: 1px solid var(--color-rule);
-            font-feature-settings: "ss01" on;
-        }
-
-        .chips { display: flex; flex-wrap: wrap; gap: var(--element-gap); }
-
-        .chip {
-            font-size: var(--text-body-sm);
-            line-height: var(--leading-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            background: var(--surface-glass);
-            border: 1px solid var(--color-line);
-            border-radius: var(--radius-badges);
-            padding: 5px 14px;
-        }
-
-        @media (max-width: 760px) {
-            .skills-grid { grid-template-columns: 1fr; gap: var(--spacing-32); }
-        }
-
-        /* ============================================================
-           CONTACT + FOOTER
-           ============================================================ */
-        .contact h2 { color: var(--color-olive-branch); max-width: 16ch; }
-
-        .contact-cta {
-            margin-top: var(--spacing-32);
+        .footer-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-16);
-        }
-
-        .contact-links {
-            margin-top: var(--spacing-48);
-            padding-top: var(--spacing-24);
-            border-top: 1px solid var(--color-rule);
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-16) var(--spacing-32);
-        }
-
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--element-gap);
-            min-height: 44px;
-            font-size: var(--text-body-sm);
-            letter-spacing: var(--tracking-body-sm);
-            color: var(--color-ink-soft);
-            box-shadow: inset 0 -1px 0 transparent;
-            transition: color .15s var(--ease), box-shadow .15s var(--ease);
-        }
-
-        .contact-links a:hover {
-            color: var(--color-ink);
-            box-shadow: inset 0 -1px 0 var(--color-ink);
-        }
-
-        @media (max-width: 560px) {
-            .contact-cta { flex-direction: column; align-items: stretch; }
-            .contact-cta .btn,
-            .contact-cta .btn-ghost { width: 100%; }
-        }
-
-        footer {
-            background: var(--surface-glass);
-            -webkit-backdrop-filter: var(--glass-blur);
-            backdrop-filter: var(--glass-blur);
-            border-top: 1px solid var(--color-line);
-        }
-
-        .foot {
-            padding-block: var(--spacing-32);
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-8) var(--spacing-24);
+            gap: var(--gap-block);
             justify-content: space-between;
-            color: var(--color-ink-soft);
+            align-items: flex-start;
         }
 
-        /* No backdrop-filter support, or reduced-transparency users:
-           solid moss panels, flat canvas. */
-        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-            :root {
-                --surface-glass: #201d1a;
-                --surface-glass-strong: #262220;
-                --surface-glass-hover: #2f2a26;
+        .footer-brand p {
+            margin-top: .6rem;
+            color: var(--ink-soft);
+            max-width: 34ch;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: var(--ink-soft);
+            transition: color var(--fast) var(--ease);
+        }
+
+        .footer-links a:hover {
+            color: var(--ink);
+        }
+
+        .footer-base {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: var(--gap-block);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+            font-size: var(--meta);
+            color: var(--ink-faint);
+        }
+
+        /* ============================================================
+           INTRO — hero entrance, word by word
+           ============================================================ */
+        .hero .kicker,
+        .hero .lead,
+        .hero-scroll {
+            opacity: 0;
+            animation: rise 900ms var(--ease) forwards;
+        }
+
+        .hero .kicker {
+            animation-delay: 120ms;
+        }
+
+        .hero .lead {
+            animation-delay: 640ms;
+        }
+
+        .hero-scroll {
+            animation-delay: 840ms;
+        }
+
+        .display .w {
+            display: inline-block;
+            opacity: 0;
+            animation: rise 850ms var(--ease) forwards;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(.55em);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ============================================================
+           REVEAL — scroll-in for sections
+           ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+        }
+
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal .work-panel {
+            transform: scale(.965);
+            transition: transform 1200ms var(--ease);
+        }
+
+        .reveal.is-in .work-panel {
+            transform: none;
+        }
+
+        /* ============================================================
+           RESPONSIVE — mobile first corrections
+           ============================================================ */
+        @media (max-width: 900px) {
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .toolkit {
+                position: static;
+            }
+
+            .role {
+                grid-template-columns: 1fr;
+                gap: .5rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+            }
+
+            .brand .brand-full {
+                display: none;
+            }
+
+            .brand .brand-short {
+                display: inline;
+            }
+
+            .nav-inner {
+                justify-content: space-between;
+                gap: .65rem;
+                background: rgba(36, 36, 36, .72);
+                border-color: var(--line);
+                backdrop-filter: blur(18px) saturate(140%);
+                -webkit-backdrop-filter: blur(18px) saturate(140%);
+            }
+
+            .nav.is-open .nav-links {
+                position: absolute;
+                top: calc(100% + .5rem);
+                left: var(--pad-x);
+                right: var(--pad-x);
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                margin: 0;
+                padding: .5rem;
+                border-radius: var(--radius-sm);
+                background: var(--surface-raised);
+                border: 1px solid var(--line);
+            }
+
+            .nav.is-open .nav-links a {
+                display: flex;
+                align-items: center;
+                min-height: 48px;
+                padding-inline: .75rem;
+            }
+
+            .work-panel {
+                aspect-ratio: 4 / 3;
+            }
+
+            .principle {
+                position: static;
+                padding-bottom: var(--gap-block);
+            }
+        }
+
+        /* ============================================================
+           PREFERENCES
+           ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+            .principle {
+                position: static;
+                padding-bottom: var(--gap-block);
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
 
         @media (prefers-reduced-transparency: reduce) {
-            :root {
-                --surface-glass: #201d1a;
-                --surface-glass-strong: #262220;
-                --surface-glass-hover: #2f2a26;
-                --glass-blur: none;
+            .nav.is-folded .nav-inner,
+            .nav-inner {
+                background: var(--surface-raised);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
             }
-
-            body::before,
-            body::after { display: none; }
-        }
-
-        /* ============================================================
-           SCROLL REVEAL
-           ============================================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity .8s var(--ease), transform .8s var(--ease);
-        }
-
-        .more-grid .reveal:nth-child(4n+2),
-        .skills-grid .reveal:nth-child(2n) { transition-delay: .08s; }
-
-        .more-grid .reveal:nth-child(4n+3) { transition-delay: .16s; }
-
-        .more-grid .reveal:nth-child(4n+4) { transition-delay: .24s; }
-
-        .reveal.in { opacity: 1; transform: none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
 </head>
 
 <body>
+    <a class="skip" href="#main">Skip to main content</a>
 
-    <div class="film" aria-hidden="true"></div>
+    <!-- ============================ NAV ============================ -->
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-full">Mukesh Kumar</span>
+                <span class="brand-short">M K</span>
+            </a>
 
-    <div class="rail" aria-hidden="true">
-        <span class="rail-label" id="railLabel">intro</span>
-        <span class="rail-track"><span class="rail-thumb" id="railThumb"></span></span>
-    </div>
+            <nav class="nav-links" id="navLinks" aria-label="Primary">
+                <a href="#work">Work</a>
+                <a href="#process">Process</a>
+                <a href="#background">Background</a>
+            </nav>
 
-    <header>
-        <nav class="nav" aria-label="Primary">
-            <a href="#top" class="brand"><span class="brand-name">Mukesh</span><span class="dots"><i></i><i></i><i></i></span></a>
-            <div class="nav-links">
-                <a href="#work" class="link">Work</a>
-                <a href="#experience" class="link">Experience</a>
-                <a href="#skills" class="link">Skills</a>
-            </div>
-            <div class="nav-end">
-                <a href="#contact" class="btn btn-secondary nav-cta">Get in touch</a>
-                <a href="#top" class="to-top" aria-label="Back to top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <path d="M12 19V5M5 12l7-7 7 7" />
-                    </svg>
-                </a>
-                <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
-            </div>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#work">Work</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+            <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">
+                Menu
+            </button>
+
+            <a class="cta" href="mailto:mukesh@poetistic.com">
+                Contact
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
         </div>
     </header>
 
-    <main id="top">
-
+    <main id="main">
         <!-- ============================ HERO ============================ -->
-        <section class="hero" aria-label="Introduction">
-            <div class="glow glow-hero" aria-hidden="true"></div>
-            <figure class="hero-photo">
-                <img src="portrait.png" alt="Portrait of Mukesh Kumar"
-                    onerror="this.parentElement.style.display='none'">
-            </figure>
-            <div class="wrap hero-inner">
-                <div class="kick mono">[ ai &amp; backend engineer — remote, us &amp; europe ]</div>
-                <h1>Mukesh Kumar<br><span class="dim">builds fast systems.</span></h1>
-                <p class="lead">Real-time <b>voice AI agents</b>, automation that kills manual work, and
-                    backends that stay fast at scale — <b>shipping since 2021</b>.</p>
+        <section class="hero wrap" id="top">
+            <p class="kicker">AI &amp; Backend Engineer <em>·</em> <span>Remote — US &amp; Europe</span></p>
+            <h1 class="display">I build systems that <span class="dim">stay fast under load.</span></h1>
+            <p class="lead">Real-time voice AI agents, automation that removes manual work, and backends
+                that hold up at scale — shipping production software since 2021.</p>
+            <a class="hero-scroll" href="#work">
+                Selected work
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+        </section>
+
+        <!-- ============================ MARQUEE ============================ -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>5 years shipping production software</span>
+                <span>Real-time voice AI · sub-second latency</span>
+                <span>AIR 106 LeetCode — top 0.3% of 29,000</span>
+                <span>12+ full-stack projects delivered</span>
+                <span>5 years shipping production software</span>
+                <span>Real-time voice AI · sub-second latency</span>
+                <span>AIR 106 LeetCode — top 0.3% of 29,000</span>
+                <span>12+ full-stack projects delivered</span>
+            </div>
+        </div>
+
+        <!-- ============================ PROCESS ============================ -->
+        <section class="section wrap" id="process">
+            <h2 class="section-label">How I work</h2>
+
+            <div class="stack" id="stack">
+                <article class="principle">
+                    <span class="principle-num">01</span>
+                    <h3 class="title">I start at the bottleneck, not the ticket.</h3>
+                    <p>Before writing anything I want to know what's actually slow, manual or breaking —
+                        and what "fixed" looks like in a number you can check.</p>
+                </article>
+
+                <article class="principle">
+                    <span class="principle-num">02</span>
+                    <h3 class="title">The metric is the deliverable.</h3>
+                    <p>Latency, throughput, hours saved, efficiency gained. If a change can't be measured,
+                        it's decoration, and I'll say so before building it.</p>
+                </article>
+
+                <article class="principle">
+                    <span class="principle-num">03</span>
+                    <h3 class="title">Range is the point.</h3>
+                    <p>Voice AI, data pipelines, factory-floor automation, frontend performance. Different
+                        stacks, same job every time: find the bottleneck, automate the tedious part, ship
+                        something reliable.</p>
+                </article>
+
+                <article class="principle">
+                    <span class="principle-num">04</span>
+                    <h3 class="title">You'll always know where it stands.</h3>
+                    <p>Remote across US and Europe timezones since 2021. Clear updates, no surprises,
+                        and enough context to course-correct early instead of late.</p>
+                </article>
             </div>
         </section>
 
-        <!-- ============================ ABOUT ============================ -->
-        <section class="wrap" id="about" data-rail="00 — about" style="position:relative">
-            <div class="glow glow-green" style="right:-30%;top:-14%" aria-hidden="true"></div>
-            <h2 class="vh">About</h2>
-            <div class="eyebrow reveal">00 — about</div>
-            <div class="about-grid">
-                <div class="about-copy reveal">
-                    <p>I'm <strong>Mukesh</strong> (I also go by <strong>Marco</strong>) — an AI and backend engineer
-                        in Gurugram, India, working remotely with teams in the US and Europe. I build things that
-                        solve real problems: <strong>AI-powered features</strong>, <strong>automation</strong> that
-                        removes manual work, internal tools, and backends that stay fast under load.</p>
-                    <p>My range is the point. I've engineered real-time voice AI agents, built a browser engine that
-                        chews through 5–10GB CSVs without a crash, and automated a factory floor to lift production
-                        efficiency 20–25%. Different stacks, same job every time: <strong>find the bottleneck,
-                        automate the tedious part, and ship something reliable.</strong></p>
-                    <p>I care about fundamentals — I placed <strong>AIR 106</strong> in a LeetCode contest, top 0.3%
-                        of 29,000 competitors — and about shipping and communicating clearly. If you've got a problem
-                        worth automating or an AI idea worth building, let's talk.</p>
+        <!-- ============================ WHAT I DO ============================ -->
+        <section class="section wrap">
+            <h2 class="section-label">What I do</h2>
+            <div class="cards">
+                <article class="card reveal">
+                    <p class="card-kicker">AI &amp; Voice Systems</p>
+                    <h3>For teams putting AI into a real product</h3>
+                    <p>Real-time voice agents, model routing, streaming pipelines and the latency work that
+                        makes them feel like a conversation instead of a demo.</p>
+                </article>
+
+                <article class="card is-alt reveal">
+                    <p class="card-kicker">Backends &amp; Automation</p>
+                    <h3>For teams whose systems buckle at scale</h3>
+                    <p>APIs, data engines, internal tools and CI/CD — built to hold throughput, and to remove
+                        the manual step someone is currently doing by hand.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================ BACKGROUND ============================ -->
+        <section class="section wrap" id="background">
+            <h2 class="section-label">Background</h2>
+
+            <div class="split">
+                <div class="roles">
+                    <article class="role">
+                        <p class="role-when">Jan 2026 — Present</p>
+                        <div>
+                            <h3>Software Engineer</h3>
+                            <p class="where">Poetistic · Remote <span class="now">Now</span></p>
+                            <p>Core Web Vitals from <b>60 → 90+</b>, a Nuxt 2 → Nuxt 3 migration, scalable
+                                Laravel APIs, and a multi-language publishing system for poetry.</p>
+                        </div>
+                    </article>
+
+                    <article class="role">
+                        <p class="role-when">Jun 2025 — Nov 2025</p>
+                        <div>
+                            <h3>Software Engineer</h3>
+                            <p class="where">HumanAI · Remote</p>
+                            <p>Real-time voice AI backend in Python, FastAPI and LiveKit — latency
+                                <b>3s → ~1s</b>, Next.js SSR landing page, and CI/CD trimmed
+                                <b>~50% (4m → 2m)</b>.</p>
+                        </div>
+                    </article>
+
+                    <article class="role">
+                        <p class="role-when">Feb 2025 — May 2025</p>
+                        <div>
+                            <h3>Python Developer Intern</h3>
+                            <p class="where">JustGetLeads · Remote</p>
+                            <p>A browser data engine for <b>5–10GB</b> CSVs using chunked processing, Parquet,
+                                Redis and Django/Celery. Also shipped "Deep", a role-based fitness tracker.</p>
+                        </div>
+                    </article>
+
+                    <article class="role">
+                        <p class="role-when">Mar 2024 — Aug 2024</p>
+                        <div>
+                            <h3>Software Developer Intern</h3>
+                            <p class="where">Figleo Web Services · Hybrid</p>
+                            <p>Steel-industry process automation in React, Django and PostgreSQL for a
+                                <b>20–25%</b> efficiency gain, plus Apps Script micro-tools for invoicing
+                                and outreach.</p>
+                        </div>
+                    </article>
+
+                    <article class="role">
+                        <p class="role-when">2021 — Present</p>
+                        <div>
+                            <h3>Freelance Developer</h3>
+                            <p class="where">Independent · Remote <span class="now">Now</span></p>
+                            <p><b>12+</b> full-stack projects end to end across FastAPI, Flask, Next.js and
+                                React — business sites, billing and inventory systems, and an immigration
+                                client-intake portal.</p>
+                        </div>
+                    </article>
                 </div>
 
-                <aside class="about-card reveal">
-                    <h3>At a glance</h3>
-                    <div class="fact">
-                        <span class="glyph" aria-hidden="true">
-                            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-                                <circle cx="12" cy="12" r="4" />
-                            </svg>
-                        </span>
-                        <div><b>AI &amp; Backend Engineer</b><span class="sub">Building &amp; shipping since
-                                2021</span></div>
+                <aside class="toolkit">
+                    <div class="tool-group">
+                        <h3>Languages</h3>
+                        <ul class="chips">
+                            <li>Python</li>
+                            <li>TypeScript</li>
+                            <li>JavaScript</li>
+                            <li>SQL</li>
+                            <li>PHP</li>
+                        </ul>
                     </div>
-                    <div class="fact">
-                        <span class="glyph" aria-hidden="true">
-                            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-                                <circle cx="12" cy="12" r="9" />
-                            </svg>
-                        </span>
-                        <div><b>Remote — US &amp; Europe</b><span class="sub">Timezone-flexible
-                                collaboration</span></div>
+                    <div class="tool-group">
+                        <h3>Backend</h3>
+                        <ul class="chips">
+                            <li>FastAPI</li>
+                            <li>Django</li>
+                            <li>Flask</li>
+                            <li>Laravel</li>
+                            <li>Node.js</li>
+                            <li>Celery</li>
+                        </ul>
                     </div>
-                    <div class="fact">
-                        <span class="glyph" aria-hidden="true">
-                            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="m12 2 2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L12 20l-5 2.6 1.2-5.6L4 13.2l5.6-.6z" />
-                            </svg>
-                        </span>
-                        <div><b>AI, automation &amp; tooling</b><span class="sub">Voice AI · integrations ·
-                                scripts</span></div>
+                    <div class="tool-group">
+                        <h3>Frontend</h3>
+                        <ul class="chips">
+                            <li>Next.js</li>
+                            <li>React</li>
+                            <li>Nuxt 3</li>
+                            <li>Vue</li>
+                            <li>React Native</li>
+                        </ul>
                     </div>
-                    <div class="fact">
-                        <span class="glyph" aria-hidden="true">
-                            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 3v18h18" />
-                                <path d="m7 15 3-4 3 2 4-6" />
-                            </svg>
-                        </span>
-                        <div><b>Performance-obsessed</b><span class="sub">Core Web Vitals &amp; scale</span></div>
+                    <div class="tool-group">
+                        <h3>Data &amp; Infra</h3>
+                        <ul class="chips">
+                            <li>PostgreSQL</li>
+                            <li>Redis</li>
+                            <li>Parquet</li>
+                            <li>LiveKit</li>
+                            <li>Docker</li>
+                            <li>CI/CD</li>
+                        </ul>
                     </div>
                 </aside>
             </div>
         </section>
 
-        <!-- ============================ EXPERIENCE ============================ -->
-        <section class="wrap" id="experience" data-rail="01 — experience">
-            <h2 class="vh">Experience</h2>
-            <div class="eyebrow reveal">01 — experience</div>
-            <div class="role-list">
-
-                <article class="role reveal">
-                    <div class="role-aside">
-                        <span class="role-date">Jan 2026 — Present</span>
-                        <span class="role-org">Poetistic · Remote</span>
-                        <span class="badge-now">now</span>
+        <!-- ============================ MORE PROJECTS ============================ -->
+        <section class="section wrap">
+            <h2 class="section-label">More projects</h2>
+            <div class="minis">
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Rescue Connect</h3>
+                        <span class="flag">SIH Winner '24</span>
                     </div>
-                    <div class="role-main">
-                        <h3>Software Engineer</h3>
-                        <ul>
-                            <li>Lifted website performance from <span class="metric-inline">60 → 90+</span> across
-                                Core Web Vitals (LCP, CLS, FID) via lazy loading, asset compression, and frontend
-                                optimization.</li>
-                            <li>Migrated the frontend from <b>Nuxt 2 to Nuxt 3</b>, and built scalable <b>Laravel</b>
-                                APIs with database optimizations tuned for high traffic.</li>
-                            <li>Designed a multi-language content system for publishing poetry across languages.</li>
-                        </ul>
-                    </div>
+                    <p>Rescue-agency platform with live map tracking across 50+ locations and 24/7 monitoring.</p>
+                    <p class="stack-line">React · Redux · MapBox</p>
                 </article>
 
-                <article class="role reveal">
-                    <div class="role-aside">
-                        <span class="role-date">Jun 2025 — Nov 2025</span>
-                        <span class="role-org">HumanAI · Remote</span>
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Kuldeep Poultry</h3>
                     </div>
-                    <div class="role-main">
-                        <h3>Software Engineer</h3>
-                        <ul>
-                            <li>Engineered the backend for <b>real-time voice AI agents</b> (Python, FastAPI,
-                                LiveKit), cutting greeting/response latency from <span class="metric-inline">3s →
-                                    ~1s</span> (66%).</li>
-                            <li>Re-architected the landing page with <b>Next.js SSR</b> + caching for stronger Core
-                                Web Vitals and SEO.</li>
-                            <li>Built services for real-time call-data capture, dynamic model switching, and dynamic
-                                summary generation using Redis caching + background processing.</li>
-                            <li>Tightened CI/CD, cutting build &amp; deploy times <span
-                                    class="metric-inline">~50%</span> (4m → 2m).</li>
-                        </ul>
-                    </div>
+                    <p>Operations app connecting the company to its farmers — drove 15% business growth.</p>
+                    <p class="stack-line">Django · React Native</p>
                 </article>
 
-                <article class="role reveal">
-                    <div class="role-aside">
-                        <span class="role-date">Feb 2025 — May 2025</span>
-                        <span class="role-org">JustGetLeads · Remote</span>
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Manita Collection</h3>
                     </div>
-                    <div class="role-main">
-                        <h3>Python Developer Intern</h3>
-                        <ul>
-                            <li>Architected a high-volume data engine that processes and visualizes <span
-                                    class="metric-inline">5–10GB</span> CSV files entirely in the browser.</li>
-                            <li>Combined chunked processing, Parquet compression, Redis caching, and Django/Celery
-                                async tasks — no crashes, no timeouts.</li>
-                            <li>Built "Deep," a role-based fitness tracking app (React.js, Firebase) with data
-                                visualization.</li>
-                        </ul>
-                    </div>
+                    <p>E-commerce app that digitised a clothing business's entirely manual sales process.</p>
+                    <p class="stack-line">Django · React Native</p>
                 </article>
 
-                <article class="role reveal">
-                    <div class="role-aside">
-                        <span class="role-date">Mar 2024 — Aug 2024</span>
-                        <span class="role-org">Figleo Web Services · Hybrid</span>
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Saundrya Earth</h3>
                     </div>
-                    <div class="role-main">
-                        <h3>Software Developer Intern</h3>
-                        <ul>
-                            <li>Built a full-lifecycle <b>Steel Industry Process Automation</b> app (React, Django,
-                                PostgreSQL).</li>
-                            <li>Automated inventory, reporting, and process management for a <span
-                                    class="metric-inline">20–25%</span> production efficiency gain.</li>
-                            <li>Shipped micro-tools via Google Apps Script — invoice generation, lead management, and
-                                bulk WhatsApp/Email.</li>
-                        </ul>
-                    </div>
+                    <p>Branded marketing site built on reusable components with third-party API integrations.</p>
+                    <p class="stack-line">Next.js · Node</p>
                 </article>
 
-                <article class="role reveal">
-                    <div class="role-aside">
-                        <span class="role-date">2021 — Present</span>
-                        <span class="role-org">Independent · Remote</span>
-                        <span class="badge-now">now</span>
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Tackt</h3>
                     </div>
-                    <div class="role-main">
-                        <h3>Freelance Developer</h3>
-                        <ul>
-                            <li>Delivered <span class="metric-inline">12+</span> full-stack projects for real clients
-                                across <b>FastAPI, Flask, Next.js, and React</b> — end to end, from database to
-                                deploy.</li>
-                            <li>The constant through my B.Tech and beyond: shipping production software independently
-                                since 2021.</li>
-                            <li>Business websites, billing/inventory systems, and an immigration client-intake portal
-                                (Next.js · Neon Postgres · Cloudflare R2).</li>
-                        </ul>
-                    </div>
+                    <p>A wall-of-sticky-notes todo app with a glassmorphism interface.</p>
+                    <p class="stack-line">JavaScript · Tailwind</p>
                 </article>
 
+                <article class="mini reveal">
+                    <div class="mini-top">
+                        <h3>Face Recognition</h3>
+                    </div>
+                    <p>Real-time student face detection with Haar Cascade plus attendance record management.</p>
+                    <p class="stack-line">Flask · OpenCV</p>
+                </article>
+
+                <a class="mini reveal" href="https://github.com/mukeshxmarco" target="_blank" rel="noopener">
+                    <div class="mini-top">
+                        <h3>14+ more on GitHub</h3>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M3.5 10.5 10.5 3.5M5 3.5h5.5V9" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p>Side projects, experiments and the things that never made it to a case study.</p>
+                    <p class="stack-line">github.com/mukeshxmarco</p>
+                </a>
             </div>
         </section>
 
-        <!-- ============================ WORK ============================ -->
-        <section class="wrap" id="work" data-rail="02 — selected work" style="position:relative">
-            <div class="glow glow-orange" style="left:-12%;top:8%" aria-hidden="true"></div>
-            <div class="eyebrow reveal">02 — selected work</div>
-            <h2 class="reveal">Problems solved, at speed and scale.</h2>
-            <p class="section-intro reveal">AI, automation, and backend work — each one shipped to fix a concrete
-                problem under real constraints. The metric is the point.</p>
+        <!-- ============================ SELECTED WORK ============================ -->
+        <section class="section wrap" id="work">
+            <h2 class="section-label">Selected Work</h2>
 
             <div class="work-list">
-                <article class="work-row reveal">
-                    <span class="work-idx">| 01 |</span>
-                    <div class="work-main">
-                        <h3>Real-time Voice AI Agent Backend</h3>
-                        <p class="prob">Backend powering live voice agents — real-time call-data capture, dynamic
-                            model switching, and sub-second responses under production load.</p>
-                        <div class="tags">
-                            <span class="tag">FastAPI</span><span class="tag">LiveKit</span><span
-                                class="tag">Python</span><span class="tag">Redis</span>
-                        </div>
+                <article class="work-item reveal">
+                    <div class="work-panel" style="--glow: var(--accent)">
+                        <p class="work-metric"><b>3s → 1s</b><small>Greeting latency, −66%</small></p>
                     </div>
-                    <div class="work-metric">3s→1s<small>latency</small></div>
+                    <ul class="work-tags">
+                        <li>Voice AI</li>
+                        <li>FastAPI</li>
+                        <li>LiveKit</li>
+                        <li>Redis</li>
+                        <li>Real-time</li>
+                    </ul>
+                    <h3>Real-time voice AI agent backend — from a three-second pause to a conversation.</h3>
+                    <p>Backend powering live voice agents: real-time call-data capture, dynamic model switching,
+                        and summary generation on background workers. Cut greeting and response latency by
+                        two thirds under production load.</p>
                 </article>
 
-                <article class="work-row reveal">
-                    <span class="work-idx">| 02 |</span>
-                    <div class="work-main">
-                        <h3>High-Volume Data Engine</h3>
-                        <p class="prob">Processes and visualizes multi-gigabyte CSVs in the browser without crashes
-                            or timeouts — chunked processing, Parquet compression, and async workers.</p>
-                        <div class="tags">
-                            <span class="tag">Django</span><span class="tag">Celery</span><span
-                                class="tag">Parquet</span><span class="tag">Redis</span>
-                        </div>
+                <article class="work-item reveal">
+                    <div class="work-panel" style="--glow: var(--accent-2)">
+                        <p class="work-metric"><b>5–10GB</b><small>CSVs, parsed in the browser</small></p>
                     </div>
-                    <div class="work-metric">5–10GB<small>in-browser</small></div>
+                    <ul class="work-tags">
+                        <li>Data engineering</li>
+                        <li>Django</li>
+                        <li>Celery</li>
+                        <li>Parquet</li>
+                    </ul>
+                    <h3>High-volume data engine — multi-gigabyte files with no crashes and no timeouts.</h3>
+                    <p>Chunked processing, Parquet compression, Redis caching and async Celery workers let
+                        the browser process and visualise files that used to need a desktop tool.</p>
                 </article>
 
-                <article class="work-row reveal">
-                    <span class="work-idx">| 03 |</span>
-                    <div class="work-main">
-                        <h3>Industrial Process Automation</h3>
-                        <p class="prob">Full-lifecycle automation for a steel manufacturer — inventory, reporting,
-                            and process management — lifting production efficiency measurably.</p>
-                        <div class="tags">
-                            <span class="tag">React</span><span class="tag">Django</span><span
-                                class="tag">PostgreSQL</span>
-                        </div>
+                <article class="work-item reveal">
+                    <div class="work-panel" style="--glow: var(--accent)">
+                        <p class="work-metric"><b>+20–25%</b><small>Production efficiency</small></p>
                     </div>
-                    <div class="work-metric">+20–25%<small>efficiency</small></div>
+                    <ul class="work-tags">
+                        <li>Automation</li>
+                        <li>React</li>
+                        <li>Django</li>
+                        <li>PostgreSQL</li>
+                    </ul>
+                    <h3>Industrial process automation for a steel manufacturer, floor to reporting.</h3>
+                    <p>Full-lifecycle automation covering inventory, reporting and process management —
+                        replacing the spreadsheet-and-clipboard workflow the plant had been running on.</p>
                 </article>
 
-                <article class="work-row reveal">
-                    <span class="work-idx">| 04 |</span>
-                    <div class="work-main">
-                        <h3>Client Work</h3>
-                        <p class="prob">Small-business sites with billing/inventory systems, and an immigration
-                            client-intake portal — from database to deploy.</p>
-                        <div class="tags">
-                            <span class="tag">Next.js</span><span class="tag">Neon Postgres</span><span
-                                class="tag">Cloudflare R2</span>
-                        </div>
+                <article class="work-item reveal">
+                    <div class="work-panel" style="--glow: var(--accent-2)">
+                        <p class="work-metric"><b>60 → 90+</b><small>Core Web Vitals score</small></p>
                     </div>
-                    <div class="work-metric">Full-stack<small>shipped</small></div>
+                    <ul class="work-tags">
+                        <li>Performance</li>
+                        <li>Nuxt 3</li>
+                        <li>Laravel</li>
+                        <li>SSR</li>
+                    </ul>
+                    <h3>Performance and platform work at Poetistic — a multi-language publishing system.</h3>
+                    <p>Lifted LCP, CLS and FID from 60 to 90+ with lazy loading, asset compression and a
+                        Nuxt 2 → Nuxt 3 migration, on Laravel APIs tuned for high traffic.</p>
                 </article>
-            </div>
-
-            <div class="more reveal">
-                <div class="more-label">more projects</div>
-                <div class="more-grid">
-
-                    <a class="mini" href="https://tackt.vercel.app/" target="_blank" rel="noopener">
-                        <div class="mini-head">
-                            <h3>Tackt</h3>
-                            <svg class="ic arw" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 17 17 7M7 7h10v10" />
-                            </svg>
-                        </div>
-                        <p>A wall-of-sticky-notes todo app with a glassmorphism UI.</p>
-                        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Tailwind</span></div>
-                    </a>
-
-                    <a class="mini" href="https://www.saundryaearth.com/" target="_blank" rel="noopener">
-                        <div class="mini-head">
-                            <h3>Saundrya Earth</h3>
-                            <svg class="ic arw" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 17 17 7M7 7h10v10" />
-                            </svg>
-                        </div>
-                        <p>Branded marketing site with reusable components and API integrations.</p>
-                        <div class="tags"><span class="tag">Next.js</span><span class="tag">Node</span></div>
-                    </a>
-
-                    <a class="mini" href="https://www.manitacollectiondhansa.in/" target="_blank" rel="noopener">
-                        <div class="mini-head">
-                            <h3>Manita Collection</h3>
-                            <svg class="ic arw" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 17 17 7M7 7h10v10" />
-                            </svg>
-                        </div>
-                        <p>E-commerce app that digitized a clothing business's manual sales process.</p>
-                        <div class="tags"><span class="tag">Django</span><span class="tag">React Native</span></div>
-                    </a>
-
-                    <a class="mini" href="https://kuldeeppoultry.in/" target="_blank" rel="noopener">
-                        <div class="mini-head">
-                            <h3>Kuldeep Poultry</h3>
-                            <svg class="ic arw" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 17 17 7M7 7h10v10" />
-                            </svg>
-                        </div>
-                        <p>Ops app connecting the company and farmers — drove 15% business growth.</p>
-                        <div class="tags"><span class="tag">Django</span><span class="tag">React Native</span></div>
-                    </a>
-
-                    <article class="mini">
-                        <div class="mini-head">
-                            <h3>Rescue Connect</h3>
-                            <span class="win">SIH Winner '24</span>
-                        </div>
-                        <p>Rescue-agency platform with map tracking across 50+ locations, 24/7 monitoring.</p>
-                        <div class="tags"><span class="tag">React</span><span class="tag">Redux</span><span
-                                class="tag">MapBox</span></div>
-                    </article>
-
-                    <article class="mini">
-                        <div class="mini-head">
-                            <h3>"Deep" Fitness SaaS</h3>
-                        </div>
-                        <p>Role-based fitness tracker with data-viz for progress and workout planning.</p>
-                        <div class="tags"><span class="tag">React</span><span class="tag">Firebase</span></div>
-                    </article>
-
-                    <article class="mini">
-                        <div class="mini-head">
-                            <h3>Face Recognition</h3>
-                        </div>
-                        <p>Real-time student face detection (Haar Cascade) with record management.</p>
-                        <div class="tags"><span class="tag">Flask</span><span class="tag">OpenCV</span></div>
-                    </article>
-
-                    <a class="mini cta" href="https://github.com/mukeshxmarco" target="_blank" rel="noopener">
-                        <span class="big">14+</span>
-                        <span class="lbl">more projects on GitHub
-                            <svg class="ic arw" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 17 17 7M7 7h10v10" />
-                            </svg>
-                        </span>
-                    </a>
-
-                </div>
             </div>
         </section>
 
-        <!-- ============================ SKILLS ============================ -->
-        <section class="wrap" id="skills" data-rail="03 — toolkit">
-            <h2 class="vh">Toolkit</h2>
-            <div class="eyebrow reveal">03 — toolkit</div>
-            <div class="skills-grid">
-                <div class="skill-group reveal">
-                    <h3>Languages</h3>
-                    <div class="chips">
-                        <span class="chip">Python</span><span class="chip">TypeScript</span><span
-                            class="chip">JavaScript</span><span class="chip">SQL</span><span
-                            class="chip">PHP</span><span class="chip">HTML/CSS</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Backend / Frameworks</h3>
-                    <div class="chips">
-                        <span class="chip">FastAPI</span><span class="chip">Django</span><span
-                            class="chip">Flask</span><span class="chip">Laravel</span><span
-                            class="chip">Node.js</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Frontend</h3>
-                    <div class="chips">
-                        <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Nuxt 2
-                            &amp; 3</span><span class="chip">React Native</span><span class="chip">Redux
-                            Toolkit</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>AI / Real-time</h3>
-                    <div class="chips">
-                        <span class="chip">Voice AI agents</span><span class="chip">LiveKit</span><span
-                            class="chip">Real-time systems</span><span class="chip">AI integration</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Databases &amp; Caching</h3>
-                    <div class="chips">
-                        <span class="chip">PostgreSQL</span><span class="chip">Redis</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Infra &amp; Tools</h3>
-                    <div class="chips">
-                        <span class="chip">Docker</span><span class="chip">AWS (EC2/ECR/S3/CloudFront)</span><span
-                            class="chip">CI/CD</span><span class="chip">Celery</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Automation</h3>
-                    <div class="chips">
-                        <span class="chip">Google Apps Script</span><span class="chip">Sheets tooling</span><span
-                            class="chip">Workflow automation</span>
-                    </div>
-                </div>
-            </div>
+        <!-- ============================ FINAL CTA ============================ -->
+        <section class="final wrap" id="contact">
+            <h2 class="title">Got something slow, manual, or worth automating?</h2>
+            <a class="cta" href="mailto:mukesh@poetistic.com">
+                Start a conversation
+                <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
         </section>
-
-        <hr class="ornament">
-
-        <!-- ============================ CONTACT ============================ -->
-        <section class="wrap contact" id="contact" data-rail="04 — contact" style="position:relative">
-            <div class="glow glow-blue" style="right:-15%;bottom:-20%" aria-hidden="true"></div>
-            <div class="eyebrow reveal">04 — contact</div>
-            <h2 class="reveal">Let's build something fast.</h2>
-            <p class="section-intro reveal">I'm open to remote roles and freelance work with US &amp; Europe teams,
-                and I keep hours flexible to overlap with your timezone. Tell me what you're building.</p>
-
-            <div class="contact-cta reveal">
-                <a href="mailto:mukeshxmarco@gmail.com" class="btn btn-primary">Email me</a>
-                <a href="tel:+917339758494" class="btn-ghost">+91 73397 58494</a>
-            </div>
-
-            <div class="contact-links reveal">
-                <a href="mailto:mukeshxmarco@gmail.com">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <path d="m3 7 9 6 9-6" />
-                    </svg>mukeshxmarco@gmail.com
-                </a>
-                <a href="https://github.com/mukeshxmarco" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.5 1.3a12 12 0 0 0-6 0C6.6 1.6 5.5 1.9 5.5 1.9a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 4 8.9c0 5 3 6.2 6 6.5a3.4 3.4 0 0 0-1 2.6V22" />
-                    </svg>GitHub
-                </a>
-                <a href="https://linkedin.com/in/mukeshxmarco" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect x="2" y="9" width="4" height="12" />
-                        <circle cx="4" cy="4" r="2" />
-                    </svg>LinkedIn
-                </a>
-                <a href="https://leetcode.com/u/mukeshxmarco/" target="_blank" rel="noopener">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px">
-                        <path d="m14 4-8 8 8 8M8 12h11" />
-                    </svg>LeetCode — AIR 106
-                </a>
-            </div>
-        </section>
-
     </main>
 
-    <footer>
-        <div class="wrap foot">
-            <span class="mono">© <span id="year">2026</span> Mukesh Kumar</span>
-            <span class="mono" id="footTime">Gurugram, IN</span>
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="heading">Mukesh Kumar</p>
+                    <p>AI and backend engineering for teams shipping real products. Gurugram, India —
+                        working remotely across the US and Europe.</p>
+                </div>
+                <nav class="footer-links" aria-label="Elsewhere">
+                    <a href="mailto:mukesh@poetistic.com">mukesh@poetistic.com</a>
+                    <a href="https://github.com/mukeshxmarco" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/mukeshxmarco/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://leetcode.com/u/mukeshxmarco/" target="_blank" rel="noopener">LeetCode</a>
+                </nav>
+            </div>
+            <div class="footer-base">
+                <p>© 2026 Mukesh Kumar</p>
+                <p>Built by hand. No framework, no build step.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // mobile menu toggle
         (function () {
-            var toggle = document.getElementById('navToggle');
-            var menu = document.getElementById('mobileMenu');
-            if (!toggle || !menu) return;
-            toggle.addEventListener('click', function () {
-                var open = menu.classList.toggle('open');
-                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-            });
-            menu.querySelectorAll('a').forEach(function (a) {
-                a.addEventListener('click', function () {
-                    menu.classList.remove('open');
-                    toggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-        })();
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var finePointer = window.matchMedia('(pointer: fine)').matches;
 
-        // live Gurugram (IST) clock — rendered as a mono bracket caption
-        (function () {
-            var badge = document.getElementById('localTime');
-            var foot = document.getElementById('footTime');
-            if (!badge && !foot) return;
-            function tick() {
-                var t = new Date().toLocaleTimeString('en-IN', {
-                    timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit'
+            /* ---- Hero: split the headline into staggered words ---- */
+            var display = document.querySelector('.hero .display');
+            if (display && !reduced) {
+                var wrapWords = function (node) {
+                    Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+                        if (child.nodeType === 3) {
+                            var frag = document.createDocumentFragment();
+                            child.textContent.split(/(\s+)/).forEach(function (part) {
+                                if (!part) return;
+                                if (/^\s+$/.test(part)) {
+                                    frag.appendChild(document.createTextNode(part));
+                                    return;
+                                }
+                                var w = document.createElement('span');
+                                w.className = 'w';
+                                w.textContent = part;
+                                frag.appendChild(w);
+                            });
+                            node.replaceChild(frag, child);
+                        } else if (child.nodeType === 1) {
+                            wrapWords(child);
+                        }
+                    });
+                };
+                wrapWords(display);
+                display.querySelectorAll('.w').forEach(function (w, i) {
+                    w.style.animationDelay = (200 + i * 55) + 'ms';
                 });
-                if (badge) badge.textContent = t + ' IST';
-                if (foot) foot.textContent = 'Gurugram, IN · ' + t + ' IST';
             }
-            tick();
-            setInterval(tick, 30000);
-        })();
 
-        // back-to-top arrow: JS scroll so it works regardless of the
-        // current URL hash
-        (function () {
-            var btn = document.querySelector('.to-top');
-            if (!btn) return;
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
-            });
-        })();
-
-        // left rail: overall progress thumb + current section label
-        (function () {
-            var thumb = document.getElementById('railThumb');
-            var label = document.getElementById('railLabel');
-            if (!thumb || !label) return;
-            var sections = Array.prototype.slice.call(document.querySelectorAll('[data-rail]'));
-            var ticking = false;
-            function update() {
-                ticking = false;
-                var doc = document.documentElement;
-                var p = doc.scrollTop / (doc.scrollHeight - doc.clientHeight || 1);
-                thumb.style.top = (p * 172) + 'px';
-                var current = 'intro';
-                sections.forEach(function (sec) {
-                    if (sec.getBoundingClientRect().top < window.innerHeight * .5) {
-                        current = sec.getAttribute('data-rail');
-                    }
-                });
-                if (label.textContent !== current) label.textContent = current;
-            }
-            window.addEventListener('scroll', function () {
-                if (!ticking) { ticking = true; requestAnimationFrame(update); }
-            }, { passive: true });
-            update();
-        })();
-
-        // nav folds into a capsule on scroll (hysteresis avoids flicker at the threshold)
-        (function () {
-            var header = document.querySelector('header');
-            if (!header) return;
-            var ticking = false;
-            function update() {
-                ticking = false;
+            /* ---- Nav: fold into a capsule past the first scroll ---- */
+            var nav = document.getElementById('nav');
+            var folded = false;
+            function onScroll() {
                 var y = window.scrollY;
-                if (y > 110) header.classList.add('shrunk');
-                else if (y < 50) header.classList.remove('shrunk');
+                if (!folded && y > 90) { nav.classList.add('is-folded'); folded = true; }
+                else if (folded && y < 40) { nav.classList.remove('is-folded'); folded = false; }
             }
-            window.addEventListener('scroll', function () {
-                if (!ticking) { ticking = true; requestAnimationFrame(update); }
-            }, { passive: true });
-            update();
-        })();
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
 
-        // scroll reveal (respects prefers-reduced-motion via CSS fallback)
-        (function () {
-            var els = document.querySelectorAll('.reveal');
-            if (!('IntersectionObserver' in window) ||
-                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                els.forEach(function (el) { el.classList.add('in'); });
-                return;
-            }
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('in');
-                        io.unobserve(e.target);
-                    }
+            /* ---- Mobile menu ---- */
+            var toggle = document.getElementById('navToggle');
+            var links = document.getElementById('navLinks');
+            toggle.addEventListener('click', function () {
+                var open = nav.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', String(open));
+            });
+            links.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') {
+                    nav.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            /* ---- Reveal on scroll, grids staggered ---- */
+            document.querySelectorAll('.cards, .minis').forEach(function (grid) {
+                Array.prototype.slice.call(grid.children).forEach(function (el, i) {
+                    el.dataset.delay = String((i % 3) * 90);
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            els.forEach(function (el) { io.observe(el); });
+            });
+            if (!reduced && 'IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) {
+                        if (!en.isIntersecting) return;
+                        var el = en.target;
+                        if (el.dataset.delay) {
+                            el.style.transitionDelay = el.dataset.delay + 'ms';
+                            el.addEventListener('transitionend', function clear() {
+                                el.style.transitionDelay = '';
+                                el.removeEventListener('transitionend', clear);
+                            });
+                        }
+                        el.classList.add('is-in');
+                        io.unobserve(el);
+                    });
+                }, { rootMargin: '0px 0px -12% 0px' });
+                document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+            } else {
+                document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
+            }
+
+            /* ---- Scroll-linked paint: principle stack + panel parallax ---- */
+            var principles = Array.prototype.slice.call(document.querySelectorAll('.principle'));
+            var panels = Array.prototype.slice.call(document.querySelectorAll('.work-panel'));
+            var stackOn = !reduced && window.matchMedia('(min-width: 721px)').matches;
+            if (!reduced) {
+                var ticking = false;
+                var paint = function () {
+                    ticking = false;
+                    if (stackOn) {
+                        for (var i = 0; i < principles.length - 1; i++) {
+                            var el = principles[i];
+                            var top = principles[i + 1].getBoundingClientRect().top;
+                            var vh = window.innerHeight;
+                            /* Fade fully out between next.top = 90vh and 55vh, so the
+                               outgoing statement is gone before the incoming one
+                               reaches it — no ghost pile-up at the pin position. */
+                            var p = Math.min(1, Math.max(0, (vh * 0.9 - top) / (vh * 0.35)));
+                            el.style.opacity = String(1 - p);
+                            el.style.visibility = p >= 1 ? 'hidden' : '';
+                            el.style.transform = 'translateY(' + (-p * 30) + 'px) scale(' + (1 - p * 0.05) + ')';
+                            el.style.filter = p > 0.01 ? 'blur(' + (p * 6).toFixed(2) + 'px)' : '';
+                        }
+                    }
+                    for (var j = 0; j < panels.length; j++) {
+                        var r = panels[j].getBoundingClientRect();
+                        if (r.bottom < 0 || r.top > window.innerHeight) continue;
+                        var mid = r.top + r.height / 2 - window.innerHeight / 2;
+                        var m = panels[j].firstElementChild && panels[j].querySelector('.work-metric');
+                        if (m) m.style.transform = 'translateY(' + (mid * -0.07).toFixed(1) + 'px)';
+                    }
+                };
+                window.addEventListener('scroll', function () {
+                    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+                }, { passive: true });
+                window.addEventListener('resize', paint, { passive: true });
+                paint();
+            }
+
+            /* ---- Magnetic pull on the CTA pills ---- */
+            if (!reduced && finePointer) {
+                document.querySelectorAll('.cta').forEach(function (btn) {
+                    btn.addEventListener('mousemove', function (e) {
+                        var r = btn.getBoundingClientRect();
+                        var x = (e.clientX - r.left - r.width / 2) / r.width;
+                        var y = (e.clientY - r.top - r.height / 2) / r.height;
+                        btn.style.transform = 'translate(' + (x * 6).toFixed(1) + 'px,' + (y * 5).toFixed(1) + 'px)';
+                    });
+                    btn.addEventListener('mouseleave', function () {
+                        btn.style.transform = '';
+                    });
+                });
+            }
+
+            /* ---- Inertial wheel scrolling (fine pointers only) ---- */
+            if (!reduced && finePointer) {
+                var targetY = window.scrollY;
+                var curY = targetY;
+                var rafId = null;
+                var maxY = function () {
+                    return document.documentElement.scrollHeight - window.innerHeight;
+                };
+                var step = function () {
+                    curY += (targetY - curY) * 0.12;
+                    if (Math.abs(targetY - curY) < 0.5) { curY = targetY; rafId = null; }
+                    else { rafId = requestAnimationFrame(step); }
+                    window.scrollTo({ top: curY, left: 0, behavior: 'instant' });
+                };
+                window.addEventListener('wheel', function (e) {
+                    if (e.ctrlKey || e.metaKey) return;
+                    e.preventDefault();
+                    var d = e.deltaY * (e.deltaMode === 1 ? 16 : 1);
+                    targetY = Math.max(0, Math.min(maxY(), targetY + d));
+                    if (rafId === null) rafId = requestAnimationFrame(step);
+                }, { passive: false });
+                window.addEventListener('scroll', function () {
+                    if (rafId === null) { targetY = curY = window.scrollY; }
+                }, { passive: true });
+            }
         })();
     </script>
 </body>

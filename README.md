@@ -2,33 +2,54 @@
 
 Personal portfolio for **Mukesh (Marco) — AI & Backend Engineer**, hosted on GitHub Pages.
 
-It's a single, self-contained `index.html` — the **Charcoal & Ember** system: warm charcoal canvas, cream text, ember-orange accent, film grain, glow ellipses, a full-viewport bottom-left hero, and a nav that folds into a capsule on scroll (untillabs.com's system). Hand-written HTML + CSS with vanilla JS; no build step, no framework.
+A single self-contained `index.html`: near-black canvas, Plus Jakarta Sans set at display size with
+tight negative tracking, a lavender/yellow accent pair, and a nav that folds into a floating capsule
+on scroll. Hand-written HTML + CSS with vanilla JS; no build step, no framework.
 
-The earlier light variant (Ink & Signal) lives in git history — `git show faf1daa:index.html` — if it's ever wanted back.
-
-## Portrait
-
-The hero reserves a photo slot, top-right (`.hero-photo`). It hides itself until a `portrait.png` exists next to `index.html` — drop the file in and it appears, nothing else to wire. Use a 4:5 image, ~800×1000px or larger, ideally shot/generated on a dark charcoal background so it melts into the canvas.
+Earlier versions live in git history — `git show 3e7cae9:index.html` for **Charcoal & Ember**,
+`git show faf1daa:index.html` for **Ink & Signal**.
 
 ## Design system
 
-Same content on untillabs.com's machinery (their shipped CSS was torn down for this — easing `cubic-bezier(.4,.25,.2,1)`, `.gradient-card` panel recipe, blurred-div glow ellipses, film grain at mix-blend overlay above all content):
+Every colour, size, radius and rhythm value resolves from the `:root` token block at the top of the
+`<style>` element. No raw hex appears below that block.
 
-- Full-viewport hero, bottom-left: name with a dimmed second line, ember kicker, lead paragraph. No buttons — the nav's cream-filled CTA is the single primary action on the first screen.
-- Nav folds into a centered capsule (name + cream CTA + back-to-top arrow) past 110px, unfolds under 50px.
-- Left rail gauge (≥1150px): scroll-progress thumb + vertical mono label of the current section.
-- Glass panels blur the glows behind them; fallbacks collapse to solid charcoal panels for no-`backdrop-filter` and `prefers-reduced-transparency`.
-- Contrast is measured on rendered pixels (sample beside glyphs, not on them); soft text ≥4.6:1 everywhere including glow hotspots.
+- **Canvas** `--bg` near-black, one card surface `--surface`, one raised `--surface-raised`.
+- **Ink ramp** primary 14.6:1, soft 5.9:1 against the canvas.
+- **Accents** lavender `--accent` leads, pale yellow `--accent-2` answers. Used on kickers, the
+  "now" badges, the work-panel glows, and the two "What I do" cards.
+- **Shape** one card radius (`--radius`), one small radius for minis, pills for everything round.
+- **Hierarchy** three levels only: `.display` / `.title` → `.heading` → body, plus `.kicker` and
+  `.section-label` for meta. Weight 500 everywhere; 600 reserved for numerals and micro-labels.
+- **One primary CTA** — the cream `Contact` pill, repeated once in the closing band. Everything
+  else is a text link.
 
-## Editing content
+## Layout
 
-Look for the `<!-- ==== SECTION ==== -->` banners: hero, about (`.about-grid` + `.about-card` facts), experience (`.role` articles; `badge-now` marks current roles; `metric-inline` sets numbers in mono), selected work (`.work-row`s with right-aligned `.work-metric`), more projects (`.mini` cards; `<a>` when live, `<article>` when not), skills (`.skill-group` + `.chip`s), contact.
+Section banners in the markup: `NAV`, `HERO`, `MARQUEE`, `PROCESS`, `WHAT I DO`, `BACKGROUND`,
+`MORE PROJECTS`, `SELECTED WORK`, `FINAL CTA`, `FOOTER`.
 
-Accessibility invariants: every section keeps an `h2`; decorative SVGs carry `aria-hidden="true"`; external links carry `rel="noopener"`; interactive elements are ≥44px tall.
+- **Hero** is full-viewport with content weighted to the lower third.
+- **Selected work** uses `.work-item` blocks: a 16:9 `.work-panel` carrying the project's headline
+  metric over a tinted glow, then a tag row, an outcome headline, and a paragraph. Set the glow per
+  item with `style="--glow: var(--accent)"`.
+- **Process** is a sticky stack — each `.principle` pins at 22vh and fades as the next arrives.
+  Falls back to plain stacked blocks under 720px and under `prefers-reduced-motion`.
+- **Background** is a two-column split: `.role` articles on the left, a sticky `.toolkit` of
+  `.chips` on the right. `.now` marks current roles; `<b>` sets metrics in tabular numerals.
+- **More projects** are `.mini` cards — `<a>` when there's somewhere to go, `<article>` when not.
+  Descriptions clamp at 3 lines so a long one can't break the grid.
+
+## Accessibility invariants
+
+Every section keeps an `h2`. Decorative SVGs carry `aria-hidden="true"`. External links carry
+`rel="noopener"`. Interactive elements are ≥44px tall. `prefers-reduced-motion` and
+`prefers-reduced-transparency` are both honoured.
 
 ## ⚠️ Verify the LeetCode link
 
-The LeetCode URL is set to `https://leetcode.com/u/mukeshxmarco/` (guessed from the handle). **Confirm it's correct** and update it in both files if not — search for `leetcode.com`.
+The LeetCode URL is `https://leetcode.com/u/mukeshxmarco/` (guessed from the handle).
+**Confirm it's correct** — search for `leetcode.com`.
 
 ## Deploying
 
