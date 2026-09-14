@@ -27,12 +27,15 @@ Every colour, size, radius and rhythm value resolves from the `:root` token bloc
 ## Layout
 
 Section banners in the markup: `NAV`, `HERO`, `MARQUEE`, `PROCESS`, `WHAT I DO`, `BACKGROUND`,
-`MORE PROJECTS`, `SELECTED WORK`, `FINAL CTA`, `FOOTER`.
+`PROJECTS`, `FINAL CTA`, `FOOTER`.
 
 - **Hero** is full-viewport with content weighted to the lower third.
-- **Selected work** uses `.work-item` blocks: a 16:9 `.work-panel` carrying the project's headline
-  metric over a tinted glow, then a tag row, an outcome headline, and a paragraph. Set the glow per
-  item with `style="--glow: var(--accent)"`.
+- **Nav** shows the full name at rest and folds to `Marco` once scrolled past 90px.
+- **Projects** is a two-up grid of `.project` plates, each one a 4:3 `.project-panel` carrying the
+  project's mark over a tinted glow, then a tag row, the project headline, and a paragraph. Set the
+  glow per item with `style="--glow: var(--accent)"`. The mark is a figure by default; add
+  `class="phrase"` to the `<b>` for word marks so they sit at the same optical weight as a number.
+  `.project-flag` pins an award badge to the panel's top-right.
 - **Process** is a sticky stack — each `.principle` pins at 22vh and fades as the next arrives.
   Falls back to plain stacked blocks under 720px and under `prefers-reduced-motion`.
 - **Background** is a two-column split: `.role` articles on the left, a sticky `.toolkit` of
