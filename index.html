@@ -253,12 +253,16 @@
             display: flex;
             align-items: center;
             gap: clamp(1rem, 3vw, 2.5rem);
-            width: min(var(--maxw), calc(100% - var(--pad-x) * 2));
-            padding: .5rem .5rem .5rem clamp(1rem, 2.5vw, 1.65rem);
+            /* At rest the bar spans exactly the content column of .wrap, so
+               the brand's left edge and the CTA's right edge sit on the same
+               lines as every section below. */
+            width: min(calc(var(--maxw) - var(--pad-x) * 2), calc(100% - var(--pad-x) * 2));
+            padding: 0;
             border-radius: var(--pill);
             background: transparent;
             border: 1px solid transparent;
             transition: width var(--slow) var(--ease),
+                padding var(--slow) var(--ease),
                 background var(--slow) var(--ease),
                 border-color var(--slow) var(--ease),
                 backdrop-filter var(--slow) var(--ease);
@@ -266,6 +270,7 @@
 
         .nav.is-folded .nav-inner {
             width: min(740px, calc(100% - var(--pad-x) * 2));
+            padding: .5rem .5rem .5rem clamp(1rem, 2.5vw, 1.65rem);
             background: rgba(36, 36, 36, .72);
             border-color: var(--line);
             backdrop-filter: blur(18px) saturate(140%);
@@ -976,6 +981,7 @@
             .nav-inner {
                 justify-content: space-between;
                 gap: .65rem;
+                padding: .5rem .5rem .5rem 1rem;
                 background: rgba(36, 36, 36, .72);
                 border-color: var(--line);
                 backdrop-filter: blur(18px) saturate(140%);
