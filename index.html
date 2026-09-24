@@ -374,15 +374,12 @@
            HERO — full viewport, content weighted to the lower third
            ============================================================ */
         .hero {
+            position: relative;
             min-height: 100svh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding-block: 8rem clamp(3.5rem, 9vh, 7rem);
-        }
-
-        .hero {
-            position: relative;
         }
 
         .hero > :not(.hero-field) {
@@ -992,6 +989,11 @@
            RESPONSIVE — mobile first corrections
            ============================================================ */
         @media (max-width: 900px) {
+            .hero {
+                min-height: 86svh;
+                padding-block: 6.5rem clamp(2.5rem, 7vh, 4rem);
+            }
+
             .split {
                 grid-template-columns: 1fr;
             }
