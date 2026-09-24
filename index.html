@@ -381,56 +381,6 @@
             padding-block: 8rem clamp(3.5rem, 9vh, 7rem);
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: clamp(2rem, 4vw, 3.5rem);
-            align-items: end;
-        }
-
-        .hero-photo {
-            position: relative;
-            width: min(100%, 300px);
-            aspect-ratio: 4 / 5;
-            border-radius: var(--radius);
-            border: 1px solid var(--line);
-            overflow: hidden;
-            background: var(--surface);
-            order: -1;
-            opacity: 0;
-            animation: rise 900ms var(--ease) 320ms forwards;
-        }
-
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 30%;
-            filter: saturate(.85) contrast(1.04);
-        }
-
-        /* Scrim so the photo's bright greens settle into the canvas */
-        .hero-photo::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 55%, rgba(20, 20, 20, .55));
-            pointer-events: none;
-        }
-
-        @media (min-width: 900px) {
-            .hero-grid {
-                grid-template-columns: minmax(0, 1.4fr) minmax(300px, 400px);
-                gap: clamp(3rem, 6vw, 6rem);
-            }
-
-            .hero-photo {
-                order: 0;
-                width: 100%;
-                justify-self: end;
-            }
-        }
-
         .hero .kicker {
             margin-bottom: clamp(1.25rem, 2.4vw, 2rem);
         }
@@ -1142,24 +1092,17 @@
     <main id="main">
         <!-- ============================ HERO ============================ -->
         <section class="hero wrap" id="top">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                <p class="kicker">AI &amp; Backend Engineer <em>·</em> <span>Remote — US &amp; Europe</span></p>
-                <h1 class="display">I build systems that <span class="dim">stay fast under load.</span></h1>
-                <p class="lead">Real-time voice AI agents, automation that removes manual work, and backends
-                    that hold up at scale — shipping production software since 2021.</p>
-                <a class="hero-scroll" href="#projects">
-                    See the work
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                        <path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </a>
-                </div>
-                <figure class="hero-photo">
-                    <img src="portrait.webp" alt="Mukesh Kumar" width="1160" height="1360" loading="eager" decoding="async">
-                </figure>
-            </div>
+            <p class="kicker">AI &amp; Backend Engineer <em>·</em> <span>Remote — US &amp; Europe</span></p>
+            <h1 class="display">I build systems that <span class="dim">stay fast under load.</span></h1>
+            <p class="lead">Real-time voice AI agents, automation that removes manual work, and backends
+                that hold up at scale — shipping production software since 2021.</p>
+            <a class="hero-scroll" href="#projects">
+                See the work
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
         </section>
 
         <!-- ============================ MARQUEE ============================ -->
