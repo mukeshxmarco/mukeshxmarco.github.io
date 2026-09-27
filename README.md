@@ -52,11 +52,6 @@ Every section keeps an `h2`. Decorative SVGs carry `aria-hidden="true"`. Externa
 `rel="noopener"`. Interactive elements are ≥44px tall. `prefers-reduced-motion` and
 `prefers-reduced-transparency` are both honoured.
 
-## ⚠️ Verify the LeetCode link
-
-The LeetCode URL is `https://leetcode.com/u/mukeshxmarco/` (guessed from the handle).
-**Confirm it's correct** — search for `leetcode.com`.
-
 ## Deploying
 
 Push to `master`. GitHub Pages serves from the repo root at
